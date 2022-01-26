@@ -1,0 +1,7 @@
+{
+  "name": "GarZip_front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
