@@ -1,23 +1,53 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { logIn } from 'ionicons/icons';
+import { IonContent, IonHeader, IonPage, IonTitle, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonItemDivider,IonRouterLink,IonCheckbox  } from '@ionic/react';
+
 import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import './Register.css';
 
 const LogIn: React.FC = () => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          {/* <IonTitle>Register</IonTitle> */}
-        </IonToolbar>
-      </IonHeader>
+    <IonPage className="Page">
       <IonContent fullscreen>
         <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
-          </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <div className='register'>
+          <div className="bar">
+            <IonRouterLink href='/login' className="button-back">ย้อนกลับ</IonRouterLink>
+          </div>
+          <div className="heading-register ion-padding">
+            <h1>สมัครสมาชิก</h1>
+          </div>
+          <div className="register-form ion-padding">
+            <div className="form-input">
+              <IonTitle>ชื่อผู้ใช้งาน</IonTitle>
+              <IonItem className="input">
+                <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
+                <IonInput type="text" ></IonInput>
+              </IonItem>
+            </div>
+            <div className="form-input">
+              {/* <IonTitle>รหัสผ่าน</IonTitle> */}
+              <IonItem className="input">
+                <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
+                <IonInput type="text" ></IonInput>
+              </IonItem>
+            </div>
+            <div className="form-input">
+              {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
+              <IonItem className="input">
+                <IonLabel position="floating" className="input-text">ยืนยันรหัสผ่าน</IonLabel>
+                <IonInput type="text" ></IonInput>
+              </IonItem>
+            </div>
+            <div className='Check-mode'>
+              <IonCheckbox slot="start" color="dark" className='Checkbox' />
+              <IonLabel position="floating" className="text">โหมดผู้พิการทางการมองเห็น</IonLabel>
+            </div>
+            <div className="action-button-regis">
+              <IonButton size="large" className="register-button" routerLink="/login">สมัครสมาชิก</IonButton>
+            </div>  
+          </div>
+        </div>
+     
       </IonContent>
     </IonPage>
   );

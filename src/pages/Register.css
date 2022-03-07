@@ -1,0 +1,61 @@
+.Page{
+  background: rgba(0, 0, 0, 0.986);
+  /* right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  margin: auto;
+  border-top-left-radius: 46px;
+  border-top-right-radius: 46px; */
+  font-family: 'Bai Jamjuree', sans-serif;
+  /* font-weight: bold; */
+}
+.heading-register h1{
+    text-decoration: underline;
+  text-decoration-thickness: 5px;  
+  padding: 20px;
+  font-size: 1.9rem;
+  color: white;  
+  text-align: center;
+  /* font-weight: bold; */
+  margin: 0px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.bar{
+  margin: 20px;
+}
+.button-back{
+  color: white;
+  font-size: 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  
+}
+.register-form .form-input{
+  position: relative;
+  margin: 0px 20px 25px 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.Check-mode{
+  text-align: center;
+  margin: 40px 0px 40px 0px;
+
+}
+.Checkbox{
+  width: 30px;
+  height:30px;
+
+}
+.text{
+  color: white;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: normal;
+  font-size: 23px;
+  padding: 5px;
+}
+.action-button-regis{
+  margin: 20px;
+  text-align: center;
+}
+.bar{
+  color: white;
+}

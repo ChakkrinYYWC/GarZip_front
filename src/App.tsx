@@ -14,6 +14,8 @@ import { home, search, heart, settings } from 'ionicons/icons';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import DetailBook from './pages/DetailBook';
+import Booklist from './pages/Booklist';
 import HOME from './pages/HOME';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -50,6 +52,12 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/Register">
             <Register />
+          </Route>
+          <Route exact path="/DetailBook"  >
+            <DetailBook />
+          </Route>
+          <Route exact path="/Booklist"  >
+            <Booklist />
           </Route>
           <Route exact path="/HOME" >
             <HOME />

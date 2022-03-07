@@ -36,12 +36,14 @@ const LogIn: React.FC = () => {
           <div className="action-button">
             <IonButton className="register-button" size="large" fill="outline" routerLink="/register">สมัครสมาชิก</IonButton>
             <IonButton size="large" className="login-button">เข้าสู่ระบบ</IonButton>
-          </div>
+          </div> 
           <div className="login-with-facebook" >
             <IonIcon className="icon-facebook" icon={logoFacebook} />
             <IonRouterLink href="#" className="link-login-with-facebook">เข้าสู่ระบบด้วยFacebook</IonRouterLink>
           </div>
-       
+          <div className="forgotpass">
+            <IonRouterLink href="#" className="link-forgotpass">ลืมรหัสผ่าน?</IonRouterLink>
+          </div>
         </div>
       </IonContent>
     </IonPage>
