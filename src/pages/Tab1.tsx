@@ -3,26 +3,26 @@ import Home from '../components/Home';
 import React from "react";
 import './Tab1.css';
 
-const Tab1: React.FC = () => {
+const Tab1 = () => {
   return (
     <IonPage>
-        {/* <IonHeader>
-          <IonToolbar>
-            <IonTitle>Home</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <IonContent> 
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">Garzip</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <Home/> 
-        </IonContent> */}
-        
-        <Home/> 
+      <Home/> 
     </IonPage>
+  //   <IonPage>
+  //   <IonHeader>
+  //     <IonToolbar>
+  //       <IonTitle></IonTitle>
+  //     </IonToolbar>
+  //   </IonHeader>
+  //   <IonContent fullscreen>
+  //     <IonHeader collapse="condense">
+  //       <IonToolbar>
+  //         <IonTitle size="large">Garzip</IonTitle>
+  //       </IonToolbar>
+  //     </IonHeader>
+  //     <Home />
+  //   </IonContent>
+  // </IonPage>
   );
 };
 
