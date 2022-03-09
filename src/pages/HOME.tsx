@@ -3,7 +3,7 @@ import Home from '../components/Home';
 import React from "react";
 import './Tab1.css';
 
-const Tab1 = () => {
+const HOME = () => {
   return (
     <IonPage>
       <Home/> 
@@ -26,4 +26,4 @@ const Tab1 = () => {
   );
 };
 
-export default Tab1;
+export default Home;
