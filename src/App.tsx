@@ -17,7 +17,7 @@ import Register from './pages/Register';
 import DetailBook from './pages/DetailBook';
 import Booklist from './pages/Booklist';
 import UserInfo from './pages/UserInfo';
-import HOME from './pages/HOME';
+import Tab1 from './pages/HOME';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Setting from './pages/Tab4';
@@ -61,7 +61,7 @@ const App: React.FC = () => (
             <Booklist />
           </Route>
           <Route exact path="/HOME" >
-            <HOME />
+            <Tab1 />
           </Route>
           <Route exact path="/tab2">
             <Tab2 />
@@ -70,7 +70,7 @@ const App: React.FC = () => (
             <Tab3 />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/HOME" />
           </Route>
           {/* ---------setting---------- */}
           <Route path="/setting">

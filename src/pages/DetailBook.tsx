@@ -28,24 +28,13 @@ const DetailBook: React.FC = () => {
                 <IonIcon name="chevron-back-outline" ></IonIcon>
             </IonRouterLink>
           </div>
-          {/* <div className="bar">
-            <IonRouterLink href='/' className="button-back" >
-              <IonIcon name="chevron-back-outline" ></IonIcon>
-            </IonRouterLink>
-          </div> */}
           <div className="data-book">
-         
-            
-              <IonImg className="image-book" src="https://images-se-ed.com/ws/Storage/Originals/978616/043/9786160436521L.jpg?h=bd3ff49d0462bbe40accb7e5614ac9a5" />
-              
-              <h3 >เรื่องผีรอบโลก : ผีออนไลน์0000000000</h3>          
-              <p>เขียนโดย : นายจักริน ยงยุทธ</p>
-              <p>ระยะเวลา : 40 นาที 25 วินาที</p>
-           
-            
+            <IonImg className="image-book" src="https://images-se-ed.com/ws/Storage/Originals/978616/043/9786160436521L.jpg?h=bd3ff49d0462bbe40accb7e5614ac9a5" />
+            <h3 >เรื่องผีรอบโลก : ผีออนไลน์0000000000</h3>          
+            <p>เขียนโดย : นายจักริน ยงยุทธ</p>
+            <p>ระยะเวลา : 40 นาที 25 วินาที</p>
           </div>
           <div className='players'>
-
             <IonItem className='line-time'lines="none" >
               <IonRange  className='range-time'>
                 <IonLabel slot="start" className='start-time'>
@@ -65,9 +54,8 @@ const DetailBook: React.FC = () => {
                 </IonLabel>
               </IonRange>
             </IonItem>
-
-
-
+          </div>
+          <div className='mix-button'>
             <IonButton  fill="clear" mode="ios" className='button-play-back'>
               <IonIcon name="play-back-outline"></IonIcon>
             </IonButton >
@@ -83,20 +71,21 @@ const DetailBook: React.FC = () => {
             <IonButton  fill="clear" mode="ios" className='button-play-forward'>
               <IonIcon name="play-forward-outline"></IonIcon >
             </IonButton>
-
+            <IonButton  fill="clear" mode="ios" className='button-like'>
+              <IonIcon className='like-book' name="heart-outline"></IonIcon>
+            </IonButton>
+            <IonButton  fill="clear" mode="ios" className='button-play-auto'>
+              <IonIcon name="shuffle-outline"></IonIcon>
+            </IonButton>
+            <div className='button-name'>
+              <span className="save">บันทึก</span>
+              <span className="auto">เล่นอัตโนมัติ</span>
+            </div>
           </div>
-          <IonButton  fill="clear" mode="ios" className='button-play-forward'>
-            <IonIcon name="heart-circle-outline"></IonIcon>
-          </IonButton>
-
-          <IonButton  fill="clear" mode="ios" className='button-play-auto'>
-            <IonIcon name="shuffle-outline"></IonIcon>
-          </IonButton>
-         
-        
+          
           <div className='story-book'>
             <h4 className='title-story'>เนื้อเรื่องย่อ</h4> 
-            <div className='story' >กาลครั้งหนึ่งนานมาแล้ววววววววbfkhmslbmf,odkzmbjikazmhdrifpjbmksge,bfijkmmpm,gbkdozgnzdfngxbvzvfdgh;;;;;;;;;;;;;;;วว</div> 
+            <div className='story'>กาลครั้งหนึ่งนานมาแล้ววววววววbfkhmslbmf,odkzmbjikazmhdrifpjbmksge,bfijkmmpm,gbkdozgnzdfngxbvzvfdgh;;;;;;;;;;;;;;;วว</div> 
           </div>
         </div>
     
