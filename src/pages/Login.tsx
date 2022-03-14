@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonImg,IonRouterLink  } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, useIonAlert, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonImg,IonRouterLink  } from '@ionic/react';
 
 import { logoFacebook } from 'ionicons/icons';
 
@@ -7,6 +7,7 @@ import { logoFacebook } from 'ionicons/icons';
 import './Login.css';
 
 const LogIn: React.FC = () => {
+const [present] = useIonAlert();
   return (
     <IonPage className="loginPage">
       <IonContent fullscreen>
@@ -41,8 +42,33 @@ const LogIn: React.FC = () => {
             <IonIcon className="icon-facebook" icon={logoFacebook} />
             <IonRouterLink href="#" className="link-login-with-facebook">เข้าสู่ระบบด้วยFacebook</IonRouterLink>
           </div>
+
           <div className="forgotpass">
-            <IonRouterLink href="#" className="link-forgotpass">ลืมรหัสผ่าน?</IonRouterLink>
+            <IonButton  
+            className="link-forgotpass"
+            expand="block"
+            onClick={() =>
+              present({
+                cssClass: 'my-css',
+                // header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                message: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                inputs: [
+                  {
+                    name: 'email',
+                    placeholder: 'อีเมล์',
+                    type: 'email'
+                  }
+                ],
+                buttons: [
+                  'ยกเลิก',
+                  { text: 'ยืนยัน', handler: (d) => console.log('ok pressed') },
+                ],
+                onDidDismiss: (e) => console.log('did dismiss'),
+              })
+            }
+          >
+            ลืมรหัสผ่าน?
+          </IonButton>
           </div>
         </div>
       </IonContent>
