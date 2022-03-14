@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { IonContent, IonHeader, IonPage, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonRouterLink  } from '@ionic/react';
-=======
 import { IonContent, IonHeader, IonPage, useIonAlert, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonImg,IonRouterLink  } from '@ionic/react';
->>>>>>> 04fbd8de39cfa331d935bbd0e56c033b6243650e
 
 import { logoFacebook } from 'ionicons/icons';
 

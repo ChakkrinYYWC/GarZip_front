@@ -1,9 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonInput, IonItem, IonLabel, IonButton,IonRouterLink,IonCheckbox  } from '@ionic/react';
-<<<<<<< HEAD
-=======
 
 import ExploreContainer from '../components/ExploreContainer';
->>>>>>> 04fbd8de39cfa331d935bbd0e56c033b6243650e
 import './Register.css';
 
 const LogIn: React.FC = () => {
