@@ -1,0 +1,21 @@
+.choice{
+  padding-top: 8%;
+  padding-bottom: 13%;
+  border-bottom:1px solid gray;
+}
+
+.textchoice{
+  color: white;
+  float: left;
+  margin-left: 5%;
+  font-size: 22px;
+}
+
+.bottonchoice{
+  color: white;
+  float: right;
+  margin-right: 3%;
+  font-size: 22px;
+}
+
+

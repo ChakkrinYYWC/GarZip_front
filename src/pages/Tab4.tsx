@@ -7,16 +7,16 @@ const Tab4: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>คุณ XXXX</IonTitle>
+          <IonTitle>Username</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">คุณ XXXX</IonTitle>
+            <IonTitle size="large">Username</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Setting name="Tab 4 page" />
+        <Setting />
       </IonContent>
     </IonPage>
   );
