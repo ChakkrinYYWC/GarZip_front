@@ -16,7 +16,6 @@ const Home = () => {
     // const { state, dispatch } = useContext(AppContext);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([])
-    const [test, setTest] = useState(345)
 
     const doPlay = {
 
@@ -39,7 +38,7 @@ const Home = () => {
         await setLoading(false);
     }, [])
 
-    console.log(data)
+    // console.log(data)
     // data.sort((a, b) => (a._id > b._id ? -1 : 1));
     return (
         <>
@@ -89,13 +88,13 @@ const Home = () => {
                                 {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_,idx) => (idx<3)).map((book, index) => {
                                     return (
                                         <>
-                                            <IonItem onClick={() => doPlay} button>
+                                            <IonItem key={index} onClick={() => doPlay} button>
                                                 <IonThumbnail slot="start">
                                                     <img src={book.image} />
                                                 </IonThumbnail>
                                                 <IonLabel>
                                                     <h2>{book.name}</h2>
-                                                    <p> {book.view} </p>
+                                                    <p>{book.view} </p>
                                                 </IonLabel>
                                             </IonItem>
                                             {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
@@ -112,7 +111,7 @@ const Home = () => {
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
+                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_,idx) => (idx<5)).map((book, index) => {
                                             return (
                                                 <>
 
