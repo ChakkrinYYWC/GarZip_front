@@ -2,7 +2,7 @@ import './Setting.css';
 import { IonToggle} from '@ionic/react';
 
 
-const Setting: React.FC = () => {
+const Setting  = () => {
   return (
     <div>
       {/* <strong>{name}</ strong> */}
