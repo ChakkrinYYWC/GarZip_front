@@ -1,6 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonItemDivider,IonRouterLink,IonCheckbox  } from '@ionic/react';
-
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonInput, IonItem, IonLabel, IonButton,IonRouterLink,IonCheckbox  } from '@ionic/react';
 import './Register.css';
 
 const LogIn: React.FC = () => {

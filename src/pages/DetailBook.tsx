@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonImg,IonText,IonIcon,IonLabel, IonButton, IonItem,IonRouterLink,IonThumbnail, IonRange } from '@ionic/react';
+import { IonContent, IonPage, IonImg,IonText,IonIcon,IonLabel, IonButton, IonItem,IonRouterLink, IonRange } from '@ionic/react';
 import './DetailBook.css';
 
 
