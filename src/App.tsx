@@ -16,10 +16,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DetailBook from './pages/DetailBook';
 import Booklist from './pages/Booklist';
+import UserInfo from './pages/UserInfo';
 import Tab1 from './pages/HOME';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
-import Tab4 from './pages/Tab4';
+import Setting from './pages/Tab4';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -68,11 +69,15 @@ const App: React.FC = () => (
           <Route path="/tab3">
             <Tab3 />
           </Route>
-          <Route path="/tab4">
-            <Tab4 />
-          </Route>
           <Route exact path="/">
             <Redirect to="/HOME" />
+          </Route>
+          {/* ---------setting---------- */}
+          <Route path="/setting">
+            <Setting />
+          </Route>
+          <Route path="/setting/UserInfo"  >
+            <UserInfo />
           </Route>
         </IonRouterOutlet>
 
@@ -89,7 +94,7 @@ const App: React.FC = () => (
             <IonIcon icon={heart} />
             <IonLabel>ชั้นหนังสือ</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/tab4">
+          <IonTabButton tab="tab4" href="/setting">
             <IonIcon icon={settings} />
             <IonLabel>ตั้งค่า</IonLabel>
           </IonTabButton>

@@ -109,9 +109,33 @@ ion-content{
   text-align: center;
   font-weight: normal;
   margin-top: 20px;
+  
 }
 .link-forgotpass{
   color: white;
   /* text-decoration: underline; */
-  font-size: 19px;
+  font-size: 18px;
+  margin: 0px 110px;
+  text-align: center;
+  height: 30px;
+  font-family: 'Bai Jamjuree', sans-serif;
+
 }
+
+.forgotpass .button-solid{
+  --background: #222222;
+  --border-radius:50px;
+ 
+
+}
+.my-css{
+  font-size: 17px;
+  color: #000000;
+  font-weight: bold;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+
+
+

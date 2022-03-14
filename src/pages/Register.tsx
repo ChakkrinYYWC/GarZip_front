@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonItemDivider,IonRouterLink,IonCheckbox  } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonInput, IonItem, IonLabel, IonButton,IonRouterLink,IonCheckbox  } from '@ionic/react';
 
 import ExploreContainer from '../components/ExploreContainer';
 import './Register.css';
@@ -18,21 +18,25 @@ const LogIn: React.FC = () => {
           </div>
           <div className="register-form ion-padding">
             <div className="form-input">
-              <IonTitle>ชื่อผู้ใช้งาน</IonTitle>
+           
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
                 <IonInput type="text" ></IonInput>
               </IonItem>
             </div>
             <div className="form-input">
-              {/* <IonTitle>รหัสผ่าน</IonTitle> */}
+             <IonItem className="input">
+               <IonLabel position="floating" className="input-text">อีเมล์</IonLabel>
+               <IonInput type="email" ></IonInput>
+             </IonItem>
+           </div>
+            <div className="form-input">
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
                 <IonInput type="text" ></IonInput>
               </IonItem>
             </div>
             <div className="form-input">
-              {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ยืนยันรหัสผ่าน</IonLabel>
                 <IonInput type="text" ></IonInput>

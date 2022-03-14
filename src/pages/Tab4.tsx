@@ -16,7 +16,7 @@ const Tab4: React.FC = () => {
             <IonTitle size="large">Username</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Setting name="Tab 4 page" />
+        <Setting />
       </IonContent>
     </IonPage>
   );
