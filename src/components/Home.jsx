@@ -24,7 +24,7 @@ const Home = () => {
     async function getData() {
         await Axios.get("http://localhost:3000/book/app", {})
             .then((res) => {
-                // console.log(res.data[0]);
+                console.log(res.data[0]);
                 setData(res.data)
             })
             .catch((error) => {
@@ -59,7 +59,7 @@ const Home = () => {
                             </IonListHeader>
                             <IonHeader collapse="condense">
                                 <IonTitle size="large" >Garzip</IonTitle>
-                            </IonHeader>
+                            </IonHeader> 
 
                             <IonList>
                                 <IonListHeader>
@@ -111,7 +111,7 @@ const Home = () => {
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_,idx) => (idx<5)).map((book, index) => {
+                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_,idx) => (idx<4)).map((book, index) => {
                                             return (
                                                 <>
 
@@ -141,7 +141,7 @@ const Home = () => {
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
-                                        {data.filter(cate => cate.category == 'นิยาย').map((book, index) => {
+                                        {data.filter(cate => cate.category == 'นิยาย').filter((_,idx) => (idx<4)).map((book, index) => {
                                             return (
                                                 <>
 

@@ -1,9 +1,5 @@
 
-interface ContainerProps {
-    name: string;
-  }
-  
-  const Setting: React.FC<ContainerProps> = ({ name }) => {
+  const Setting  = ({ name }) => {
     return (
       <div className="container">
         {/* <strong>{name}</ strong> */}
