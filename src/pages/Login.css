@@ -5,9 +5,13 @@ ion-content{
 }
 
 .loginPage{
+  
   /* background: white; */
-  background-image: url('https://cdn-v2.asla.org/uploadedImages/CMS/Shop/Bookstore/books.jpg');
+  background-image: url('https://www.dooddot.com/wp-content/uploads/2018/01/SVE-spread-8-SQ_1024x1024.png');
 
+  height: 100%;
+  background-position: center ;
+  background-size: contain ;
 }
 .login-section{
 
@@ -72,13 +76,14 @@ ion-content{
 .action-button .login-button,.register-button{
   font-family: 'Bai Jamjuree', sans-serif;
   font-weight: bold;
-  color: black;
+  color: rgb(255, 255, 255);
 
 }
 .button-solid{
-  --background: #FDD400;
+  /* --background: #ab69f7; */
   --border-radius:50px;
-
+  --background: rgb(221,134,213);
+  --background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
 }
 .button-outline{
   --border-color: rgb(255, 255, 255);
@@ -129,13 +134,25 @@ ion-content{
 
 }
 .my-css{
-  font-size: 17px;
+  font-size: 20px;
   color: #000000;
   font-weight: bold;
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
+.link-forgotpass{
+  color: red;
+  
+}
 
-
+.alert-button.sc-ion-alert-md{
+  color: rgb(65, 2, 90);
+  font-size: 17px;
+  font-weight: bold;
+  
+}
+.alert-message.sc-ion-alert-md{
+  font-size: 18px;
+}
 
 

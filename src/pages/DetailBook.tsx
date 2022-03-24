@@ -35,7 +35,7 @@ const DetailBook: React.FC = () => {
             <p>ระยะเวลา : 40 นาที 25 วินาที</p>
           </div>
           <div className='players'>
-            <IonItem className='line-time'lines="none" >
+           
               <IonRange  className='range-time'>
                 <IonLabel slot="start" className='start-time'>
                   <IonText>
@@ -53,7 +53,7 @@ const DetailBook: React.FC = () => {
                   </IonText>
                 </IonLabel>
               </IonRange>
-            </IonItem>
+            
           </div>
           <div className='mix-button'>
             <IonButton  fill="clear" mode="ios" className='button-play-back'>
@@ -85,7 +85,7 @@ const DetailBook: React.FC = () => {
           
           <div className='story-book'>
             <h4 className='title-story'>เนื้อเรื่องย่อ</h4> 
-            <div className='story'>กาลครั้งหนึ่งนานมาแล้ววววววววbfkhmslbmf,odkzmbjikazmhdrifpjbmksge,bfijkmmpm,gbkdozgnzdfngxbvzvfdgh;;;;;;;;;;;;;;;วว</div> 
+            <div className='story'>กาลครั้งหนึ่งนานมาแล้ว มีเด็กน้อยคนหนึ่ง หลงรักแมวของเธอ</div> 
           </div>
         </div>
     

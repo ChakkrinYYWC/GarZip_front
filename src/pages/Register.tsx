@@ -43,7 +43,7 @@ const LogIn: React.FC = () => {
               </IonItem>
             </div>
             <div className='Check-mode'>
-              <IonCheckbox slot="start" color="dark" className='Checkbox' />
+              <IonCheckbox slot="start" className='Checkbox' />
               <IonLabel position="floating" className="text">โหมดผู้พิการทางการมองเห็น</IonLabel>
             </div>
             <div className="action-button-regis">
