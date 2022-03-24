@@ -49,9 +49,9 @@ const Booklist: React.FC = () => {
       <IonContent fullscreen>
         <div className='Booklist'>
           <h1>นิทาน</h1>
-          <IonList >
+          <IonList className='list-book'>
             {items.map((image, i) => (
-              <IonItem key={i} >
+              <IonItem key={i} className="item-list" >
                 <IonThumbnail slot="start" >
                   <IonImg  src={image.src} />
                 </IonThumbnail>
