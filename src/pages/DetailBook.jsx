@@ -39,8 +39,8 @@ const DetailBook = () => {
             <p>ระยะเวลา : 40 นาที 25 วินาที</p>
           </div>
           <div className='players'>
-            <IonItem className='line-time' lines="none" >
-              <IonRange className='range-time'>
+           
+              <IonRange  className='range-time'>
                 <IonLabel slot="start" className='start-time'>
                   <IonText>
                     <b>
@@ -57,7 +57,7 @@ const DetailBook = () => {
                   </IonText>
                 </IonLabel>
               </IonRange>
-            </IonItem>
+            
           </div>
           <div className='mix-button'>
             <IonButton onClick={() => cancel()} fill="clear" mode="ios" className='button-play-back'>
@@ -88,8 +88,8 @@ const DetailBook = () => {
           </div>
 
           <div className='story-book'>
-            <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
-            <div className='story'>กาลครั้งหนึ่งนานมาแล้ววววววววbfkhmslbmf,odkzmbjikazmhdrifpjbmksge,bfijkmmpm,gbkdozgnzdfngxbvzvfdgh;;;;;;;;;;;;;;;วว</div>
+            <h4 className='title-story'>เนื้อเรื่องย่อ</h4> 
+            <div className='story'>กาลครั้งหนึ่งนานมาแล้ว มีเด็กน้อยคนหนึ่ง หลงรักแมวของเธอ</div> 
           </div>
         </div>
 

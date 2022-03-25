@@ -61,8 +61,8 @@
 
 div.story{
   text-indent: 40px;
-  text-align: justify;
-  text-justify: inter-word;
+  
+
 }
 
 .players{
@@ -128,20 +128,19 @@ div.story{
 }
 
 
-.range-time{
-  /* color: blueviolet;
-  background: red; */
-}
+.range-time {
+  /* padding-left:0px !important;  */
 
-.line-time .item-inner  {
-  padding-left:0px; 
-  padding-right: 0px; 
-  padding-inline-start:0px; 
-
-  padding-inline-end:none; 
+  --knob-background:red;
+  --bar-background-active:red;
+  --pin-color:0px;
   
-
 }
+.line-time .item-inner{
+  width: 100%;
+  padding-inline-end:0 !important
+}
+
 
 
 

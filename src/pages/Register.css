@@ -39,10 +39,13 @@
   text-align: center;
   margin: 40px 0px 40px 0px;
 
+
 }
 .Checkbox{
   width: 30px;
   height:30px;
+  background-color: rgb(202, 74, 74);
+  border-radius: 50%;
 
 }
 .text{
@@ -55,7 +58,7 @@
 .action-button-regis{
   margin: 20px;
   text-align: center;
-  color: black;
+  color: rgb(255, 255, 255);
   
 }
 .bar{
@@ -63,5 +66,20 @@
 }
 
 .action-button-regis .register-button{
-  color: black;
+  color: rgb(255, 255, 255);
+  width: 100%;
+}
+
+.item-list{
+  --background: rgba(44, 44, 44, 0.986);
+  color: white;
+  padding: 2px;
+  border-radius: 30px;
+
+
+}
+.list-book{
+  background: rgba(0, 0, 0, 0.986);
+  padding: 0 !important;
+  
 }
