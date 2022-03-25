@@ -4,9 +4,7 @@ import { IonToggle} from '@ionic/react';
 
 const Setting  = () => {
   return (
-    <div>
-      {/* <strong>{name}</ strong> */}
-      {/* <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> */}
+    <div className='page'>
       <div className="choice">
         <span className="textchoice">โหมดผู้พิการทางการมองเห็น</span>
         {/* <span className="bottonchoice">hi</span> */}
@@ -20,7 +18,7 @@ const Setting  = () => {
           <div className="bottonchoice">〉</div>
         </div>
       </a>
-      <a href="/setting/UserInfo">
+      <a href="/DetailBook">
         <div className="choice">
           <span className="textchoice">เปลี่ยนรหัสผ่าน</span>
           <div className="bottonchoice">〉</div>
