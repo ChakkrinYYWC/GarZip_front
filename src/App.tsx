@@ -17,6 +17,7 @@ import Register from './pages/Register';
 import DetailBook from './pages/DetailBook';
 import Booklist from './pages/Booklist';
 import UserInfo from './pages/UserInfo';
+import Changepassword from './pages/Changepassword';
 import Tab1 from './pages/HOME';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -79,9 +80,12 @@ const App: React.FC = () => (
           <Route path="/setting/UserInfo"  >
             <UserInfo />
           </Route>
+          <Route path="/setting/Changepassword"  >
+            <Changepassword />
+          </Route>
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom" color="dark">
+        <IonTabBar slot="bottom" color='dark'>
           <IonTabButton tab="HOME" href="/HOME">
             <IonIcon icon={home} />
             <IonLabel>หน้าหลัก</IonLabel>
