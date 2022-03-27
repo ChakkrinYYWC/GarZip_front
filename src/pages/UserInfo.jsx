@@ -12,6 +12,7 @@ const UserInfo = () => {
     await Axios.post("http://localhost:3000/user", {
       data: { username: 'forth' }
     }).then((res) => {
+      console.log(res.data[0])
       setData(res.data)
     }).catch((error) => {
       console.log(error)

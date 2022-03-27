@@ -1,0 +1,50 @@
+.HomePage{
+  color: white;
+  background: rgba(0, 0, 0, 0.986);
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.hot-book{
+
+  background: rgba(0, 0, 0, 0.986);
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.hot-book .Header{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 20px 10px 20px;
+}
+.title-category{
+  padding: 0px 2px;
+}
+.hot-book{
+  background: rgba(44, 44, 44, 0.986);
+  color: white;
+  padding: 2px;
+  border-radius: 30px;
+  margin: 20px 40px;
+
+
+}
+
+
+.hot-book p{
+  font-weight: normal;
+  font-size: 15px;
+  margin: 5px;
+  color: rgb(236, 235, 233);
+}
+
+
+.imge{
+  margin-left: 5px;
+  width: 60px;
+  height: 80px;
+  --border-radius:5px;
+  box-shadow: 2px 2px 2px rgb(238, 232, 250);
+ 
+
+}
+

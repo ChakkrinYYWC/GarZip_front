@@ -31,10 +31,10 @@ const Changepassword = () => {
         <IonPage className="page">
             <IonContent fullscreen >
                 <div className='userinfochoice'>
-                    <span className='text'>Password : </span>
+                    <span className='text-userinfochoice'>Password : </span>
                     <input
                         type="password"
-                        className='input'
+                        className='input-changepassword'
                         onChange={(event) => {
                             setoldpassword(event.target.value)
                         }} />
@@ -43,7 +43,7 @@ const Changepassword = () => {
                     <span className='text'>New password : </span>
                     <input
                         type="password"
-                        className='input'
+                        className='input-changepassword'
                         onChange={(event) => {
                             setnewpassword(event.target.value)
                         }} />
@@ -52,7 +52,7 @@ const Changepassword = () => {
                     <span className='text'>Confirm new password : </span>
                     <input
                         type="password"
-                        className='input'
+                        className='input-changepassword'
                         onChange={(event) => {
                             setconfirm_newpassword(event.target.value)
                         }} />

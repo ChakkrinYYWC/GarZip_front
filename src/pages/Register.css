@@ -1,19 +1,13 @@
 .Page{
   background: rgba(0, 0, 0, 0.986);
-  /* right: 0;
-  left: 0;
-  bottom: 0;
-  position: fixed;
-  margin: auto;
-  border-top-left-radius: 46px;
-  border-top-right-radius: 46px; */
+
   font-family: 'Bai Jamjuree', sans-serif;
-  /* font-weight: bold; */
+
 }
 .heading-register h1{
 
   text-decoration-thickness: 5px;  
-  padding: 20px;
+  padding: 10px;
   font-size: 1.9rem;
   color: white;  
   text-align: center;
@@ -23,6 +17,7 @@
 }
 .bar{
   margin: 20px;
+  color: white;
 }
 .button-back{
   color: white;
@@ -42,12 +37,17 @@
 
 }
 .Checkbox{
-  width: 30px;
-  height:30px;
-  background-color: rgb(202, 74, 74);
-  border-radius: 50%;
+  width: 25px;
+  height:25px;
+  --border-width: 2px;
+  --border-radius: calc(var(--size) * 1.125);
+  --background-checked: rgb(103, 11, 207);
+  --checkmark-color: white;
+  --checkmark-width: 3;
 
 }
+
+
 .text{
   color: white;
   font-family: 'Bai Jamjuree', sans-serif;
@@ -61,25 +61,12 @@
   color: rgb(255, 255, 255);
   
 }
-.bar{
-  color: white;
-}
+
 
 .action-button-regis .register-button{
   color: rgb(255, 255, 255);
   width: 100%;
 }
 
-.item-list{
-  --background: rgba(44, 44, 44, 0.986);
-  color: white;
-  padding: 2px;
-  border-radius: 30px;
 
 
-}
-.list-book{
-  background: rgba(0, 0, 0, 0.986);
-  padding: 0 !important;
-  
-}

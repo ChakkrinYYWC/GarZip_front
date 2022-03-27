@@ -1,4 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonImg,IonToolbar,IonIcon, IonItem, IonLabel, IonButton, IonList,IonRouterLink,IonThumbnail } from '@ionic/react';
+import { IonContent, IonPage, IonImg,
+        IonToolbar,IonIcon, IonItem, IonLabel, IonButton, 
+        IonList,IonRouterLink,IonThumbnail } from '@ionic/react';
 import './Booklist.css';
 
 type Item = {
@@ -41,18 +43,16 @@ const items: Item[] = [
 const Booklist: React.FC = () => {
   return (
     <IonPage className="Booklist-Page">
-       
-        <IonToolbar className="toolbar">
-          Garzip
-        </IonToolbar>
-      
       <IonContent fullscreen>
         <div className='Booklist'>
+          <div className="bar">
+            <IonLabel >GARZIP</IonLabel>
+          </div>
           <h1>นิทาน</h1>
           <IonList className='list-book'>
             {items.map((image, i) => (
-              <IonItem key={i} className="item-list" >
-                <IonThumbnail slot="start" >
+              <IonItem key={i} className="item-list" href='/DetailBook'>
+                <IonThumbnail slot="start" className='imge' >
                   <IonImg  src={image.src} />
                 </IonThumbnail>
                 <span className="book">
