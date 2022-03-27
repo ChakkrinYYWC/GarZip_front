@@ -31,7 +31,7 @@ const Changepassword = () => {
         <IonPage className="page">
             <IonContent fullscreen >
                 <div className='userinfochoice'>
-                    <span className='text-userinfochoice'>Password : </span>
+                    <span className='text'>Password : </span>
                     <input
                         type="password"
                         className='input-changepassword'
