@@ -3,13 +3,34 @@ import { IonContent, IonHeader, IonPage,
            IonLabel, IonButton, IonCheckbox ,IonRouterLink  
         } from '@ionic/react';
 import { logoFacebook } from 'ionicons/icons';
-
+import Axios from 'axios';
+import { useState } from 'react'
 // import ExploreContainer from '../components/ExploreContainer';
 import './Login.css';
 
 
-const LogIn: React.FC = () => {
-const [present] = useIonAlert();
+const LogIn = () => {
+  const [present] = useIonAlert();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  async function submit() {
+    // await Axios.post("http://localhost:3000/auth/login", {
+    //   data: { username: username, password: password }
+    // }).then((res) => {
+    //   console.log(res.data)
+    //   window.location.href = "/";
+    // }).catch((error) => {
+    //   console.log(error)
+    // });
+    await Axios.get("http://localhost:3000/auth/logout", {
+     
+    }).then((res) => {
+      window.location.href = "/setting";
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
 
 
   return (
@@ -27,21 +48,36 @@ const [present] = useIonAlert();
               {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
-                <IonInput type="text" ></IonInput>
+                <IonInput 
+                  type="text"  
+                  onChange={(event) => {
+                  setUsername(event.target.value)
+                }}>
+                </IonInput>
               </IonItem>
             </div>
             <div className="form-input">
               {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating"  className="input-text">รหัสผ่าน</IonLabel>
-                <IonInput type="password" ></IonInput>
+                <IonInput 
+                  type="password"
+                  onChange={(event) => {
+                    setPassword(event.target.value)
+                  }} >
+
+                </IonInput>
             
               </IonItem>
             </div>
           </div>
           <div className="action-button">
             <IonButton className="register-button" size="large" fill="outline" routerLink="/register">สมัครสมาชิก</IonButton>
-            <IonButton size="large" className="login-button">เข้าสู่ระบบ</IonButton>
+            <IonButton 
+              size="large" 
+              className="login-button"
+              onClick={submit}
+              >เข้าสู่ระบบ</IonButton>
           </div> 
           <div className="login-with-facebook" >
             <IonIcon className="icon-facebook" icon={logoFacebook} />
