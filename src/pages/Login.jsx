@@ -15,21 +15,17 @@ const LogIn = () => {
   const [password, setPassword] = useState('')
 
   async function submit() {
-    // await Axios.post("http://localhost:3000/auth/login", {
-    //   data: { username: username, password: password }
-    // }).then((res) => {
-    //   console.log(res.data)
-    //   window.location.href = "/";
-    // }).catch((error) => {
-    //   console.log(error)
-    // });
-    await Axios.get("http://localhost:3000/auth/logout", {
-     
+    console.log(username)
+    console.log(password)
+    await Axios.post("http://localhost:3000/auth/login", {
+      username: username, password: password 
     }).then((res) => {
-      window.location.href = "/setting";
+      console.log(res.data)
+      window.location.href = "/";
     }).catch((error) => {
       console.log(error)
     });
+    
   }
 
 
@@ -48,11 +44,10 @@ const LogIn = () => {
               {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
-                <IonInput 
+                <IonInput className="input"
                   type="text"  
-                  onChange={(event) => {
-                  setUsername(event.target.value)
-                }}>
+               
+                  onIonChange={event => setUsername(event.target.value)} >
                 </IonInput>
               </IonItem>
             </div>
@@ -62,9 +57,8 @@ const LogIn = () => {
                 <IonLabel position="floating"  className="input-text">รหัสผ่าน</IonLabel>
                 <IonInput 
                   type="password"
-                  onChange={(event) => {
-                    setPassword(event.target.value)
-                  }} >
+                  onIonChange={event => setPassword(event.target.value)} 
+                  >
 
                 </IonInput>
             

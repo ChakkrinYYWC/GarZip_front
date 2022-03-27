@@ -3,10 +3,17 @@ import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
     IonContent, IonList, IonListHeader,
     IonLabel, IonGrid, IonRow, IonThumbnail,
-    IonItem, IonCol, IonPage , IonHeader, IonIcon
+    IonItem, IonCol, IonPage , IonHeader, IonIcon,
+    IonSlides, IonSlide, IonCard, IonCardContent, IonCardTitle, IonNote,
 } from '@ionic/react';
 import Axios from "axios";
 import moment from "moment";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+const slideOpts = {
+    initialSlide: 1,
+    speed: 400
+};
 
 
 const initialState = {
@@ -41,6 +48,29 @@ const Home = () => {
 
     // console.log(data)
     // data.sort((a, b) => (a._id > b._id ? -1 : 1));
+
+        const testdata = [
+            {
+                title:"forth",
+                subtitle:"forth socute",
+                image:"https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
+            },
+            {
+                title:"forth",
+                subtitle:"forth socute",
+                image:"https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
+            },
+            {
+                title:"forth",
+                subtitle:"forth socute",
+                image:"https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
+            },
+            {
+                title:"forth",
+                subtitle:"forth socute",
+                image:"https://คลังสื่อการสอน.com/wp-content/uploads/2021/11/IMG_3320-1024x1024.png"
+            },
+        ]
     return (
         <>
             {
@@ -54,10 +84,54 @@ const Home = () => {
                             <IonLabel >GARZIP</IonLabel>
                         </div>
 
+                    <Swiper 
+                        spaceBetween={10}
+                        slidesPerView={2.5} >
+                        { testdata.map((card, i) => {
+                            
+                            return(
 
+                                <SwiperSlide key={i}>
+                                    <IonCard>
+                                        <img src={ card.image } ait="crad" className='image'/>
+
+                                        <IonCardContent>
+                                            <IonCardTitle className='title'>{ card.title }</IonCardTitle>
+                                            <IonNote className='subtitle'>{ card.subtitle }</IonNote>
+                                        </IonCardContent>
+
+                                    </IonCard>
+                                </SwiperSlide>
+
+                            )
+                                
+                           
+                        
+                        
+                        })}
+
+
+                    </Swiper>
+
+
+
+                        <IonSlides pager={true} options={slideOpts}>
+                            <IonSlide>
+                                <h1>Slide 1</h1>
+                            </IonSlide>
+                            <IonSlide>
+                                <h1>Slide 2</h1>
+                            </IonSlide>
+                            <IonSlide>
+                                <h1>Slide 3</h1>
+                            </IonSlide>
+                        </IonSlides>
+
+ 
                             <IonList>
                                 <IonListHeader>
                                     <IonLabel>ฟังต่อ</IonLabel>
+                                    <p>ดูทั้งหมด</p>
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
