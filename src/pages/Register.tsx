@@ -33,17 +33,17 @@ const LogIn: React.FC = () => {
             <div className="form-input">
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
-                <IonInput type="text" ></IonInput>
+                <IonInput type="password" ></IonInput>
               </IonItem>
             </div>
             <div className="form-input">
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ยืนยันรหัสผ่าน</IonLabel>
-                <IonInput type="text" ></IonInput>
+                <IonInput type="password" ></IonInput>
               </IonItem>
             </div>
             <div className='Check-mode'>
-              <IonCheckbox slot="start" className='Checkbox' />
+              <IonCheckbox className='Checkbox' />
               <IonLabel position="floating" className="text">โหมดผู้พิการทางการมองเห็น</IonLabel>
             </div>
             <div className="action-button-regis">

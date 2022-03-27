@@ -7,11 +7,12 @@
   background: rgba(0, 0, 0, 0.986);
 }
 .DetailBook .bar{
-  margin: 15px 10px;
+  margin: 15px 10px 0px 10px;
 }
 
 .DetailBook .bar .button-back{
-  font-size:25px;
+  font-size:30px;
+
 }
 
 .image-book  {
@@ -35,7 +36,7 @@
 }
 
 .data-book{
-  margin: 20px 50px;
+  margin: 0px 50px;
   text-align: center;
   color: rgb(255, 255, 255);
 }
@@ -47,7 +48,7 @@
 .story-book{
   font-family: 'Bai Jamjuree', sans-serif;
   color: rgb(255, 255, 255);
-  margin: 20px 30px 30px 30px;
+  margin: 30px;
 }
 
 .title-story{
@@ -107,7 +108,7 @@ div.story{
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  background-color: rgb(255, 241, 180); 
+  background: rgb(178, 145, 253);
   font-size:13px;
   font-weight: bold;
   color: rgb(0, 0, 0);
@@ -131,9 +132,9 @@ div.story{
 .range-time {
   /* padding-left:0px !important;  */
 
-  --knob-background:red;
-  --bar-background-active:red;
-  --pin-color:0px;
+  --knob-background:rgb(248, 182, 241);
+  --bar-background-active:rgb(248, 182, 241);
+
   
 }
 .line-time .item-inner{
@@ -143,6 +144,19 @@ div.story{
 
 
 
+.episode-Booklist h1{
+  color: white;
+  padding-left: 30px;
+  font-weight: bold;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-size: 22px;
+}
 
 
+.episode-Booklist {
+  margin: 10px 10px 30px 10px;
+}
 
+/* .episode-Booklist{
+  margin-bottom: 30px;
+} */

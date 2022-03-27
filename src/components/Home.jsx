@@ -3,10 +3,11 @@ import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
     IonContent, IonList, IonListHeader,
     IonLabel, IonGrid, IonRow, IonThumbnail,
-    IonItem, IonCol, IonTitle, IonHeader, IonToolbar
+    IonItem, IonCol, IonPage , IonHeader, IonIcon
 } from '@ionic/react';
 import Axios from "axios";
 import moment from "moment";
+
 
 const initialState = {
     name: ''
@@ -47,19 +48,12 @@ const Home = () => {
                     <div>loading...</div>
                     :
                     <>
-                        <IonContent>
-                            <IonListHeader>
+                  <IonPage className="HomePage">
+                    <IonContent fullscreen >
+                        <div className="bar">
+                            <IonLabel >GARZIP</IonLabel>
+                        </div>
 
-                            </IonListHeader>
-                            <IonListHeader>
-
-                            </IonListHeader>
-                            <IonListHeader>
-
-                            </IonListHeader>
-                            <IonHeader collapse="condense">
-                                <IonTitle size="large" >Garzip</IonTitle>
-                            </IonHeader> 
 
                             <IonList>
                                 <IonListHeader>
@@ -81,20 +75,26 @@ const Home = () => {
                                 </IonGrid>
                             </IonList>
 
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>ยอดนิยม</IonLabel>
-                                </IonListHeader>
+                            <IonList className='hot-book'>
+                                <IonHeader className='Header'>
+                                    <IonIcon name="trophy-outline"></IonIcon>
+                                    <IonLabel className='title-category'> ยอดนิยม </IonLabel>
+                                    <IonIcon name="trophy-outline"></IonIcon>
+                                    <p >หนังสือที่ได้รับความนิยมสูงสุด</p>
+                                </IonHeader>
+                               
                                 {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_,idx) => (idx<3)).map((book, index) => {
                                     return (
                                         <>
-                                            <IonItem key={index} onClick={() => doPlay} button>
-                                                <IonThumbnail slot="start">
+                                            <IonItem key={index} onClick={() => doPlay} button className="item-list">
+                                                <IonThumbnail slot="start" className='imge'>
                                                     <img src={book.image} />
                                                 </IonThumbnail>
-                                                <IonLabel>
-                                                    <h2>{book.name}</h2>
-                                                    <p>{book.view} </p>
+                                                <IonLabel className="book">
+                                                    <IonLabel className='title'>{book.name}</IonLabel>
+                                                    <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                    <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
+                                                    <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
                                                 </IonLabel>
                                             </IonItem>
                                             {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
@@ -106,8 +106,8 @@ const Home = () => {
 
                             <IonList>
                                 <IonListHeader>
-                                    <IonLabel>เรื่องใหม่ล่าสุด <p>ดูทั้งหมด</p> </IonLabel>
-                                    
+                                    <IonLabel>เรื่องใหม่ล่าสุด  </IonLabel>
+                                    <p>ดูทั้งหมด</p>
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
@@ -369,6 +369,7 @@ const Home = () => {
                                 </IonGrid>
                             </IonList>
                         </IonContent>
+                    </IonPage>
                     </>
             }
         </>

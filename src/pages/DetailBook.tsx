@@ -1,7 +1,37 @@
-import { IonContent, IonPage, IonImg,IonText,IonIcon,IonLabel, IonButton, IonItem,IonRouterLink, IonRange } from '@ionic/react';
+import { IonContent, IonPage, IonImg,IonText,IonIcon,IonLabel, IonButton, IonItem,IonRouterLink, IonRange ,IonList,IonThumbnail} from '@ionic/react';
 import './DetailBook.css';
 
+type Item = {
+  src: string;
+  text: string;
+  who: string;
+  time: string;
+};
 
+const items: Item[] = [
+  { 
+   src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+   text: 'ตอนที่1 : รักแรกพบ',
+   who: 'จันจิรา',
+   time: '12:34'
+
+  },
+  { 
+    src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+    text: 'ตอนที่2 : รักข้างเดียว',
+    who: 'จันจิรา',
+    time: '12:34'
+ 
+   },
+   { 
+    src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+    text: 'ตอนที่3 : รักเรามันเก่าไป',
+    who: 'จันจิรา',
+    time: '12:34'
+ 
+   }
+
+  ];
 
 const DetailBook: React.FC = () => {
   return (
@@ -14,18 +44,11 @@ const DetailBook: React.FC = () => {
         </IonToolbar>
       </IonHeader> */}
       <IonContent  >
-        {/* <IonHeader>
-          <IonToolbar className="toolbar">
-            <IonRouterLink href='/' className="button-back" >
-                <IonIcon name="chevron-back-outline" ></IonIcon>
-              </IonRouterLink>
-          </IonToolbar>
-        </IonHeader> */}
-        
         <div className='DetailBook' >
           <div className="bar">
-            <IonRouterLink href='/login' className="button-back">
-                <IonIcon name="chevron-back-outline" ></IonIcon>
+            <IonRouterLink href='/Booklist' className="button-back">
+                <IonIcon name="arrow-back-circle-outline" ></IonIcon>
+               
             </IonRouterLink>
           </div>
           <div className="data-book">
@@ -85,8 +108,28 @@ const DetailBook: React.FC = () => {
           
           <div className='story-book'>
             <h4 className='title-story'>เนื้อเรื่องย่อ</h4> 
-            <div className='story'>กาลครั้งหนึ่งนานมาแล้ว มีเด็กน้อยคนหนึ่ง หลงรักแมวของเธอ</div> 
+            <div className='story'>กาลครั้งหนึ่งนานมาแล้ว มีเด็กน้อยคนหนึ่ง หลงรักแมวของเธอตั้งแต่แรกพบ ทำให้อยากเจอแมวทุกๆวัน</div> 
           </div>
+
+          <div className='episode-Booklist'>
+            <h1>ตอน</h1>
+            <IonList className='list-book'>
+              {items.map((image, i) => (
+                <IonItem key={i} className="item-list" href='/DetailBook'>
+                  <IonThumbnail slot="start" className='imge' >
+                    <IonImg  src={image.src} />
+                  </IonThumbnail>
+                  <span className="book">
+                    <IonLabel className='title'>{image.text}</IonLabel>
+                    <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel>
+                    <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel>
+                  </span>
+                
+                </IonItem>
+              ))}
+            </IonList>
+          </div>
+
         </div>
     
       </IonContent>

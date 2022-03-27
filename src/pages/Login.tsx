@@ -1,13 +1,17 @@
-import { IonContent, IonHeader, IonPage, useIonAlert, IonInput,IonIcon, IonItem, IonLabel, IonButton, IonImg,IonRouterLink  } from '@ionic/react';
-
+import { IonContent, IonHeader, IonPage, 
+          useIonAlert, IonInput,IonIcon, IonItem,
+           IonLabel, IonButton, IonCheckbox ,IonRouterLink  
+        } from '@ionic/react';
 import { logoFacebook } from 'ionicons/icons';
 
 // import ExploreContainer from '../components/ExploreContainer';
-
 import './Login.css';
+
 
 const LogIn: React.FC = () => {
 const [present] = useIonAlert();
+
+
   return (
     <IonPage className="loginPage">
       <IonContent fullscreen>
@@ -16,7 +20,7 @@ const [present] = useIonAlert();
         <div className="login-section ion-padding">
           <img src="assets/logo_garzip.jpeg" alt=""/>
           <div className="heading ion-padding">
-            <h1>ยินดีต้อนรับเข้าสู่กระซิบ</h1>
+            <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
           </div>
           <div className="login-form ion-padding">
             <div className="form-input">
@@ -29,8 +33,9 @@ const [present] = useIonAlert();
             <div className="form-input">
               {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
-                <IonInput type="text" ></IonInput>
+                <IonLabel position="floating"  className="input-text">รหัสผ่าน</IonLabel>
+                <IonInput type="password" ></IonInput>
+            
               </IonItem>
             </div>
           </div>
@@ -70,6 +75,12 @@ const [present] = useIonAlert();
             ลืมรหัสผ่าน?
           </IonButton>
           </div>
+
+          {/* <IonInput [type]="password_type" placeholder="Password" name="password" [(ngModel)]="password" required></IonInput>
+
+          <IonIcon name="eye" item-right (click)="togglePasswordMode()"></IonIcon> */}
+
+
         </div>
       </IonContent>
     </IonPage>
