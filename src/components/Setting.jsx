@@ -18,7 +18,7 @@ const Setting  = () => {
           <div className="bottonchoice">〉</div>
         </div>
       </a>
-      <a href="/DetailBook">
+      <a href="/setting/Changepassword">
         <div className="choice">
           <span className="textchoice">เปลี่ยนรหัสผ่าน</span>
           <div className="bottonchoice">〉</div>
