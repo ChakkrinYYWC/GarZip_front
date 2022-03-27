@@ -48,7 +48,7 @@ const Home = () => {
                     :
                     <>
                         <IonContent>
-                            <IonListHeader>
+                            {/* <IonListHeader>
 
                             </IonListHeader>
                             <IonListHeader>
@@ -56,11 +56,16 @@ const Home = () => {
                             </IonListHeader>
                             <IonListHeader>
 
-                            </IonListHeader>
+                            </IonListHeader> */}
                             <IonHeader collapse="condense">
                                 <IonTitle size="large" >Garzip</IonTitle>
-                            </IonHeader> 
-
+                            </IonHeader>
+                            {/* <a href="/DetailBook">
+                                <div className="choice">
+                                    <span >Detail</span>
+                                    <div>〉</div>
+                                </div>
+                            </a> */}
                             <IonList>
                                 <IonListHeader>
                                     <IonLabel>ฟังต่อ</IonLabel>
@@ -70,13 +75,16 @@ const Home = () => {
                                         <IonCol
                                             size="3"
                                             className="new-track"
-                                            onClick={() => doPlay}>
+                                            onClick={() => doPlay}
+                                        >
                                             <img src="assets/icon/icon.png" />
                                             <IonLabel>
                                                 <h3>##test##</h3>
                                                 <p>##test##</p>
+
                                             </IonLabel>
                                         </IonCol>
+
                                     </IonRow>
                                 </IonGrid>
                             </IonList>
@@ -85,7 +93,7 @@ const Home = () => {
                                 <IonListHeader>
                                     <IonLabel>ยอดนิยม</IonLabel>
                                 </IonListHeader>
-                                {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_,idx) => (idx<3)).map((book, index) => {
+                                {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_, idx) => (idx < 3)).map((book, index) => {
                                     return (
                                         <>
                                             <IonItem key={index} onClick={() => doPlay} button>
@@ -107,11 +115,11 @@ const Home = () => {
                             <IonList>
                                 <IonListHeader>
                                     <IonLabel>เรื่องใหม่ล่าสุด <p>ดูทั้งหมด</p> </IonLabel>
-                                    
+
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_,idx) => (idx<4)).map((book, index) => {
+                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
                                             return (
                                                 <>
 
@@ -141,21 +149,25 @@ const Home = () => {
                                 </IonListHeader>
                                 <IonGrid>
                                     <IonRow>
-                                        {data.filter(cate => cate.category == 'นิยาย').filter((_,idx) => (idx<4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
                                             return (
                                                 <>
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/นิยาย">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
                                                             <p>{book.trailer}</p>
                                                             <p>{book.view}</p>
                                                         </IonLabel>
+
                                                     </IonCol>
 
                                                 </>
@@ -177,9 +189,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/ธุรกิจ">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -206,9 +221,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/นิทาน">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -235,9 +253,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/ศาสนา">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -264,9 +285,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/บทความ">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -293,9 +317,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/สืบสวน">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -322,9 +349,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/จิตวิทยา">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>
@@ -351,9 +381,12 @@ const Home = () => {
 
                                                     <IonCol
                                                         size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
+                                                    // className="new-track"
+                                                    // onClick={() => doPlay}
+                                                    >
+                                                        <a rel="noopener" href="/Booklist/ทั่วไป">
+                                                            <img src={book.image} />
+                                                        </a>
                                                         <IonLabel>
                                                             <h3>{book.name}</h3>
                                                             <p>{book.auther}</p>

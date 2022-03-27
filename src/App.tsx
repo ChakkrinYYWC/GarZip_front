@@ -54,12 +54,10 @@ const App: React.FC = () => (
           <Route exact path="/Register">
             <Register />
           </Route>
-          <Route exact path="/DetailBook"  >
-            <DetailBook />
-          </Route>
-          <Route exact path="/Booklist"  >
-            <Booklist />
-          </Route>
+          
+          <Route path="/DetailBook/:id" component={DetailBook}/>
+          <Route path="/Booklist/:name" component={Booklist}/>
+          
           <Route exact path="/HOME" >
             <Tab1 />
           </Route>
