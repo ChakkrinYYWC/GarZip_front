@@ -1,35 +1,69 @@
 .Booklist-Page {
   color: rgb(250, 250, 250);
-  background-color: rgba(0, 0, 0, 0.986);
+  background-color: rgb(29, 29, 29);
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .Booklist{
   font-family: 'Bai Jamjuree', sans-serif;
-  background-color: rgba(0, 0, 0, 0.986);
+  background-color: rgb(29, 29, 29);
 }
 
 
 .toolbar{
-  background: rgba(0, 0, 0, 0.986);
+  background: rgb(29, 29, 29);
 }
 .Booklist h1{
   color: white;
   padding-left: 20px;
   font-weight: bold;
+  font-size: 22px;
 }
 .book{
   margin: 10px;
 }
 .book .title{
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 17px;
   font-family: 'Bai Jamjuree', sans-serif;
 }
 .book .detial{
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Bai Jamjuree', sans-serif;
+  color: rgb(204, 200, 200);
+
+}
+
+.list-book{
+    margin: 10px 10px 30px 10px;
+}
+
+.bar{
+  font-size: 23px;
+  font-weight: bolder;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.list-book{
+  background: rgb(29, 29, 29);
+  padding: 0 !important;
+  
+}
+
+.item-list{
+  --background: rgba(39, 39, 39, 0.986);
+  color: white;
+  padding: 1px;
+  border-radius: 20px;
 
 
 }
 
+.list-book .image{
+  margin-left: 5px;
+  width: 75px;
+  height: 100px;
+  --border-radius:5px;
+  box-shadow: 2px 2px 2px rgb(238, 232, 250);
+ 
+
+}

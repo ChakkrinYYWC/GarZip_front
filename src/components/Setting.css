@@ -18,4 +18,13 @@
   font-size: 22px;
 }
 
+.page{
+  background-color: rgb(29, 29, 29);
+}
 
+.topper{
+  border-bottom: 3px solid gray;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: xx-large;
+}

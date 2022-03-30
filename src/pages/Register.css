@@ -1,19 +1,13 @@
 .Page{
-  background: rgba(0, 0, 0, 0.986);
-  /* right: 0;
-  left: 0;
-  bottom: 0;
-  position: fixed;
-  margin: auto;
-  border-top-left-radius: 46px;
-  border-top-right-radius: 46px; */
+  background: rgb(29, 29, 29);
+
   font-family: 'Bai Jamjuree', sans-serif;
-  /* font-weight: bold; */
+
 }
 .heading-register h1{
 
   text-decoration-thickness: 5px;  
-  padding: 20px;
+  padding: 10px;
   font-size: 1.9rem;
   color: white;  
   text-align: center;
@@ -23,11 +17,13 @@
 }
 .bar{
   margin: 20px;
+  color: white;
 }
 .button-back{
   color: white;
   font-size: 20px;
   font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: normal;
   
 }
 .register-form .form-input{
@@ -39,12 +35,20 @@
   text-align: center;
   margin: 40px 0px 40px 0px;
 
-}
-.Checkbox{
-  width: 30px;
-  height:30px;
 
 }
+.Checkbox{
+  width: 25px;
+  height:25px;
+  --border-width: 2px;
+  --border-radius: calc(var(--size) * 1.125);
+  --background-checked: rgb(103, 11, 207);
+  --checkmark-color: white;
+  --checkmark-width: 3;
+
+}
+
+
 .text{
   color: white;
   font-family: 'Bai Jamjuree', sans-serif;
@@ -55,13 +59,15 @@
 .action-button-regis{
   margin: 20px;
   text-align: center;
-  color: black;
+  color: rgb(255, 255, 255);
   
 }
-.bar{
-  color: white;
-}
+
 
 .action-button-regis .register-button{
-  color: black;
+  color: rgb(255, 255, 255);
+  width: 100%;
 }
+
+
+
