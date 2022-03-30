@@ -153,7 +153,7 @@ const DetailBook = ({ ...props }) => {
                   <div className='episode-Booklist'>
                     <h1>ตอน</h1>
                     <IonList className='list-book'>
-                      {items.map((image, i) => (
+                      {data.map((image, i) => (
                         <IonItem key={i} className="item-list" href='/DetailBook'>
                           <IonThumbnail slot="start" className='image' >
                             <IonImg src={image.src} />

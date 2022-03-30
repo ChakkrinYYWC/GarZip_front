@@ -31,9 +31,6 @@ const Booklist = ({ ...props }) => {
 
     <IonPage className="Booklist-Page">
 
-      {/* <IonToolbar className="toolbar">
-        Garzip
-      </IonToolbar> */}
 
       <IonContent fullscreen>
         <div className='Booklist'>
@@ -50,16 +47,19 @@ const Booklist = ({ ...props }) => {
               <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
             </IonButtons>
 
+            <IonLabel >GARZIP</IonLabel>
+
           </div>
           <h1>{props.match.params.name}</h1>
 
           {/* <IonRouterLink href='/DetailBook/' className="button-back"> */}
-          <IonList >
+          <IonList className='list-book'>
             {data.map((book, i) => {
               return (
                 <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                  <IonItem key={i} >
-                    <IonThumbnail slot="start" >
+                 
+                  <IonItem key={i} className="item-list" >
+                    <IonThumbnail slot="start" className='image' >
                       <IonImg src={book.image} />
                     </IonThumbnail>
                     <span className="book">
@@ -73,7 +73,6 @@ const Booklist = ({ ...props }) => {
             })}
           </IonList>
           {/* </IonRouterLink> */}
-
 
         </div>
 
