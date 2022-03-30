@@ -1,10 +1,13 @@
 import './Setting.css';
-import { IonToggle} from '@ionic/react';
+import { IonToggle } from '@ionic/react';
 
 
-const Setting  = () => {
+const Setting = () => {
   return (
     <div className='page'>
+      <div className='topper'>
+        <center>ตั้งค่า</center>
+      </div>
       <div className="choice">
         <span className="textchoice">โหมดผู้พิการทางการมองเห็น</span>
         {/* <span className="bottonchoice">hi</span> */}

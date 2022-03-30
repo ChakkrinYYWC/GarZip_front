@@ -7,10 +7,11 @@ const UserInfo = () => {
   const [data, setData] = useState([])
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
+  const user_name = localStorage.getItem('user_name')
 
   async function getData() {
     await Axios.post("http://localhost:3000/user", {
-      data: { username: 'forth' }
+      data: { username: user_name }
     }).then((res) => {
       console.log(res.data[0])
       setData(res.data)
