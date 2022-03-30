@@ -54,7 +54,7 @@ const App: React.FC = () => (
           <Route exact path="/Register">
             <Register />
           </Route>
-          
+
           <Route path="/DetailBook/:id" component={DetailBook}/>
           <Route path="/Booklist/:name" component={Booklist}/>
           

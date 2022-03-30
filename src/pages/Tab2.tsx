@@ -1,41 +1,49 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import Search from '../components/Search';
+import { useState } from 'react'
+import {
+  IonHeader, IonPage, IonLabel, 
+  IonSearchbar, IonSegment, IonSegmentButton, 
+} from '@ionic/react';
 import './Tab2.css';
+import Search from '../components/Search';
 
-const Tab2: React.FC = () => {
+const Tab2 = () => {
+  const [searchText, setSearchText] = useState('');
+  const [text, setText] = useState(true);
+
+  console.log(text)
+  console.log(searchText)
+
   return (
-    // <IonPage>
-    //   <IonHeader>
-    //     <IonToolbar>
-    //       <IonTitle></IonTitle>
-    //     </IonToolbar>
-    //   </IonHeader>
-    //   <IonContent fullscreen>
-    //     <IonHeader collapse="condense">
-    //       <IonToolbar>
-    //         <IonTitle size="large">S</IonTitle>
-    //       </IonToolbar>
-    //     </IonHeader>
-    //     <ExploreContainer name="Tab 2 page" />
-    //   </IonContent>
-    // </IonPage>
 
-    <IonPage >
-      <IonHeader className="test1">
-        <IonToolbar className="toolbar-container">
-          <IonTitle >Search</IonTitle>
-        </IonToolbar>
+    <IonPage className="Booklist-Page">
+      <IonHeader collapse="condense" className="test1">
+        <h1>Search</h1>
+        <IonSearchbar value={searchText} onClick={e => setText(false)} onIonChange={e => setSearchText(e.detail.value!)}
+          onIonCancel={e => setText(true)} showCancelButton="focus" ></IonSearchbar>
+        {
+          text ?
+            <>
+            </>
+            :
+            <>
+              {/* <IonButton shape="round" fill="outline">Outline</IonButton> */}
+              <IonSegment onIonChange={e => console.log(e.detail.value)} value="all" color="secondary">
+                <IonSegmentButton value="all">
+                  <IonLabel>ทั้งหมด</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="book">
+                  <IonLabel>ชื่อหนังสือ</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="auther">
+                  <IonLabel>ผู้แต่ง</IonLabel>
+                </IonSegmentButton>
+              </IonSegment>
+            </>
+        }
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense" className="test1">
-          <IonToolbar className="toolbar-container">
-            <IonTitle size="large">Search</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <Search name="Tab 3 page" />
-      </IonContent>
+      <Search text={text}/>
     </IonPage>
-    
+
   );
 };
 

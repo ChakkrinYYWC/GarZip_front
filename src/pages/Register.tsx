@@ -18,7 +18,6 @@ const LogIn: React.FC = () => {
           </div>
           <div className="register-form ion-padding">
             <div className="form-input">
-           
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
                 <IonInput type="text" ></IonInput>

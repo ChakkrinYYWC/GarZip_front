@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
   IonContent, IonHeader, IonPage, IonImg, IonToolbar, IonIcon, IonItem, IonLabel, IonButton,
-  IonList, IonRouterLink, IonThumbnail
+  IonList, IonRouterLink, IonThumbnail, IonButtons, IonBackButton
 } from '@ionic/react';
 import './Booklist.css';
 import Axios from "axios";
@@ -38,9 +38,18 @@ const Booklist = ({ ...props }) => {
       <IonContent fullscreen>
         <div className='Booklist'>
           <div className="bar">
+            <IonButtons slot="start">
+              <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
+            </IonButtons>
+
             <IonRouterLink href='/HOME' className="button-back">
               <IonIcon name="chevron-back-outline" ></IonIcon>
             </IonRouterLink>
+
+            <IonButtons slot="start">
+              <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
+            </IonButtons>
+
           </div>
           <h1>{props.match.params.name}</h1>
 

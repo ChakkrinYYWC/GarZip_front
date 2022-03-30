@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
   IonContent, IonPage, IonImg, IonText, IonIcon, IonLabel, IonButton,
-  IonItem, IonRouterLink, IonRange
+  IonItem, IonRouterLink, IonRange, IonButtons, IonBackButton
 } from '@ionic/react';
 import './DetailBook.css';
 import Axios from "axios";
@@ -56,6 +56,9 @@ const DetailBook = ({ ...props }) => {
 
                 <div className='DetailBook' >
                   <div className="bar">
+                    {/* <IonButtons slot="start">
+                      <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
+                    </IonButtons> */}
                     <IonRouterLink href='/HOME' className="button-back">
                       <IonIcon name="chevron-back-outline" ></IonIcon>
                     </IonRouterLink>
