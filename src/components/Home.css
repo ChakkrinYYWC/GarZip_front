@@ -1,6 +1,6 @@
 .HomePage{
   color: white;
-  background: rgba(0, 0, 0, 0.986);
+  background: rgb(29, 29, 29);
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
@@ -22,9 +22,9 @@
 .hot-book{
   background: rgba(44, 44, 44, 0.986);
   color: white;
-  padding: 2px;
-  border-radius: 30px;
-  margin: 20px 40px;
+  padding: 2px 0px 5px 0px;
+  border-radius: 40px;
+  margin: 10px 20px 25px 20px;
 
 
 }
@@ -40,8 +40,8 @@
 
 .imge{
   margin-left: 5px;
-  width: 60px;
-  height: 80px;
+  width: 85px;
+  height: 105px;
   --border-radius:5px;
   box-shadow: 2px 2px 2px rgb(238, 232, 250);
  
@@ -50,4 +50,80 @@
 
 h1{
   color: white;
+}
+
+.image-b .img-book{
+  /* margin-left: 5px; */
+
+  width: 85px;
+  height: 110px;
+  border-radius:5px;
+  box-shadow: 2px 2px 2px rgb(238, 232, 250);
+ 
+  
+}
+
+.Card-book{
+  --background:rgb(29, 29, 29);
+  width: 110px;
+  height: 160px;
+ 
+  margin: 10px 0px;
+  box-shadow:none;
+}
+
+
+.Card-book .CardContent{
+  padding: 0px;
+  
+  
+}
+.CardContent .title{
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.Catagory{
+  padding-top: 15px;
+  padding-bottom: 10px;
+
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.viewall{
+ float: right;
+ padding-right: 15px;
+ color: rgb(204, 204, 204);
+ 
+}
+.name_catagory{
+  color: white;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+
+/* .HomePage .Catagory-even{
+  padding: 20px;
+  height: 220px;
+  background: rgba(68, 68, 68, 0.986);
+} */
+
+.Catagory-even{
+  border-radius: 20px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  /* margin-top: 20px; */
+  font-family: 'Bai Jamjuree', sans-serif;
+  background-color: rgba(39, 39, 39, 0.986);
+}
+
+.Catagory-even .Card-book{
+  --background:rgba(39, 39, 39, 0.986);
+  width: 110px;
+  height: 160px;
+ 
+  margin-top: 15px ;
+  color: black;
+  ;
 }

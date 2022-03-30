@@ -54,8 +54,8 @@ const LogIn = () => {
             <div className="form-input">
               {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
-                <IonLabel position="floating"  className="input-text">รหัสผ่าน</IonLabel>
-                <IonInput 
+                <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
+                <IonInput  
                   type="password"
                   onIonChange={event => setPassword(event.target.value)} 
                   >
@@ -91,7 +91,7 @@ const LogIn = () => {
                   {
                     name: 'email',
                     placeholder: 'อีเมล์',
-                    type: 'email'
+                    type:"email"
                   }
                 ],
                 buttons: [

@@ -1,38 +1,48 @@
 .DetailPage {
   color: rgb(250, 250, 250);
-  background-color: rgba(0, 0, 0, 0.986);
+  background-color: rgb(29, 29, 29);
   font-family: 'Bai Jamjuree', sans-serif;
 }
 .toolbar .tootbar-container {
-  background: rgba(0, 0, 0, 0.986);
+  background: rgb(29, 29, 29);
 }
 .DetailBook .bar{
-  margin: 15px 10px 0px 10px;
+  margin: 20px 20px 0px 10px;
 }
 
 .DetailBook .bar .button-back{
   font-size:30px;
-
+  color: rgb(250, 250, 250);
 }
 
-.image-book  {
-  width: 150px;
+.DetailBook .bar .button-save{
+
+  float: right;
+  font-size:44px;
+  --color: rgb(250, 250, 250);
+  /* margin:10px ; */
+}
+
+.data-book .image-book  {
+  width: 140px;
   height: 180px;
   margin: auto;
   margin-top: 40px;
-  /* padding-top: 50px; */
-  /* text-align: center; */
+  --border-radius:5px;
+  box-shadow: 3px 3px 3px rgb(239, 237, 245);
 }
 
 .data-book h3{
+  margin-top: 20px;
   font-weight: bold;
   color: rgb(250, 250, 250);
   font-family: 'Bai Jamjuree', sans-serif;
 }
 .data-book p{
+  margin: 5px;
   font-family: 'Bai Jamjuree', sans-serif;
   color: rgb(236, 236, 236);
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .data-book{
@@ -89,7 +99,7 @@ div.story{
   padding: 0px;
 }
 .range-time{
-  background: rgba(0, 0, 0, 0.986);
+  background: rgb(29, 29, 29);
   color: white;
   border-color: black;
 }
@@ -108,25 +118,23 @@ div.story{
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  background: rgb(178, 145, 253);
+  background: rgb(123, 87, 207);
   font-size:13px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: white;
   padding: 0px;
-  margin: 30px 20px 5px 20px;
+  margin: 20px 0px 5px 170px;
+  
 }
 
 .save, .auto{
   color: white;
-  margin: 0px 0px 0px 30px;
-  text-align: center;
+  float: right;
+
   font-size: 15px;
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
-.save{
-  margin: 0px 0px 0px 20px;
-}
 
 
 .range-time {
@@ -135,14 +143,12 @@ div.story{
   --knob-background:rgb(248, 182, 241);
   --bar-background-active:rgb(248, 182, 241);
 
-  
 }
+
 .line-time .item-inner{
   width: 100%;
   padding-inline-end:0 !important
 }
-
-
 
 .episode-Booklist h1{
   color: white;
