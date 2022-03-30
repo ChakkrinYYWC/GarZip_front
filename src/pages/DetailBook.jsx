@@ -72,8 +72,16 @@ const DetailBook = () => {
         <div className='DetailBook' >
           <div className="bar">
             <IonRouterLink href='/Booklist' className="button-back">
+<<<<<<< HEAD
               <IonIcon name="arrow-back-circle-outline" ></IonIcon>
 
+=======
+                <IonIcon name="chevron-back-outline" ></IonIcon>
+            </IonRouterLink>
+            <IonRouterLink href='/Booklist' className="button-save">
+              <IonIcon name="heart-circle-outline"></IonIcon>
+              <div className="save"></div>
+>>>>>>> ed06780cf847166b1a20bd2769599cab20c810c2
             </IonRouterLink>
           </div>
           <div className="data-book">
@@ -119,16 +127,16 @@ const DetailBook = () => {
             <IonButton fill="clear" mode="ios" className='button-play-forward'>
               <IonIcon name="play-forward-outline"></IonIcon >
             </IonButton>
-            <IonButton fill="clear" mode="ios" className='button-like'>
+            {/* <IonButton fill="clear" mode="ios" className='button-like'>
               <IonIcon className='like-book' name="heart-outline"></IonIcon>
-            </IonButton>
-            <IonButton fill="clear" mode="ios" className='button-play-auto'>
+            </IonButton> */}
+            {/* <IonButton fill="clear" mode="ios" className='button-play-auto'>
               <IonIcon name="shuffle-outline"></IonIcon>
-            </IonButton>
-            <div className='button-name'>
+            </IonButton> */}
+            {/* <div className='button-name'>
               <span className="save">บันทึก</span>
               <span className="auto">เล่นอัตโนมัติ</span>
-            </div>
+            </div> */}
           </div>
 
           <div className='story-book'>
@@ -141,8 +149,13 @@ const DetailBook = () => {
             <IonList className='list-book'>
               {items.map((image, i) => (
                 <IonItem key={i} className="item-list" href='/DetailBook'>
+<<<<<<< HEAD
                   <IonThumbnail slot="start" className='imge' >
                     <IonImg src={image.src} />
+=======
+                  <IonThumbnail slot="start" className='image' >
+                    <IonImg  src={image.src} />
+>>>>>>> ed06780cf847166b1a20bd2769599cab20c810c2
                   </IonThumbnail>
                   <span className="book">
                     <IonLabel className='title'>{image.text}</IonLabel>

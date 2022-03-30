@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap');
 ion-content{
-  --background:linear-gradient(0deg,rgba(0, 0, 0, 0.7)) ,
+  --background:rgb(29, 29, 29) ,
   url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clearnotebooks.com%2Fth%2Fnotebooks%2F1244654&psig=AOvVaw134eupopWKvzn6rdrzqKBW&ust=1643544849957000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDd4er31vUCFQAAAAAdAAAAABAD");
 }
 
@@ -18,7 +18,7 @@ ion-content{
   height: 80vh;
   width: 100%;
   max-width: 500px;
-  background: rgba(0, 0, 0, 0.986);
+  background: rgb(29, 29, 29);
   right: 0;
   left: 0;
   bottom: 0;
@@ -135,24 +135,36 @@ ion-content{
 }
 .my-css{
   font-size: 20px;
-  color: #000000;
-  font-weight: bold;
+  color: white;
+  
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .link-forgotpass{
-  color: red;
+  color: white;
   
 }
 
 .alert-button.sc-ion-alert-md{
-  color: rgb(65, 2, 90);
+  
   font-size: 17px;
-  font-weight: bold;
+  
+  color: white;
   
 }
 .alert-message.sc-ion-alert-md{
   font-size: 18px;
+  color: white;
+  font-weight: normal;
+}
+
+
+.alert-wrapper.sc-ion-alert-md{
+  background:rgb(31, 30, 30);
+  
+}
+.alert-input.sc-ion-alert-md{
+  color: white;
 }
 
 

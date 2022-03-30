@@ -63,7 +63,11 @@ const LogIn = () => {
               {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
+<<<<<<< HEAD
                 <IonInput
+=======
+                <IonInput  
+>>>>>>> ed06780cf847166b1a20bd2769599cab20c810c2
                   type="password"
                   onIonChange={event => setPassword(event.target.value)}
                 >
@@ -87,6 +91,7 @@ const LogIn = () => {
           </div>
 
           <div className="forgotpass">
+<<<<<<< HEAD
             <IonButton
               className="link-forgotpass"
               expand="block"
@@ -119,6 +124,33 @@ const LogIn = () => {
             >
               ลืมรหัสผ่าน?
             </IonButton>
+=======
+            <IonButton  
+            className="link-forgotpass"
+            expand="block"
+            onClick={() =>
+              present({
+                cssClass: 'my-css',
+                // header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                message: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                inputs: [
+                  {
+                    name: 'email',
+                    placeholder: 'อีเมล์',
+                    type:"email"
+                  }
+                ],
+                buttons: [
+                  'ยกเลิก',
+                  { text: 'ยืนยัน', handler: (d) => console.log('ok pressed') },
+                ],
+                onDidDismiss: (e) => console.log('did dismiss'),
+              })
+            }
+          >
+            ลืมรหัสผ่าน?
+          </IonButton>
+>>>>>>> ed06780cf847166b1a20bd2769599cab20c810c2
           </div>
 
           {/* <IonInput [type]="password_type" placeholder="Password" name="password" [(ngModel)]="password" required></IonInput>

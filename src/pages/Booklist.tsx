@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonImg,
-        IonToolbar,IonIcon, IonItem, IonLabel, IonButton, 
+         IonItem, IonLabel, IonButton, 
         IonList,IonRouterLink,IonThumbnail } from '@ionic/react';
 import './Booklist.css';
 
@@ -52,7 +52,7 @@ const Booklist: React.FC = () => {
           <IonList className='list-book'>
             {items.map((image, i) => (
               <IonItem key={i} className="item-list" href='/DetailBook'>
-                <IonThumbnail slot="start" className='imge' >
+                <IonThumbnail slot="start" className='image' >
                   <IonImg  src={image.src} />
                 </IonThumbnail>
                 <span className="book">
