@@ -1,0 +1,128 @@
+.Booklist_search{
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.searchbar{
+  --border-radius:20px;
+  padding: 10px 15px 20px 15px;
+  
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+.test1 .searchbar-input.sc-ion-searchbar-md{
+  background:rgb(66, 66, 66);
+  color: white;
+  font-weight:lighter;
+  font-size: 20px;
+  
+}
+
+.test1  .searchbar-search-icon.sc-ion-searchbar-md{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.test1  .sc-ion-searchbar-md-h{
+  color: white;
+  --cancel-button-color:white;
+}
+
+.col_catagory{
+  margin: 0px 10px;
+}
+.set_col{
+  padding: 5px 0px 0px 0px;
+
+}
+
+.Booklist_search .name_catagory{
+  padding-bottom: 20px;
+}
+
+.col_catagory .box{
+
+  font-family: 'Bai Jamjuree', sans-serif;
+  border-radius:10px;
+  
+}
+.box_catagory1{
+  background-color:#faa8df;
+}
+.box_catagory2{
+  background-color: #312F8B;
+}
+.box_catagory3{
+  background-color: #EF7C7C;
+}
+.box_catagory4{
+  background-color: #d6c050;
+}
+.box_catagory5{
+  background-color: #839BD9;
+}
+.box_catagory6{
+  background-color: #7f807e;
+ 
+}
+.box_catagory7{
+  background-color: #8A62B1;
+}
+.box_catagory8{
+  background-color: #4992F0;
+}
+
+
+.textname{
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* .text_catagory1{
+  color: rgb(150, 1, 130);
+}
+.text_catagory2{
+  color: rgb(150, 1, 130);
+}
+.text_catagory3{
+  color: rgb(150, 1, 130);
+}
+.text_catagory4{
+  color: rgb(150, 1, 130);
+}
+.text_catagory5{
+  color: rgb(150, 1, 130);
+}
+.text_catagory6{
+  color: rgb(150, 1, 130);
+}
+.text_catagory7{
+  color: rgb(150, 1, 130);
+}
+.text_catagory8{
+  color: rgb(150, 1, 130);
+}
+ */
+
+ .SegmentAll{
+   color: #946cd3;
+    --indicator-color:#b383ff;
+ }
+
+ 
+ .Segment{
+   font-size: 18px;
+   color: white;
+   font-family: 'Bai Jamjuree', sans-serif;
+
+ }
+
+ .search_results{
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+ }
+.search_list{
+  padding: 0px;
+}
