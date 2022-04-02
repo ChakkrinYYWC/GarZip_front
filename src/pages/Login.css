@@ -58,14 +58,14 @@ ion-content{
 .form-input .input{
   border-radius: 30px;
   font-size: 20px;
-  
+  color: rgb(0, 0, 0);
   
 }
 
 .input .input-text{
   font-family: 'Bai Jamjuree', sans-serif;
   font-weight: bold;
-  
+  color: rgb(0, 0, 0);
 }
 
 .action-button{

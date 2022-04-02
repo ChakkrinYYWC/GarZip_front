@@ -15,10 +15,10 @@ const Tab2 = () => {
 
   return (
 
-    <IonPage className="Booklist-Page">
-      <IonHeader className="test1">
-        <h1>Search</h1>
-        <IonSearchbar value={searchText} onClick={e => setText(false)} onIonChange={e => setSearchText(e.detail.value!)}
+    <IonPage className="Booklist">
+      <IonHeader  className="test1">
+        <h1>ค้นหา</h1>
+        <IonSearchbar className='searchbar' placeholder="ค้นหา" value={searchText} onClick={e => setText(false)} onIonChange={e => setSearchText(e.detail.value!)}
           onIonCancel={e => setText(true)} showCancelButton="focus" ></IonSearchbar>
         {
           text ?
@@ -27,15 +27,15 @@ const Tab2 = () => {
             :
             <>
               {/* <IonButton shape="round" fill="outline">Outline</IonButton> */}
-              <IonSegment onIonChange={e => console.log(e.detail.value)} value="all" color="secondary">
-                <IonSegmentButton value="all">
-                  <IonLabel>ทั้งหมด</IonLabel>
+              <IonSegment className='SegmentAll' onIonChange={e => console.log(e.detail.value)} value="all" >
+                <IonSegmentButton value="all" className='SegmentAll'>
+                  <IonLabel className='Segment'>ทั้งหมด</IonLabel>
                 </IonSegmentButton>
-                <IonSegmentButton value="book">
-                  <IonLabel>ชื่อหนังสือ</IonLabel>
+                <IonSegmentButton value="book" className='SegmentAll'>
+                  <IonLabel className='Segment'>ชื่อหนังสือ</IonLabel>
                 </IonSegmentButton>
-                <IonSegmentButton value="auther">
-                  <IonLabel>ผู้แต่ง</IonLabel>
+                <IonSegmentButton value="auther" className='SegmentAll'>
+                  <IonLabel className='Segment'>ผู้แต่ง</IonLabel>
                 </IonSegmentButton>
               </IonSegment>
             </>
