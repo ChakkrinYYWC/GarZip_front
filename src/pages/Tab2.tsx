@@ -42,6 +42,7 @@ const Tab2 = () => {
         }
       </IonHeader>
       <Search text={text}/>
+      
     </IonPage>
 
   );
