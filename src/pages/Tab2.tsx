@@ -16,7 +16,7 @@ const Tab2 = () => {
   return (
 
     <IonPage className="Booklist-Page">
-      <IonHeader collapse="condense" className="test1">
+      <IonHeader className="test1">
         <h1>Search</h1>
         <IonSearchbar value={searchText} onClick={e => setText(false)} onIonChange={e => setSearchText(e.detail.value!)}
           onIonCancel={e => setText(true)} showCancelButton="focus" ></IonSearchbar>
@@ -42,6 +42,7 @@ const Tab2 = () => {
         }
       </IonHeader>
       <Search text={text}/>
+      
     </IonPage>
 
   );

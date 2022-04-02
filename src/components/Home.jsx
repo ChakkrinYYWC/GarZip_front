@@ -82,6 +82,7 @@ const Home = () => {
                                 <div className="bar">
                                     <IonLabel >GARZIP</IonLabel>
                                 </div>
+                                <a href="/login">login</a>
 
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
