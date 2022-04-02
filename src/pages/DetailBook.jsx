@@ -79,10 +79,10 @@ const DetailBook = ({ ...props }) => {
                     {/* <IonButtons slot="start">
                       <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
                     </IonButtons> */}
-                    <IonRouterLink href='/Booklist' className="button-back">
+                    <IonRouterLink href='/HOME' className="button-back">
                       <IonIcon name="chevron-back-outline" ></IonIcon>
                     </IonRouterLink>
-                    <IonRouterLink href='/Booklist' className="button-save">
+                    <IonRouterLink href='/HOME' className="button-save">
                       <IonIcon name="heart-circle-outline"></IonIcon>
                       <div className="save"></div>
                     </IonRouterLink>

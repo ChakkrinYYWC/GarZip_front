@@ -1,10 +1,10 @@
 import './Home.css';
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
-    IonContent, IonList, IonListHeader,
-    IonLabel, IonGrid, IonRow, IonThumbnail,
-    IonItem, IonCol, IonPage, IonHeader, IonIcon,
-    IonSlides, IonSlide, IonCard, IonCardContent, IonCardTitle, IonNote,
+    IonContent, IonList, IonLabel,  IonThumbnail,
+    IonItem,  IonPage, IonHeader, IonIcon,IonSlides, 
+    IonSlide, IonCard, IonCardContent, IonCardTitle, 
+    IonRouterLink
 } from '@ionic/react';
 import Axios from "axios";
 import moment from "moment";
@@ -14,7 +14,6 @@ const slideOpts = {
     initialSlide: 1,
     speed: 400
 };
-
 
 const initialState = {
     name: ''
@@ -175,25 +174,28 @@ const Home = () => {
 
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>นิยาย</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/นิยาย" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
                                         {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
-
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -205,7 +207,9 @@ const Home = () => {
 
                                 <div className='Catagory-even'>
                                     <IonLabel className='name_catagory'>ธุรกิจ</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -214,16 +218,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -235,7 +241,9 @@ const Home = () => {
 
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>นิทาน</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/นิทาน" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -244,16 +252,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -265,7 +275,9 @@ const Home = () => {
 
                                 <div className='Catagory-even'>
                                     <IonLabel className='name_catagory'>ศาสนา</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/ศาสนา" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -274,16 +286,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -295,7 +309,9 @@ const Home = () => {
 
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>บทความ</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/บทความ" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -304,16 +320,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -325,7 +343,9 @@ const Home = () => {
 
                                 <div className='Catagory-even'>
                                     <IonLabel className='name_catagory'>สืบสวน</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/สืบสวน" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -334,16 +354,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -355,7 +377,9 @@ const Home = () => {
 
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>จิตวิทยา</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/จิตวิทยา" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -364,16 +388,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -385,7 +411,9 @@ const Home = () => {
 
                                 <div className='Catagory-even'>
                                     <IonLabel className='name_catagory'>ทั่วไป</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    <IonRouterLink href="/Booklist/ทั่วไป" >
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                    </IonRouterLink>
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
@@ -394,16 +422,18 @@ const Home = () => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
