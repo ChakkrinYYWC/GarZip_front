@@ -30,13 +30,13 @@ ion-content{
   font-weight: bold;
 }
 .login-section img{
-  width: 100px;
-  height: 100px;
-  margin: 20px auto 0px auto;
+  width: 200px;
+  height: 200px;
+  margin: 0px auto 0px auto;
   display: block;
 }
 .heading{
-  margin-top: 20px ;
+  margin-top: 0px ;
 }
 
 .heading h1{
