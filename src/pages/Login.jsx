@@ -43,7 +43,7 @@ const LogIn = () => {
         <IonHeader collapse="condense">
         </IonHeader>
         <div className="login-section ion-padding">
-          <img src="assets/logo_garzip.jpeg" alt="" />
+          <img src="assets/GARZIPLOGO.PNG" alt="" />
           <div className="heading ion-padding">
             <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
           </div>
