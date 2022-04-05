@@ -11,9 +11,8 @@ const Tab2 = () => {
   const [searchText, setSearchText] = useState('');
   const [text, setText] = useState(true);
 
-  console.log(text)
-  console.log(searchText)
   async function send() {
+    console.log(searchText)
     await Axios.post("http://localhost:3000/search/", {
       info : searchText
     }).then((res) => {
@@ -33,9 +32,9 @@ const Tab2 = () => {
           placeholder="ค้นหา" 
           value={searchText}
           onClick={e => setText(false)}
-          onIonChange={e => {
-            setSearchText(e.detail.value!);
-            send();
+          onIonChange={async e => {
+            await setSearchText(e.detail.value!)
+            await send();
           }}
           onIonCancel={e => setText(true)}
           showCancelButton="focus" ></IonSearchbar>
