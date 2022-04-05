@@ -8,6 +8,29 @@ import Axios from "axios";
 import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 
+const items = [
+  { 
+   src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+   text: 'ตอนที่1 : รักแรกพบ',
+   who: 'จันจิรา',
+   time: '12:34'
+
+  },
+  { 
+    src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+    text: 'ตอนที่2 : รักข้างเดียว',
+    who: 'จันจิรา',
+    time: '12:34'
+ 
+   },
+   { 
+    src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+    text: 'ตอนที่3 : รักเรามันเก่าไป',
+    who: 'จันจิรา',
+    time: '12:34'
+ 
+   }
+]
 
 const DetailBook = ({ ...props }) => {
 
@@ -153,7 +176,7 @@ const DetailBook = ({ ...props }) => {
                   <div className='episode-Booklist'>
                     <h1>ตอน</h1>
                     <IonList className='list-book'>
-                      {data.map((image, i) => (
+                      {items.map((image, i) => (
                         <IonItem key={i} className="item-list" href='/DetailBook'>
                           <IonThumbnail slot="start" className='image' >
                             <IonImg src={image.src} />
