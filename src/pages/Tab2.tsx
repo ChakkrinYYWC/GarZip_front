@@ -11,16 +11,16 @@ const Tab2 = () => {
   const [searchText, setSearchText] = useState('');
   const [text, setText] = useState(true);
 
-  async function send() {
-    console.log(searchText)
-    await Axios.post("http://localhost:3000/search/", {
-      info : searchText
-    }).then((res) => {
-      console.log(res.data)
-    }).catch((error) => {
-      console.log(error)
-    });
-  }
+  // async function send() {
+  //   console.log(searchText)
+  //   await Axios.post("http://localhost:3000/search/", {
+  //     info : searchText
+  //   }).then((res) => {
+  //     console.log(res.data)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   });
+  // }
 
   return (
 
@@ -33,8 +33,8 @@ const Tab2 = () => {
           value={searchText}
           onClick={e => setText(false)}
           onIonChange={async e => {
-            await setSearchText(e.detail.value!)
-            await send();
+            setSearchText(e.detail.value!)
+            // await send();
           }}
           onIonCancel={e => setText(true)}
           showCancelButton="focus" ></IonSearchbar>
@@ -59,7 +59,7 @@ const Tab2 = () => {
             </>
         }
       </IonHeader>
-      <Search text={text}/>
+      <Search text={text} bookinfo={searchText}/>
       
     </IonPage>
 
