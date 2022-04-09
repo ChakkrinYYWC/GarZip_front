@@ -11,12 +11,12 @@ const Tab3: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense" className="test1">
+        {/* <IonHeader collapse="condense" className="test1">
           <IonToolbar className="toolbar-container">
             <IonTitle size="large">Listening#2</IonTitle>
           </IonToolbar>
-        </IonHeader>
-        <Listening name="Tab 3 page" />
+        </IonHeader> */}
+        {/* <Listening name="Tab 3 page" /> */}
       </IonContent>
     </IonPage>
   );
