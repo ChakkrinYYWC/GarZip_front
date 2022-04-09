@@ -9,27 +9,27 @@ import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 
 const items = [
-  { 
-   src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
-   text: 'ตอนที่1 : รักแรกพบ',
-   who: 'จันจิรา',
-   time: '12:34'
+  {
+    src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
+    text: 'ตอนที่1 : รักแรกพบ',
+    who: 'จันจิรา',
+    time: '12:34'
 
   },
-  { 
+  {
     src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
     text: 'ตอนที่2 : รักข้างเดียว',
     who: 'จันจิรา',
     time: '12:34'
- 
-   },
-   { 
+
+  },
+  {
     src: 'https://images-se-ed.com/ws/Storage/Originals/978616/780/9786167809236L.jpg?h=a04eeda4648924e7fed88f7ec858a74c',
     text: 'ตอนที่3 : รักเรามันเก่าไป',
     who: 'จันจิรา',
     time: '12:34'
- 
-   }
+
+  }
 ]
 
 const DetailBook = ({ ...props }) => {
@@ -38,12 +38,14 @@ const DetailBook = ({ ...props }) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
   const [story, setStory] = useState('')
+  const [play, setPlay] = useState(true)
 
   const speech = new Speech()
   async function getData() {
     await Axios.get("http://localhost:3000/book/app/detail/" + props.match.params.id, {})
       .then((res) => {
-        // console.log(res.data);
+        // console.log(res.data[0].text);
+        setStory(res.data[0].text)
         setData(res.data)
       })
       .catch((error) => {
@@ -57,10 +59,10 @@ const DetailBook = ({ ...props }) => {
   }, [])
 
   speech.init({
-    'volume': 1,
+    'volume': 0.5,
     'lang': 'th-TH',
-    'rate': 0.8,
-    'pitch': 1,
+    'rate': 1,
+    'pitch': 0.125,
     'splitSentences': true,
     // 'listeners': {
     //   'onvoiceschanged': (voices) => {
@@ -70,9 +72,35 @@ const DetailBook = ({ ...props }) => {
   })
 
   async function playsound() {
-    setStory("ฉันกำลังพูดอยู่นะ ไม่ได้ยินหรือไง")
+    // setStory("ฉันกำลังพูดอยู่นะ ไม่ได้ยินหรือไง")
     speech.speak({
       text: story,
+      queue: false,
+      listeners: {
+        onstart: () => {
+          console.log("Start utterance");
+          setPlay(false)
+        },
+        onend: () => {
+          console.log("End utterance");
+          setPlay(true)
+        },
+        onresume: () => {
+          console.log("Resume utterance");
+        },
+        onpause: () => {
+          console.log("Pause utterance");
+          setPlay(true)
+        },
+        onboundary: event => {
+          console.log(
+            event.name +
+            " boundary reached after " +
+            event.elapsedTime +
+            " milliseconds."
+          );
+        }
+      }
     }).then(() => {
       console.log("Success !")
     }).catch(e => {
@@ -80,6 +108,17 @@ const DetailBook = ({ ...props }) => {
     })
   }
 
+  // async function onPlay() {
+  //   setPlay(false)
+  //   playsound()
+  // }
+
+  // async function onPause() {
+  //   setPlay(true)
+  //   speech.pause()
+  // }
+
+  // console.log(play)
 
   return (
     <>
@@ -144,14 +183,16 @@ const DetailBook = ({ ...props }) => {
                     <IonButton fill="clear" mode="ios" className='button-play-back'>
                       <IonIcon name="play-back-outline"></IonIcon>
                     </IonButton >
-
-                    <IonButton fill="clear" mode="ios" className='button-play' onClick={playsound}>
-                      <IonIcon name="play-circle-outline" ></IonIcon>
-                    </IonButton >
-
-                    {/* <IonButton fill="clear" mode="ios">
-                      <IonIcon name="pause-circle-outline"></IonIcon>
-                    </IonButton> */}
+                    {
+                      play ?
+                        <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
+                          <IonIcon name="play-circle-outline" ></IonIcon>
+                        </IonButton >
+                        :
+                        <IonButton fill="clear" mode="ios" className='button-play' onClick={() => speech.pause()} >
+                          <IonIcon name="pause-circle-outline"></IonIcon>
+                        </IonButton>
+                    }
 
                     <IonButton fill="clear" mode="ios" className='button-play-forward'>
                       <IonIcon name="play-forward-outline"></IonIcon >
