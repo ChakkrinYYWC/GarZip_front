@@ -87,7 +87,7 @@ const Home = () => {
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
                                     <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    <Swiper
+                                    <Swiper 
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
                                         {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
