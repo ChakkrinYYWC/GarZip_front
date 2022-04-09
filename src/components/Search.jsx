@@ -8,10 +8,28 @@ import {
     IonCardSubtitle, IonCardTitle, IonList, IonThumbnail, IonImg
 } from '@ionic/react';
 import './Search.css';
+import Axios from 'axios';
 
 
-const Search = ({ text }) => {
+const Search = ({ text, bookinfo }) => {
     const [data, setData] = useState([])
+    console.log(bookinfo)
+    async function send() {
+        await Axios.post("http://localhost:3000/search/", {
+        info : bookinfo
+        }).then((res) => {
+            console.log(res.data)
+            setData(res.data)
+            // console.log(data)
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
+    // send();
+
+    useEffect(async () => {
+        await send()
+      }, [])
 
     return (
         <>

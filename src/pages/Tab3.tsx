@@ -52,9 +52,15 @@ const Tab3 = () => {
         <IonCheckbox  value='4' onClick={e => setCurrentId(4)} />
 
       </IonHeader>
-
-      <Listening {...{ currentId, setCurrentId }}  />
-
+      <IonContent fullscreen>
+        {/* <IonHeader collapse="condense" className="test1">
+          <IonToolbar className="toolbar-container">
+            <IonTitle size="large">Listening#2</IonTitle>
+          </IonToolbar>
+        </IonHeader> */}
+        {/* <Listening name="Tab 3 page" /> */}
+        <Listening {...{ currentId, setCurrentId }}  />
+      </IonContent>
     </IonPage>
 
   );

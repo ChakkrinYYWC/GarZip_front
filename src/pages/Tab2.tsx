@@ -1,25 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   IonHeader, IonPage, IonLabel, 
   IonSearchbar, IonSegment, IonSegmentButton, 
 } from '@ionic/react';
 import './Tab2.css';
 import Search from '../components/Search';
+import Axios from 'axios';
 
 const Tab2 = () => {
   const [searchText, setSearchText] = useState('');
   const [text, setText] = useState(true);
 
-  console.log(text)
-  console.log(searchText)
+  // async function send() {
+  //   console.log(searchText)
+  //   await Axios.post("http://localhost:3000/search/", {
+  //     info : searchText
+  //   }).then((res) => {
+  //     console.log(res.data)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   });
+  // }
 
   return (
 
     <IonPage className="Booklist">
       <IonHeader  className="test1">
         <h1>ค้นหา</h1>
-        <IonSearchbar className='searchbar' placeholder="ค้นหา" value={searchText} onClick={e => setText(false)} onIonChange={e => setSearchText(e.detail.value!)}
-          onIonCancel={e => setText(true)} showCancelButton="focus" ></IonSearchbar>
+        <IonSearchbar 
+          className='searchbar'
+          placeholder="ค้นหา" 
+          value={searchText}
+          onClick={e => setText(false)}
+          onIonChange={async e => {
+            setSearchText(e.detail.value!)
+            // await send();
+          }}
+          onIonCancel={e => setText(true)}
+          showCancelButton="focus" ></IonSearchbar>
         {
           text ?
             <>
@@ -41,7 +59,7 @@ const Tab2 = () => {
             </>
         }
       </IonHeader>
-      <Search text={text}/>
+      <Search text={text} bookinfo={searchText}/>
       
     </IonPage>
 

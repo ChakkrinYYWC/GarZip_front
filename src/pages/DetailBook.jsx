@@ -72,7 +72,7 @@ const DetailBook = ({ ...props }) => {
   })
 
   async function playsound() {
-    // setStory("สวัสดี กาลครั้งหนึ่ง")
+    // setStory("ฉันกำลังพูดอยู่นะ ไม่ได้ยินหรือไง")
     speech.speak({
       text: story,
       queue: false,
