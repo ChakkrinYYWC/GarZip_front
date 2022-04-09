@@ -34,7 +34,7 @@ const LogIn = () => {
   }
 
   async function changepasswordRequest() {
-    console.log(femail)
+    console.log("changepasswordRequest press = ",femail)
   }
 
   return (
@@ -93,14 +93,14 @@ const LogIn = () => {
               onClick={() =>
                 present({
                   cssClass: 'my-css',
-                  // header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                  //header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
                   message: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
                   inputs: [
                     {
                       name: 'email',
                       placeholder: 'อีเมล์',
                       type: 'email',
-                      onIonChange: (event) => setFemail("event.target.value")
+                      onIonChange: (event) => setFemail(event.target.value)
                     }
                   ],
                   buttons: [

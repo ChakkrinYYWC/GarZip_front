@@ -58,7 +58,7 @@ const DetailBook = ({ ...props }) => {
 
   speech.init({
     'volume': 1,
-    'lang': 'en-GB',
+    'lang': 'th-TH',
     'rate': 0.8,
     'pitch': 1,
     'splitSentences': true,
@@ -70,7 +70,7 @@ const DetailBook = ({ ...props }) => {
   })
 
   async function playsound() {
-    setStory("I am running you idiot.")
+    setStory("ฉันกำลังพูดอยู่นะ ไม่ได้ยินหรือไง")
     speech.speak({
       text: story,
     }).then(() => {

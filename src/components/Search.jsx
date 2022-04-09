@@ -19,13 +19,13 @@ const Search = ({ text, bookinfo }) => {
         info : bookinfo
         }).then((res) => {
             console.log(res.data)
-            // setData(res.data)
+            setData(res.data)
             // console.log(data)
         }).catch((error) => {
             console.log(error)
         });
     }
-    send();
+    // send();
 
     useEffect(async () => {
         await send()
