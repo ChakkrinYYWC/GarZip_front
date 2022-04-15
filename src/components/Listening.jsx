@@ -62,12 +62,12 @@ const Listening = (classes, ...props) => {
   return (
     <IonContent fullscreen>
       <div className='Booklist'>
-        <IonList className='search_list'>
+        <IonList className='list-book'>
           {data.map((book, i) => {
             return (
               <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                <IonItem key={i} >
-                  <IonThumbnail slot="start" >
+                <IonItem key={i} className="item-list" >
+                  <IonThumbnail slot="start" className='image'>
                     <IonImg src={book.image} />
                   </IonThumbnail>
                   <span className="book">

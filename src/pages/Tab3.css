@@ -1,0 +1,73 @@
+.favbook{
+  font-family: 'Bai Jamjuree', sans-serif;
+  background-color: rgb(29, 29, 29);
+}
+
+ion-header{
+  display: block;
+  position: relative;
+  /* -ms-flex-order: -1; */
+  order: -1;
+  width: 100%;
+  z-index:1;
+  background-color: rgb(29, 29, 29);
+  
+}
+
+.title_fav{
+  margin: 20px 0px 10px 0px;
+  text-align: center;
+}
+
+.name_pages{
+ margin-left: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.button-screen{
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  color: rgb(9, 9, 9);
+  font-size: 30px;
+  background-color: rgb(255, 255, 255); 
+  border-radius: 50px; 
+  width: 37px;
+  padding: 3px;
+  height: 35px;
+
+}
+
+
+.name_screen{
+  color: white;
+  padding: 15px 0px 0px 20px;
+
+  font-size: 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+.Sort_book{
+  
+
+  color: rgb(255, 255, 255);
+  --background: rgb(39, 39, 39);
+ 
+}
+.Popover{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 15px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  background: rgb(39, 39, 39);
+  
+}
+.Sort_book .Sort{
+  font-size: 18px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
