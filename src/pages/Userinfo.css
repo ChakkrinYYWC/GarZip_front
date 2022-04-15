@@ -1,17 +1,27 @@
+.page{
+    flex: 1 0 auto;
+}
+
 .userinfochoice .text{
-    font-size: large;
+
     background-color: rgb(29, 29, 29);
     padding-left: 5%;
     float: left;
+    font-size: 20px;
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .userinfochoice .input{
-    font-size: large;
-    background-color: rgb(29, 29, 29);
+ 
+    background-color: rgb(56, 56, 56);
     color: white;
-    border: 0;
-    padding-right: 5%;
+    border:0;
+    border-radius: 15px;
+    margin-right: 5%;
     flex-grow: 1;
+    font-size: 18px;
+    padding: 10px;
+    height: 35px;
 }
 
 .page{
@@ -20,9 +30,9 @@
 
 .userinfochoice{
     background-color: rgb(29, 29, 29);
-    padding-top: 8%;
-    padding-bottom: 8%;
-    border-bottom:1px solid gray;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom:1px solid rgb(24, 24, 24);
     display: flex;
 }
 
@@ -31,23 +41,38 @@
 }
 
 .savebutton{
-    font-size: large;
-    padding: 5% 10% 5% 10%;
-    margin-right: 2%;
-    margin-top: 4%;
-    border-radius: 50px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 15px;
+    /* margin-right: 2%;
+    margin-top: 4%; */
+    margin: 20px 20px 0px 20px;
+    width: 60%;
+    border-radius: 30px;
     color: white;
     background: rgb(221,134,213);
     background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
 }
 
 .canclebutton{
-    font-size: large;
-    padding: 5% 10% 5% 10%;
-    margin-right: 4%;
-    margin-top: 4%;
-    border-radius: 50px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding:15px;
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0);
     border: gray solid 1px;
     color: gray;
+    width: 60%;
+    margin: 20px 20px 0px 20px;
+}
+
+.g_button{
+    margin-top: 90%;
+ 
+
+
+
+
 }

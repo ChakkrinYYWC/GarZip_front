@@ -29,9 +29,12 @@ const Changepassword = () => {
 
     return (
         <IonPage className="page">
+            <div className='topper'>
+                <center>เปลี่ยนรหัสผ่าน</center>
+            </div>
             <IonContent fullscreen >
                 <div className='userinfochoice'>
-                    <span className='text'>Password : </span>
+                    <span className='text'>รหัสผ่าน : </span>
                     <input
                         type="password"
                         className='input-changepassword'
@@ -40,7 +43,7 @@ const Changepassword = () => {
                         }} />
                 </div>
                 <div className='userinfochoice'>
-                    <span className='text'>New password : </span>
+                    <span className='text'>รหัสผ่านใหม่ : </span>
                     <input
                         type="password"
                         className='input-changepassword'
@@ -49,7 +52,7 @@ const Changepassword = () => {
                         }} />
                 </div>
                 <div className='userinfochoice'>
-                    <span className='text'>Confirm new password : </span>
+                    <span className='text-confirm'>ยืนยันรหัสผ่านใหม่ :  </span>
                     <input
                         type="password"
                         className='input-changepassword'
@@ -57,9 +60,10 @@ const Changepassword = () => {
                             setconfirm_newpassword(event.target.value)
                         }} />
                 </div>
-                <center>
-                    <button className='cancle1button' onClick={cancle} >Cancle</button>
-                    <button className='submitbutton' onClick={submit} >Submit</button>
+                <center className='group_button'>
+                    <button className='savebutton' onClick={submit} >บันทึก</button>
+                    <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
+                   
                 </center>
             </IonContent>
         </IonPage>
