@@ -14,8 +14,6 @@ const LogIn = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const [femail, setFemail] = useState('')
-
   async function submit() {
     await Axios.post("http://localhost:3000/auth/login", {
       username: username, password: password
@@ -33,8 +31,13 @@ const LogIn = () => {
 
   }
 
-  async function changepasswordRequest() {
-    console.log("changepasswordRequest press = ",femail)
+  async function changepasswordRequest(data) {
+    const email = data.email
+    await Axios.post("http://localhost:3000/auth/passwordforgotten", {
+      email: email
+    }).catch((error) => {
+      console.log(error)
+    });
   }
 
   return (
@@ -94,16 +97,12 @@ const LogIn = () => {
                 present({
                   cssClass: 'my-css',
                   //header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
-                  message: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
+                  message: 'กรอกอีเมล์ ระบบจะส่งอีเมล์ให้ท่านเพื่อตั้งรหัสผ่านใหม่',
                   inputs: [
                     {
+                      type: 'text',
                       name: 'email',
                       placeholder: 'อีเมล์',
-                      type: 'email',
-                      onIonChange: (event) => {
-                        setFemail(event.target.value)
-                        console.log("rrrr")
-                      }
                     }
                   ],
                   buttons: [
@@ -111,7 +110,7 @@ const LogIn = () => {
                     {
                       text: 'ยืนยัน', handler: (d) => {
                         console.log('ok pressed')
-                        changepasswordRequest()
+                        changepasswordRequest(d)
                       }
                     },
                   ],
