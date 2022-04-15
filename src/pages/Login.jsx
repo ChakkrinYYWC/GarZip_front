@@ -100,7 +100,10 @@ const LogIn = () => {
                       name: 'email',
                       placeholder: 'อีเมล์',
                       type: 'email',
-                      onIonChange: (event) => setFemail(event.target.value)
+                      onIonChange: (event) => {
+                        setFemail(event.target.value)
+                        console.log("rrrr")
+                      }
                     }
                   ],
                   buttons: [
