@@ -159,12 +159,13 @@ ion-content{
 }
 
 
-.alert-wrapper.sc-ion-alert-md{
+.my-css .alert-wrapper {
   background:rgb(31, 30, 30);
   
 }
-.alert-input.sc-ion-alert-md{
+.my-css  .alert-input {
   color: white;
+  background-color:rgb(31, 30, 30);
 }
 
 
