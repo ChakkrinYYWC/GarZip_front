@@ -45,8 +45,11 @@ const Booklist = ({ ...props }) => {
 
 
             <IonButtons slot="start">
-              <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
-              <IonLabel className=''>GARZIP</IonLabel>
+              <IonRouterLink href='/HOME' className="button-back">
+                  <IonIcon name="chevron-back-outline" ></IonIcon>
+              </IonRouterLink>
+              {/* <IonBackButton  icon="chevron-back-outline" text="" defaultHref="/HOME" /> */}
+              <IonLabel >GARZIP</IonLabel>
             </IonButtons>
 
           </div>

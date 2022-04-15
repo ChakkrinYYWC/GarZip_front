@@ -55,17 +55,18 @@ ion-content{
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
-.form-input .input{
+.form-input .input {
   border-radius: 30px;
   font-size: 20px;
-  color: rgb(0, 0, 0);
-  
+  --color: rgb(255, 255, 255);
+  --background:rgb(37, 37, 37);
+  --highlight-background: rgb(237, 198, 248);
 }
 
 .input .input-text{
   font-family: 'Bai Jamjuree', sans-serif;
-  font-weight: bold;
-  color: rgb(0, 0, 0);
+  
+  --color: rgb(255, 255, 255);
 }
 
 .action-button{
