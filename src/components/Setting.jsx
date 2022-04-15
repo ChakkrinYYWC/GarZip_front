@@ -1,5 +1,5 @@
 import './Setting.css';
-import { IonToggle } from '@ionic/react';
+import { IonToggle,IonIcon } from '@ionic/react';
 
 
 const Setting = () => {
@@ -12,19 +12,20 @@ const Setting = () => {
         <span className="textchoice">โหมดผู้พิการทางการมองเห็น</span>
         {/* <span className="bottonchoice">hi</span> */}
         <div className="bottonchoice">
-          <IonToggle value="isBlide" color="secondary" />
+          <IonToggle value="isBlide" className="choice_Blide" />
         </div>
       </div>
       <a href="/setting/UserInfo">
         <div className="choice">
           <span className="textchoice">ข้อมูลส่วนตัว</span>
-          <div className="bottonchoice">〉</div>
+          <IonIcon className="bottonchoice" name="chevron-forward-outline"></IonIcon>
         </div>
       </a>
       <a href="/setting/Changepassword">
         <div className="choice">
           <span className="textchoice">เปลี่ยนรหัสผ่าน</span>
-          <div className="bottonchoice">〉</div>
+          <IonIcon className="bottonchoice" name="chevron-forward-outline"></IonIcon>
+          {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
         </div>
       </a>
     </div>
