@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage,IonButton } from '@ionic/react';
 import Axios from 'axios';
 import { useState, useEffect } from 'react'
 import './Userinfo.css';
@@ -40,11 +40,14 @@ const UserInfo = () => {
 
   return (
     <IonPage className="page">
+      <div className='topper'>
+        <center>ข้อมูลส่วนตัว</center>
+      </div>
       <IonContent fullscreen >
         {data.map((user, i) => (
           <div key={i}>
             <div className='userinfochoice'>
-              <span className='text'>Username : </span>
+              <span className='text'>ชื่อผู้ใช้งาน : </span>
               <input
                 type="text"
                 className='input'
@@ -54,7 +57,7 @@ const UserInfo = () => {
                 }} />
             </div>
             <div className='userinfochoice'>
-              <span className='text'>Email : </span>
+              <span className='text'>อีเมล์ : </span>
               <input
                 type="email"
                 className='input'
@@ -65,10 +68,11 @@ const UserInfo = () => {
             </div>
           </div>
         ))}
-        <center>
-          <button className='canclebutton' onClick={cancle} >Cancle</button>
-          <button className='savebutton' onClick={save} >Save</button>
+        <center className='g_button' >
+          <button className='savebutton' onClick={save} >บันทึก</button>
+          <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
         </center>
+         
       </IonContent>
     </IonPage>
   );

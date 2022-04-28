@@ -52,9 +52,8 @@ const LogIn = () => {
               {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
-                <IonInput className="input"
-                  type="text"
-
+                <IonInput className="input-text"
+          
                   onIonChange={event => setUsername(event.target.value)} >
                 </IonInput>
               </IonItem>
