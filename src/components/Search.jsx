@@ -15,15 +15,15 @@ const Search = ({ text, bookinfo }) => {
     const [data, setData] = useState([])
     console.log(bookinfo)
     async function send() {
-        await Axios.post("http://localhost:3000/search/", {
-        info : bookinfo
-        }).then((res) => {
-            console.log(res.data)
-            setData(res.data)
-            // console.log(data)
-        }).catch((error) => {
-            console.log(error)
-        });
+        // await Axios.post("http://localhost:3000/search/", {
+        // info : bookinfo
+        // }).then((res) => {
+        //     console.log(res.data)
+        //     setData(res.data)
+        //     // console.log(data)
+        // }).catch((error) => {
+        //     console.log(error)
+        // });
     }
     // send();
 

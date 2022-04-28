@@ -1,9 +1,9 @@
 import './Home.css';
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
-    IonContent, IonList, IonLabel,  IonThumbnail,
-    IonItem,  IonPage, IonHeader, IonIcon,IonSlides, 
-    IonSlide, IonCard, IonCardContent, IonCardTitle, 
+    IonContent, IonList, IonLabel, IonThumbnail,
+    IonItem, IonPage, IonHeader, IonIcon, IonSlides,
+    IonSlide, IonCard, IonCardContent, IonCardTitle,
     IonRouterLink
 } from '@ionic/react';
 import Axios from "axios";
@@ -87,24 +87,26 @@ const Home = () => {
                                 <div className='Catagory'>
                                     <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
                                     <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    <Swiper 
+                                    <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
 
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -125,17 +127,19 @@ const Home = () => {
                                     {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_, idx) => (idx < 3)).map((book, index) => {
                                         return (
                                             <>
-                                                <IonItem key={index} onClick={() => doPlay} button className="item-list">
-                                                    <IonThumbnail slot="start" className='imge'>
-                                                        <img src={book.image} />
-                                                    </IonThumbnail>
-                                                    <IonLabel className="book">
-                                                        <IonLabel className='title'>{book.name}</IonLabel>
-                                                        <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
-                                                        <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
-                                                        <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
-                                                    </IonLabel>
-                                                </IonItem>
+                                                <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                    <IonItem key={index} onClick={() => doPlay} button className="item-list">
+                                                        <IonThumbnail slot="start" className='imge'>
+                                                            <img src={book.image} />
+                                                        </IonThumbnail>
+                                                        <IonLabel className="book">
+                                                            <IonLabel className='title'>{book.name}</IonLabel>
+                                                            <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                            <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
+                                                            <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
+                                                        </IonLabel>
+                                                    </IonItem>
+                                                </IonRouterLink>
                                                 {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
                                             </>
 
@@ -149,21 +153,23 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
 
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
+                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonCard
+                                                                className='Card-book'
+                                                                onClick={() => doPlay}>
+                                                                <span className='image-b'>
+                                                                    <img src={book.image} className='img-book' />
+                                                                </span>
+                                                                <IonCardContent className='CardContent'>
+                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                </IonCardContent>
+                                                            </IonCard>
+                                                        </IonRouterLink>
                                                     </SwiperSlide>
 
                                                 </>
@@ -181,7 +187,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 10)).map((book, index) => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
@@ -214,7 +220,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ธุรกิจ').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'ธุรกิจ').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -248,7 +254,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'นิทาน').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'นิทาน').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -282,7 +288,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ศาสนา').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'ศาสนา').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -316,7 +322,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'บทความ').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'บทความ').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -350,7 +356,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'สืบสวน').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'สืบสวน').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -384,7 +390,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'จิตวิทยา').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'จิตวิทยา').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>
@@ -418,7 +424,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ทั่วไป').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                        {data.filter(cate => cate.category == 'ทั่วไป').filter((_, idx) => (idx < 10)).map((book, index) => {
 
                                             return (
                                                 <>

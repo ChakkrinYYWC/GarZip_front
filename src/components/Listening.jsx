@@ -47,21 +47,9 @@ const Listening = (classes, ...props) => {
     setLoading(false);
   }, [classes.currentId])
 
-
-  // function sortData(name) {
-  //   if (name == 0) {
-  //     console.log('*1')
-  //     data.sort((a, b) => (a._id > b._id ? 1 : -1))
-  //   } else if (name == 1) {
-  //     console.log('*2')
-  //     data.sort((a, b) => (a._id > b._id ? -1 : 1))
-  //   }
-  // }
-  // data.sort((a, b) => (a._id > b._id ? 1 : -1))
-
   return (
     <IonContent fullscreen>
-      <div className='Booklist'>
+      {/* <div className='Booklist'>
         <IonList className='search_list'>
           {data.map((book, i) => {
             return (
@@ -80,42 +68,10 @@ const Listening = (classes, ...props) => {
             )
           })}
         </IonList>
-      </div>
+      </div> */}
     </IonContent>
 
   );
 };
 
 export default Listening;
-
-      //  <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-      // <h1>ค้นหา</h1>
-
