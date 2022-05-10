@@ -8,36 +8,17 @@ import {
     IonCardSubtitle, IonCardTitle, IonList, IonThumbnail, IonImg
 } from '@ionic/react';
 import './Search.css';
-import Axios from 'axios';
+import { If, Then, ElseIf, Else } from "react-if-elseif-else-render";
 
 
-const Search = ({ text, bookinfo }) => {
-    const [data, setData] = useState([])
-    console.log(bookinfo)
-    async function send() {
-        await Axios.post("http://localhost:3000/search/", {
-        info : bookinfo
-        }).then((res) => {
-            console.log(res.data)
-            setData(res.data)
-            // console.log(data)
-        }).catch((error) => {
-            console.log(error)
-        });
-    }
-    // send();
-
-    useEffect(async () => {
-        await send()
-      }, [])
-
+const Search = ({ text, bookinfo, mode }) => {
     return (
         <>
             <IonContent fullscreen>
                 {
                     text ?
                         <div className='Booklist_search'>
-                           <IonLabel className='name_catagory'>หมวดหมู่หนังสือ</IonLabel>
+                            <IonLabel className='name_catagory'>หมวดหมู่หนังสือ</IonLabel>
                             <IonRow className='col_catagory'>
                                 <IonCol size="6" className="set_col">
                                     <IonCard href='/Booklist/นิยาย' mode='md' className='box_catagory1 box'>
@@ -46,7 +27,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory1 textname'>นิยาย</IonCardTitle>
+                                            <IonCardTitle className='text_catagory1 textname'>นิยาย</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -57,7 +38,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory2 textname'>ธุรกิจ</IonCardTitle>
+                                            <IonCardTitle className='text_catagory2 textname'>ธุรกิจ</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -65,12 +46,12 @@ const Search = ({ text, bookinfo }) => {
                             <IonRow className='col_catagory'>
                                 <IonCol size="6" className="set_col">
                                     <IonCard href='/Booklist/นิทาน' mode='md' className='box_catagory3 box'>
-                                        <IonCardHeader> 
+                                        <IonCardHeader>
                                             <IonCardHeader>
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory3 textname'>นิทาน</IonCardTitle>
+                                            <IonCardTitle className='text_catagory3 textname'>นิทาน</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -81,8 +62,8 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory4 textname'>ศาสนา</IonCardTitle>
-                                        </IonCardHeader> 
+                                            <IonCardTitle className='text_catagory4 textname'>ศาสนา</IonCardTitle>
+                                        </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
                             </IonRow>
@@ -94,7 +75,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory5 textname'>บทความ</IonCardTitle>
+                                            <IonCardTitle className='text_catagory5 textname'>บทความ</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -105,7 +86,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory6 textname'>สืบสวน</IonCardTitle>
+                                            <IonCardTitle className='text_catagory6 textname'>สืบสวน</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -118,7 +99,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory7 textname'>จิตวิทยา</IonCardTitle>
+                                            <IonCardTitle className='text_catagory7 textname'>จิตวิทยา</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -129,7 +110,7 @@ const Search = ({ text, bookinfo }) => {
                                             </IonCardHeader>
                                             <IonCardContent>
                                             </IonCardContent>
-                                            <IonCardTitle  className='text_catagory8 textname'>ทั่วไป</IonCardTitle>
+                                            <IonCardTitle className='text_catagory8 textname'>ทั่วไป</IonCardTitle>
                                         </IonCardHeader>
                                     </IonCard>
                                 </IonCol>
@@ -140,24 +121,86 @@ const Search = ({ text, bookinfo }) => {
                         <>
                             <div className='Booklist'>
                                 <div className='search_results'>ผลการค้นหา</div>
-                                <IonList className='search_list'>
-                                    {data.map((book, i) => {
-                                        return (
-                                            <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                                                <IonItem key={i} >
-                                                    <IonThumbnail slot="start" >
-                                                        <IonImg src={book.image} />
-                                                    </IonThumbnail>
-                                                    <span className="book">
-                                                        <IonLabel className='title'>{book.name}</IonLabel>
-                                                        <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
-                                                        <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
-                                                    </span>
-                                                </IonItem>
-                                            </IonRouterLink>
-                                        )
-                                    })}
-                                </IonList>
+                                <If condition={mode == 'all'}>
+                                    <Then>
+                                        <IonList className='search_list'>
+                                            {bookinfo.found_book_name.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} >
+                                                            <IonThumbnail slot="start" >
+                                                                <IonImg src={book.image} />
+                                                            </IonThumbnail>
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                        <IonList className='search_list'>
+                                            {bookinfo.fonud_book_auther.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} >
+                                                            <IonThumbnail slot="start" >
+                                                                <IonImg src={book.image} />
+                                                            </IonThumbnail>
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </Then>
+                                    <ElseIf condition={mode == 'name'}>
+                                        <IonList className='search_list'>
+                                            {bookinfo.found_book_name.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} >
+                                                            <IonThumbnail slot="start" >
+                                                                <IonImg src={book.image} />
+                                                            </IonThumbnail>
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </ElseIf>
+                                    <ElseIf condition={mode == 'auther'}>
+                                        <IonList className='search_list'>
+                                            {bookinfo.fonud_book_auther.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} >
+                                                            <IonThumbnail slot="start" >
+                                                                <IonImg src={book.image} />
+                                                            </IonThumbnail>
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </ElseIf>
+                                </If>
                             </div>
                         </>
                 }

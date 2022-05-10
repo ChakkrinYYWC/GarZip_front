@@ -97,7 +97,8 @@ const DetailBook = ({ ...props }) => {
             event.name +
             " boundary reached after " +
             event.elapsedTime +
-            " milliseconds."
+            " milliseconds. At char " + 
+            event.charIndex
           );
         }
       }
