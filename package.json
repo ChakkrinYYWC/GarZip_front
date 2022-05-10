@@ -11,6 +11,7 @@
     "@capacitor/ios": "3.4.3",
     "@capacitor/keyboard": "1.2.1",
     "@capacitor/status-bar": "1.0.7",
+    "@fortawesome/fontawesome-free": "^6.1.1",
     "@ionic/react": "^6.0.13",
     "@ionic/react-router": "^6.0.13",
     "@testing-library/jest-dom": "^5.11.9",

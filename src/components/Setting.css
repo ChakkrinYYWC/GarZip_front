@@ -1,14 +1,16 @@
 .choice{
   padding-top: 8%;
   padding-bottom: 13%;
-  border-bottom:1px solid gray;
+  font-size: 16px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  /* border-bottom:1px solid rgb(66, 66, 66); */
 }
 
 .textchoice{
   color: white;
   float: left;
   margin-left: 5%;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .bottonchoice{
@@ -23,8 +25,22 @@
 }
 
 .topper{
-  border-bottom: 3px solid gray;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  font-size: xx-large;
+  
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  border-bottom: 2px solid rgb(26, 26, 26);
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  
+}
+
+
+.choice_Blide{
+  --background: rgb(62, 62, 62);
+  --background-checked:rgb(176, 145, 255);
+  --handle-background-checked:rgb(160, 82, 255);
 }
