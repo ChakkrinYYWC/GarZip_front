@@ -76,7 +76,7 @@
 .textname{
   color: white;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 /* .text_catagory1{
@@ -121,6 +121,7 @@
  .search_results{
   color: white;
   padding: 20px;
+  padding-bottom: 0px;
   font-size: 20px;
  }
 .search_list{
