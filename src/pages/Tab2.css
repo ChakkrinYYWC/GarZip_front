@@ -121,6 +121,7 @@
  .search_results{
   color: white;
   padding: 20px;
+  padding-bottom: 0px;
   font-size: 20px;
  }
 .search_list{

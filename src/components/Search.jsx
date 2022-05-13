@@ -121,12 +121,12 @@ const Search = ({ text, bookinfo, mode }) => {
                                 <div className='search_results'>ผลการค้นหา</div>
                                 <If condition={mode == 'all'}>
                                     <Then>
-                                        <IonList className='search_list'>
+                                        <IonList className='list-book'>
                                             {bookinfo.found_book_name.map((book, i) => {
                                                 return (
                                                     <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                                                        <IonItem key={i} >
-                                                            <IonThumbnail slot="start" >
+                                                        <IonItem key={i} className="item-list" >
+                                                            <IonThumbnail slot="start" className='image' >
                                                                 <IonImg src={book.image} />
                                                             </IonThumbnail>
                                                             <span className="book">
@@ -139,12 +139,12 @@ const Search = ({ text, bookinfo, mode }) => {
                                                 )
                                             })}
                                         </IonList>
-                                        <IonList className='search_list'>
+                                        <IonList className='list-book'>
                                             {bookinfo.fonud_book_auther.map((book, i) => {
                                                 return (
                                                     <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                                                        <IonItem key={i} >
-                                                            <IonThumbnail slot="start" >
+                                                        <IonItem key={i} className="item-list">
+                                                            <IonThumbnail slot="start" className='image' >
                                                                 <IonImg src={book.image} />
                                                             </IonThumbnail>
                                                             <span className="book">
@@ -159,12 +159,12 @@ const Search = ({ text, bookinfo, mode }) => {
                                         </IonList>
                                     </Then>
                                     <ElseIf condition={mode == 'name'}>
-                                        <IonList className='search_list'>
+                                        <IonList className='list-book'>
                                             {bookinfo.found_book_name.map((book, i) => {
                                                 return (
                                                     <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                                                        <IonItem key={i} >
-                                                            <IonThumbnail slot="start" >
+                                                        <IonItem key={i} className="item-list">
+                                                            <IonThumbnail slot="start" className='image' >
                                                                 <IonImg src={book.image} />
                                                             </IonThumbnail>
                                                             <span className="book">
@@ -179,12 +179,12 @@ const Search = ({ text, bookinfo, mode }) => {
                                         </IonList>
                                     </ElseIf>
                                     <ElseIf condition={mode == 'auther'}>
-                                        <IonList className='search_list'>
+                                        <IonList className='list-book'>
                                             {bookinfo.fonud_book_auther.map((book, i) => {
                                                 return (
                                                     <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                                                        <IonItem key={i} >
-                                                            <IonThumbnail slot="start" >
+                                                        <IonItem key={i} className="item-list">
+                                                            <IonThumbnail slot="start"className='image' >
                                                                 <IonImg src={book.image} />
                                                             </IonThumbnail>
                                                             <span className="book">
