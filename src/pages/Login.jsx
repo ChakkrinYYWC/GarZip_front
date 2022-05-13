@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { useState } from 'react'
 // import ExploreContainer from '../components/ExploreContainer';
 import './Login.css';
+import { Redirect } from 'react-router';
 
 const LogIn = () => {
   const [present] = useIonAlert();
@@ -24,7 +25,7 @@ const LogIn = () => {
       // const user_id = localStorage.getItem('id');
       // const user_name = localStorage.getItem('username');
       // const user_email = localStorage.getItem('email');
-      window.location.href = "/HOME";
+      window.location.replace("/HOME");
     }).catch((error) => {
       console.log(error)
     });
