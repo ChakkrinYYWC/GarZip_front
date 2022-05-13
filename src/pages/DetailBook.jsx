@@ -97,7 +97,8 @@ const DetailBook = ({ ...props }) => {
             event.name +
             " boundary reached after " +
             event.elapsedTime +
-            " milliseconds."
+            " milliseconds. At char " + 
+            event.charIndex
           );
         }
       }
@@ -156,7 +157,7 @@ const DetailBook = ({ ...props }) => {
                     <IonImg className="image-book" src={data[0].image} />
                     <h3 >{data[0].name}</h3>
                     <p>เขียนโดย : {data[0].auther}</p>
-                    <p>ระยะเวลา : X.XX  น.</p>
+                    <p>ระยะเวลา : {data[0].text.length}  น.</p>
                   </div>
                   <div className='players'>
 
@@ -164,7 +165,7 @@ const DetailBook = ({ ...props }) => {
                       <IonLabel slot="start" className='start-time'>
                         <IonText>
                           <b>
-                            00.00
+                            0%
                           </b>
                         </IonText>
                       </IonLabel>
@@ -172,7 +173,7 @@ const DetailBook = ({ ...props }) => {
                       <IonLabel slot="end">
                         <IonText>
                           <b>
-                            11.11
+                            100%
                           </b>
                         </IonText>
                       </IonLabel>

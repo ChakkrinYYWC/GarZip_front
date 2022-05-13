@@ -11,7 +11,7 @@ const UserInfo = () => {
 
   async function getData() {
     await Axios.post("http://localhost:3000/user", {
-      data: { username: user_name }
+      username: user_name
     }).then((res) => {
       console.log(res.data[0])
       setData(res.data)
