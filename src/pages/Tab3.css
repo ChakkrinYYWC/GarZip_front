@@ -20,7 +20,7 @@ ion-header{
 }
 
 .name_pages{
- margin-left: 40px;
+ margin-left: 60px;
   text-align: center;
   color: white;
   font-weight: bold;
@@ -64,6 +64,7 @@ ion-header{
   padding-top: 15px;
   font-family: 'Bai Jamjuree', sans-serif;
   background: rgb(39, 39, 39);
+  
   
 }
 .Sort_book .Sort{

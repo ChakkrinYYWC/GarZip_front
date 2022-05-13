@@ -1,0 +1,21 @@
+.BlindHOMEPage{
+  color: white;
+  background: rgb(29, 29, 29);
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.item-list-Blind{
+  --background:background: rgb(29, 29, 29);
+  color: white;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-size: 25px;
+
+
+}
+
+.title-category .title-category-Blind{
+  color: white;
+  font-family: 'Bai Jamjuree', sans-serif;
+  padding: 15px 10px 20px 10px;
+  border-bottom: solid 0.1px rgba(255, 255, 255, 0.389);
+}

@@ -34,7 +34,7 @@
 }
 
 .list-book{
-    margin: 10px 10px 30px 10px;
+    margin: 10px 10px 50px 10px;
 }
 
 .bar{
@@ -59,7 +59,7 @@
 }
 
 .item-list{
-  --background: rgba(39, 39, 39, 0.986);
+  --background: rgba(35, 35, 35, 0.986);
   color: white;
   padding: 1px;
   border-radius: 20px;

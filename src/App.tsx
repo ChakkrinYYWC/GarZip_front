@@ -23,6 +23,12 @@ import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Setting from './pages/Tab4';
 
+
+/*blind*/
+import BlindHOME from './pages/BlindHOME';
+import BlindBooklist from './pages/BlindBooklist';
+import BlindTab3 from './pages/BlindTab3';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -82,6 +88,14 @@ const App: React.FC = () => (
           </Route>
           <Route path="/setting/Changepassword"  >
             <Changepassword />
+          </Route>
+          {/* ---------blind---------- */}
+          <Route path="/BlindHOME">
+            <BlindHOME />
+          </Route>
+          <Route path="/BlindBooklist/:name" component={BlindBooklist}/>
+          <Route path="/BlindTab3">
+            <BlindTab3 />
           </Route>
         </IonRouterOutlet>
 

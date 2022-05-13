@@ -1,11 +1,9 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react'
 import {
-    IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
-    IonRouterLink, IonIcon, IonLabel, IonItem, IonInput,
-    IonSearchbar, IonFooter, IonButtons, IonBackButton,
-    IonButton, IonSegment, IonSegmentButton, IonRow,
+    IonContent,
+    IonRouterLink, IonIcon, IonLabel, IonItem, IonRow,
     IonCol, IonCard, IonCardContent, IonCardHeader,
-    IonCardSubtitle, IonCardTitle, IonList, IonThumbnail, IonImg
+    IonCardTitle, IonList, IonThumbnail, IonImg
 } from '@ionic/react';
 import './Search.css';
 import Axios from 'axios';
