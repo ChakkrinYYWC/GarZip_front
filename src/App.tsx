@@ -28,6 +28,9 @@ import Setting from './pages/Tab4';
 import BlindHOME from './pages/BlindHOME';
 import BlindBooklist from './pages/BlindBooklist';
 import BlindTab3 from './pages/BlindTab3';
+import BlindSetting from './pages/BlindSetting';
+import BlindChangepassword from './pages/BlindChangepassword';
+import BlindUserInfo from './pages/BlindUserinfo';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -66,18 +69,26 @@ const App: React.FC = () => (
 
           <Route path="/DetailBook/:id" component={DetailBook}/>
           <Route path="/Booklist/:name" component={Booklist}/>
-          
+          {/* ---------Home---------- */}
           <Route exact path="/HOME" >
             <Tab1 />
           </Route>
+          <Route exact path="/">
+            <Redirect to="/HOME" />
+          </Route>
+          <Route path="/BlindHOME">
+            <BlindHOME />
+          </Route>
+          {/* ---------Tab2---------- */}
           <Route exact path="/tab2">
             <Tab2 />
           </Route>
+          {/* ---------Tab3---------- */}
           <Route path="/tab3">
             <Tab3 />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/HOME" />
+          <Route path="/BlindTab3">
+            <BlindTab3 />
           </Route>
           {/* ---------setting---------- */}
           <Route path="/setting">
@@ -89,14 +100,18 @@ const App: React.FC = () => (
           <Route path="/setting/Changepassword"  >
             <Changepassword />
           </Route>
-          {/* ---------blind---------- */}
-          <Route path="/BlindHOME">
-            <BlindHOME />
+
+          <Route path="/BlindSetting">
+            <BlindSetting />
           </Route>
+          <Route path="/BlindSetting/BlindUserInfo"  >
+            <BlindUserInfo />
+          </Route>
+          <Route path="/BlindSetting/BlindChangepassword"  >
+            <BlindChangepassword />
+          </Route>
+          {/* ---------book---------- */}
           <Route path="/BlindBooklist/:name" component={BlindBooklist}/>
-          <Route path="/BlindTab3">
-            <BlindTab3 />
-          </Route>
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom" color='dark'>

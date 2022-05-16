@@ -104,6 +104,10 @@ const DetailBook = ({ ...props }) => {
       }
     }).then(() => {
       console.log("Success !")
+      Axios.get("http://localhost:3000/playcount", {})
+      .catch((error) => {
+        console.log(error)
+      });
     }).catch(e => {
       console.error("An error occurred :", e)
     })
