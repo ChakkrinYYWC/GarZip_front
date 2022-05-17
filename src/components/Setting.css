@@ -13,6 +13,13 @@
   font-size: 18px;
 }
 
+.textchoiceBlind{
+  color: white;
+  float: left;
+  margin-left: 5%;
+  font-size: 28px;
+}
+
 .bottonchoice{
   color: white;
   float: right;
