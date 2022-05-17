@@ -3,7 +3,7 @@ import { IonToggle,IonIcon } from '@ionic/react';
 
 
 const Setting = () => {
-  const user_mode = localStorage.getItem('user_mode');
+const user_mode = localStorage.getItem('user_mode');
   if(user_mode === 'false'){
     return (
       <div className='page'>
@@ -30,6 +30,9 @@ const Setting = () => {
             {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
           </div>
         </a>
+        <center className='g_button' >
+            <button className='canclebuttonBlind'  >ออกจากระบบ</button>
+        </center>
       </div>
     );
   }else{
@@ -50,6 +53,12 @@ const Setting = () => {
         <a href="/setting/Changepassword">
           <div className="choice">
             <span className="textchoiceBlind">เปลี่ยนรหัสผ่าน</span>
+            {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
+          </div>
+        </a>
+        <a href="/Login">
+          <div className="choice">
+            <span className="textchoiceBlind">ออกจากระบบ</span>
             {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
           </div>
         </a>

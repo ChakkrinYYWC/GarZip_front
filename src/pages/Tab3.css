@@ -72,3 +72,16 @@ ion-header{
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
+.Blind .name_screen{
+  color: white;
+  padding: 15px 0px 0px 20px;
+
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+.Blind .Sort_book .Sort{
+  font-size: 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
