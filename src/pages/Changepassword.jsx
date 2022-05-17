@@ -27,47 +27,92 @@ const Changepassword = () => {
         window.location.href = "/setting";
     }
 
-    return (
-        <IonPage className="page">
-            <div className='topper'>
-                <center>เปลี่ยนรหัสผ่าน</center>
-            </div>
-            <IonContent fullscreen >
-                <div className='userinfochoice'>
-                    <span className='text'>รหัสผ่าน : </span>
-                    <input
-                        type="password"
-                        className='input-changepassword'
-                        onChange={(event) => {
-                            setoldpassword(event.target.value)
-                        }} />
+    const user_mode = localStorage.getItem('user_mode');
+    if (user_mode === 'false'){
+        return (
+            <IonPage className="page">
+                <div className='topper'>
+                    <center>เปลี่ยนรหัสผ่าน</center>
                 </div>
-                <div className='userinfochoice'>
-                    <span className='text'>รหัสผ่านใหม่ : </span>
-                    <input
-                        type="password"
-                        className='input-changepassword'
-                        onChange={(event) => {
-                            setnewpassword(event.target.value)
-                        }} />
+                <IonContent fullscreen >
+                    <div className='userinfochoice'>
+                        <span className='text'>รหัสผ่าน : </span>
+                        <input
+                            type="password"
+                            className='input-changepassword'
+                            onChange={(event) => {
+                                setoldpassword(event.target.value)
+                            }} />
+                    </div>
+                    <div className='userinfochoice'>
+                        <span className='text'>รหัสผ่านใหม่ : </span>
+                        <input
+                            type="password"
+                            className='input-changepassword'
+                            onChange={(event) => {
+                                setnewpassword(event.target.value)
+                            }} />
+                    </div>
+                    <div className='userinfochoice'>
+                        <span className='text-confirm'>ยืนยันรหัสผ่านใหม่ :  </span>
+                        <input
+                            type="password"
+                            className='input-changepassword'
+                            onChange={(event) => {
+                                setconfirm_newpassword(event.target.value)
+                            }} />
+                    </div>
+                    <center className='group_button'>
+                        <button className='savebutton' onClick={submit} >บันทึก</button>
+                        <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
+                       
+                    </center>
+                </IonContent>
+            </IonPage>
+        );
+    }else{
+        return (
+            <IonPage className="page">
+                <div className='topper'>
+                    <center>เปลี่ยนรหัสผ่าน</center>
                 </div>
-                <div className='userinfochoice'>
-                    <span className='text-confirm'>ยืนยันรหัสผ่านใหม่ :  </span>
-                    <input
-                        type="password"
-                        className='input-changepassword'
-                        onChange={(event) => {
-                            setconfirm_newpassword(event.target.value)
-                        }} />
-                </div>
-                <center className='group_button'>
-                    <button className='savebutton' onClick={submit} >บันทึก</button>
-                    <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
-                   
-                </center>
-            </IonContent>
-        </IonPage>
-    );
+                <IonContent fullscreen >
+                    <div className='userinfochoiceBlind'>
+                        <span className='text-confirmABlind'>รหัสผ่าน : </span>
+                        <input
+                            type="password"
+                            className='input-changepasswordBlind'
+                            onChange={(event) => {
+                                setoldpassword(event.target.value)
+                            }} />
+                    </div>
+                    <div className='userinfochoiceBlind'>
+                        <span className='text-confirmABlind'>รหัสผ่านใหม่ : </span>
+                        <input
+                            type="password"
+                            className='input-changepasswordBlind'
+                            onChange={(event) => {
+                                setnewpassword(event.target.value)
+                            }} />
+                    </div>
+                    <div className='userinfochoiceBlind'>
+                        <span className='text-confirmBlind'>ยืนยันรหัสผ่านใหม่ :  </span>
+                        <input
+                            type="password"
+                            className='input-changepasswordBlind'
+                            onChange={(event) => {
+                                setconfirm_newpassword(event.target.value)
+                            }} />
+                    </div>
+                    <center className='group_button'>
+                        <button className='savebuttonBlind' onClick={submit} >บันทึก</button>
+                        <button className='canclebuttonBlind' onClick={cancle} >ยกเลิก</button>
+                       
+                    </center>
+                </IonContent>
+            </IonPage>
+        );
+    }
 };
 
 export default Changepassword;

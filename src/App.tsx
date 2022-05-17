@@ -66,18 +66,26 @@ const App: React.FC = () => (
 
           <Route path="/DetailBook/:id" component={DetailBook}/>
           <Route path="/Booklist/:name" component={Booklist}/>
-          
+          {/* ---------Home---------- */}
           <Route exact path="/HOME" >
             <Tab1 />
           </Route>
+          <Route exact path="/">
+            <Redirect to="/HOME" />
+          </Route>
+          <Route path="/BlindHOME">
+            <BlindHOME />
+          </Route>
+          {/* ---------Tab2---------- */}
           <Route exact path="/tab2">
             <Tab2 />
           </Route>
+          {/* ---------Tab3---------- */}
           <Route path="/tab3">
             <Tab3 />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/HOME" />
+          <Route path="/BlindTab3">
+            <BlindTab3 />
           </Route>
           {/* ---------setting---------- */}
           <Route path="/setting">
@@ -89,14 +97,8 @@ const App: React.FC = () => (
           <Route path="/setting/Changepassword"  >
             <Changepassword />
           </Route>
-          {/* ---------blind---------- */}
-          <Route path="/BlindHOME">
-            <BlindHOME />
-          </Route>
+          {/* ---------book---------- */}
           <Route path="/BlindBooklist/:name" component={BlindBooklist}/>
-          <Route path="/BlindTab3">
-            <BlindTab3 />
-          </Route>
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom" color='dark'>

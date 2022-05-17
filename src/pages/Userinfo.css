@@ -70,9 +70,62 @@
 
 .g_button{
     margin-top: 90%;
+}
+
+.savebuttonBlind{
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 15px;
+    /* margin-right: 2%;
+    margin-top: 4%; */
+    margin: 20px 20px 0px 20px;
+    width: 60%;
+    border-radius: 30px;
+    color: white;
+    background: rgb(221,134,213);
+    background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
+}
+
+.canclebuttonBlind{
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    padding:15px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0);
+    border: gray solid 1px;
+    color: gray;
+    width: 60%;
+    margin: 20px 20px 0px 20px;
+}
+
+.userinfochoiceBlind{
+    background-color: rgb(29, 29, 29);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom:1px solid rgb(24, 24, 24);
+    display: flex;
+}
+
+.userinfochoiceBlind .textBlind{
+
+    background-color: rgb(29, 29, 29);
+    padding-left: 5%;
+    float: left;
+    font-size: 22px;
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.userinfochoiceBlind .inputBlind{
  
-
-
-
-
+    background-color: rgb(56, 56, 56);
+    color: white;
+    border:0;
+    border-radius: 15px;
+    margin-right: 5%;
+    flex-grow: 1;
+    font-size: 20px;
+    padding: 10px;
+    height: 35px;
 }

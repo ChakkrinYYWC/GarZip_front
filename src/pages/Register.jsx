@@ -22,7 +22,7 @@ const LogIn = () => {
     await Axios.post("http://localhost:3000/auth/register", {
       username: username, email: email, password: password, c_password: c_password, mode: mode
     }).then((res) => {
-      window.location.href = "/login";
+      window.location.replace("/login");
     }).catch((error) => {
       console.log(error)
     });
