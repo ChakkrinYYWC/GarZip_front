@@ -87,27 +87,14 @@ const Booklist = ({ ...props }) => {
   }else{
     return (
 
-      <IonPage className="Booklist-Page">
+      <IonPage className="Booklist-Page ">
   
   
         <IonContent fullscreen>
           <div className='Booklist Blind'>
             <div className="bar">
-              {/* <IonButtons slot="start">
-                <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
-              </IonButtons>
-  
-              <IonRouterLink href='/HOME' className="button-back">
-                <IonIcon name="chevron-back-outline" ></IonIcon>
-              </IonRouterLink> */}
-  
-  
               <IonButtons slot="start">
-                <IonRouterLink href='/HOME' className="button-back">
-                    <IonIcon name="chevron-back-outline" ></IonIcon>
-                </IonRouterLink>
-                {/* <IonBackButton  icon="chevron-back-outline" text="" defaultHref="/HOME" /> */}
-                <IonLabel >GARZIP</IonLabel>
+                <IonRouterLink href='/login' className="button-back">ย้อนกลับ</IonRouterLink>
               </IonButtons>
   
             </div>
