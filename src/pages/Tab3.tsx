@@ -150,11 +150,8 @@ const Tab3 = () => {
 
       </IonHeader>
       <IonContent fullscreen >
-
-        
-
         <IonPopover  trigger="nested-button" dismissOnSelect={true} >
-        <IonContent >
+        <IonContent className='Blind'>
           <IonList  className='Popover Blind'>
             <IonLabel className='sorting'>จัดเรียงหนังสือ</IonLabel>
             <IonItem button={true} detail={false} className='Sort_book'>

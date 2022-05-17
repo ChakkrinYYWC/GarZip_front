@@ -479,37 +479,37 @@ const Home = () => {
     
                                         <IonLabel className="title-category">
                                      
-                                            <IonRouterLink href="/BlindBooklist/ฟังต่อ" >
+                                            <IonRouterLink href="/Booklist/ฟังต่อ" >
                                                 <IonLabel className='title-category-Blind'> ฟังต่อ </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/ยอดนิยม" >
+                                            <IonRouterLink href="/Booklist/ยอดนิยม" >
                                                 <IonLabel className='title-category-Blind'> ยอดนิยม </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/เรื่องใหม่ล่าสุด" >
+                                            <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
                                                 <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/นิยาย" >
+                                            <IonRouterLink href="/Booklist/นิยาย" >
                                                 <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/ธุรกิจ" >
+                                            <IonRouterLink href="/Booklist/ธุรกิจ" >
                                                 <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/นิทาน" >
+                                            <IonRouterLink href="/Booklist/นิทาน" >
                                                 <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklistศาสนา" >
+                                            <IonRouterLink href="/Booklistศาสนา" >
                                                 <IonLabel className='title-category-Blind'> ศาสนา </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/บทความ" >
+                                            <IonRouterLink href="/Booklist/บทความ" >
                                                 <IonLabel className='title-category-Blind'> บทความ </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="BlindBooklist/สืบสวน" >
+                                            <IonRouterLink href="/Booklist/สืบสวน" >
                                                 <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/BlindBooklist/จิตวิทยา " >
+                                            <IonRouterLink href="/Booklist/จิตวิทยา " >
                                                 <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
                                             </IonRouterLink>
-                                             <IonRouterLink href="/BlindBooklist/ทั่วไป" >
+                                             <IonRouterLink href="/Booklist/ทั่วไป" >
                                                 <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
                                             </IonRouterLink>
                      
@@ -517,12 +517,6 @@ const Home = () => {
                                     </IonItem>
                                     {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
          
-                                    
-    
-                                  
-    
-    
-                                
                                 </IonContent>
                             </IonPage>
                         </>

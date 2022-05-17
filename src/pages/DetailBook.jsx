@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   IonContent, IonPage, IonImg, IonText, IonIcon, IonLabel, IonButton,
-  IonItem, IonRouterLink, IonRange, IonList, IonBackButton, IonThumbnail
+  IonItem, IonRouterLink, IonRange, IonList, IonButtons, IonThumbnail
 } from '@ionic/react';
 import './DetailBook.css';
 import Axios from "axios";
@@ -124,7 +124,8 @@ const DetailBook = ({ ...props }) => {
   // }
 
   // console.log(play)
-
+const user_mode = localStorage.getItem('user_mode');
+if(user_mode === 'false'){
   return (
     <>
       {
@@ -133,19 +134,9 @@ const DetailBook = ({ ...props }) => {
           :
           <>
             <IonPage className="DetailPage">
-              {/* <IonHeader className="test1">
-                <IonToolbar className="toolbar-container">
-                  <IonRouterLink href='/' className="button-back" >
-                    <IonIcon name="chevron-back-outline" ></IonIcon>
-                  </IonRouterLink>
-                </IonToolbar>
-              </IonHeader> */}
               <IonContent  >
                 <div className='DetailBook' >
                   <div className="bar">
-                    {/* <IonButtons slot="start">
-                      <IonBackButton icon="chevron-back-outline" text="" defaultHref="/HOME" />
-                    </IonButtons> */}
                     <IonRouterLink href='/HOME' className="button-back">
                       <IonIcon name="chevron-back-outline" ></IonIcon>
                     </IonRouterLink>
@@ -153,9 +144,6 @@ const DetailBook = ({ ...props }) => {
                       <IonIcon name="heart-circle-outline"></IonIcon>
                       <div className="save"></div>
                     </IonRouterLink>
-                    {/* <IonRouterLink href='/HOME' className="button-back">
-                      <IonIcon name="chevron-back-outline" ></IonIcon>
-                    </IonRouterLink> */}
                   </div>
                   <div className="data-book">
                     <IonImg className="image-book" src={data[0].image} />
@@ -164,7 +152,6 @@ const DetailBook = ({ ...props }) => {
                     <p>ระยะเวลา : {data[0].text.length}  น.</p>
                   </div>
                   <div className='players'>
-
                     <IonRange className='range-time'>
                       <IonLabel slot="start" className='start-time'>
                         <IonText>
@@ -182,7 +169,6 @@ const DetailBook = ({ ...props }) => {
                         </IonText>
                       </IonLabel>
                     </IonRange>
-
                   </div>
                   <div className='mix-button'>
                     <IonButton fill="clear" mode="ios" className='button-play-back'>
@@ -202,16 +188,6 @@ const DetailBook = ({ ...props }) => {
                     <IonButton fill="clear" mode="ios" className='button-play-forward'>
                       <IonIcon name="play-forward-outline"></IonIcon >
                     </IonButton>
-                    {/* <IonButton fill="clear" mode="ios" className='button-like'>
-                      <IonIcon className='like-book' name="heart-outline"></IonIcon>
-                    </IonButton> */}
-                    {/* <IonButton fill="clear" mode="ios" className='button-play-auto'>
-                      <IonIcon name="shuffle-outline"></IonIcon>
-                    </IonButton> */}
-                    {/* <div className='button-name'>
-                      <span className="save">บันทึก</span>
-                      <span className="auto">เล่นอัตโนมัติ</span>
-                    </div> */}
                   </div>
 
                   <div className='story-book'>
@@ -245,6 +221,103 @@ const DetailBook = ({ ...props }) => {
       }
     </>
   );
+}else{
+  return (
+    <>
+      {
+        loading ?
+          <div></div>
+          :
+          <>
+            <IonPage className="DetailPage">
+              <IonContent  >
+                <div className='DetailBook Blind' >
+                  <div className="bar">
+                  <IonButtons slot="start">
+                    <IonRouterLink href='/' className="button-back">ย้อนกลับ</IonRouterLink>
+                  </IonButtons>
+  
+               
+                  </div>
+                  <div className="data-book">
+                    <h3 >{data[0].name}</h3>
+                    <p>เขียนโดย : {data[0].auther}</p>
+                    <p>ระยะเวลา : {data[0].text.length}  น.</p>
+                  </div>
+                  <div className='players'>
+                    <IonRange className='range-time'>
+                      <IonLabel slot="start" className='start-time'>
+                        <IonText>
+                          <b>
+                            0%
+                          </b>
+                        </IonText>
+                      </IonLabel>
+
+                      <IonLabel slot="end">
+                        <IonText>
+                          <b>
+                            100%
+                          </b>
+                        </IonText>
+                      </IonLabel>
+                    </IonRange>
+                  </div>
+                  <center className='group_buttonn'>
+  
+                    {
+                      play ?
+                        <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => playsound()}>
+                        ฟัง
+                        </IonButton >
+                        :
+                        <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => speech.pause()} >
+                        หยุด
+                        </IonButton>
+                    }
+                    <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                    ก่อนหน้า
+                    </IonButton >
+                    <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      ถัดไป
+                    </IonButton>
+
+                    <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                     บันทึก
+                    </IonButton>
+                  </center>
+
+                  <div className='story-book'>
+                    <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
+                    <div className='story'>{data[0].trailer}</div>
+                  </div>
+
+                  <div className='episode-Booklist'>
+                    <h1>ตอน</h1>
+                    <IonList className='list-book'>
+                      {items.map((image, i) => (
+                        <IonItem key={i} className="item-list" href='/DetailBook'>
+                          <span className="book">
+                            <IonLabel className='title'>{image.text}</IonLabel>
+                            <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel>
+                            <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel>
+                          </span>
+
+                        </IonItem>
+                      ))}
+                    </IonList>
+                  </div>
+                </div>
+
+              </IonContent>
+            </IonPage >
+          </>
+      }
+    </>
+  );
+}
+
+
 };
 
 export default DetailBook;

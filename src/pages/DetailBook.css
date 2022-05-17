@@ -86,6 +86,11 @@ div.story{
   text-align: center;
 }
 
+.Blind .mix-button{
+  /* margin: 0px 50px; */
+  text-align: center;
+}
+
 
 .button-play,.button-play-back,.button-play-forward{
   font-size: 40px;
@@ -98,6 +103,10 @@ div.story{
   margin: 0px;
   padding: 0px;
 }
+
+
+
+
 .range-time{
   background: rgb(29, 29, 29);
   color: white;
@@ -166,3 +175,79 @@ div.story{
 /* .episode-Booklist{
   margin-bottom: 30px;
 } */
+
+
+.Blind .button-play,.button-play-back,.button-play-forward{
+  font-size: 22px;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  border-color: darkgray;
+  border-radius: 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+.DetailPage .Blind .savebuttonBlind{
+ 
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 5px;
+    /* margin-right: 2%;
+    margin-top: 4%; */
+    margin: 20px 20px 0px 20px;
+    width: 80%;
+    border-radius: 20px;
+    color: white;
+    height: 45px;
+    background: rgb(221,134,213);
+    background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
+}
+
+
+.DetailPage .Blind .group_buttonn{
+  margin-bottom: 50px;
+}
+
+
+.Blind .data-book h3 {
+  font-size: 24px;
+  margin-top: 40px;
+  font-weight: bold;
+  color: rgb(250, 250, 250);
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+.Blind .data-book p {
+  margin: 10px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  color: rgb(236, 236, 236);
+  font-size: 20px;
+}
+
+.Blind .players {
+  text-align: center;
+  margin: 50px 20px;
+}
+.Blind .range-time {
+  font-size: 24px;
+  --knob-size: 45px;
+  --bar-height: 5px;
+}
+
+.Blind .title-story {
+  font-size: 22px;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: rgb(41, 43, 43);
+  text-align: center;
+}
+.Blind .story-book {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.Blind .story {
+  margin-bottom: 50px;
+}
