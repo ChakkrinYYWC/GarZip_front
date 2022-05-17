@@ -19,15 +19,15 @@ const LogIn = () => {
     await Axios.post("http://localhost:3000/auth/login", {
       username: username, password: password
     }).then((res) => {
-      console.log(res.data[0])
-      localStorage.setItem('user_id', res.data[0]._id);
+      if(res){
+        localStorage.setItem('user_id', res.data[0]._id);
       localStorage.setItem('user_name', res.data[0].username);
       localStorage.setItem('user_email', res.data[0].email);
       localStorage.setItem('user_mode', res.data[0].mode);
-      // const user_id = localStorage.getItem('id');
-      // const user_name = localStorage.getItem('username');
-      // const user_email = localStorage.getItem('email');
       window.location.replace("/HOME");
+      }else{
+        window.location.replace("/login");
+      }
     }).catch((error) => {
       console.log(error)
     });

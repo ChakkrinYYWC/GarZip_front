@@ -9,9 +9,10 @@ const Changepassword = () => {
     const [confirm_newpassword, setconfirm_newpassword] = useState('')
 
     async function submit() {
+        const user_id = localStorage.getItem('user_id')
         await Axios.put("http://localhost:3000/user/password", {
             data: {
-                id: "6229b1de1bfd019fc0d0c39c",
+                id: user_id,
                 oldpassword: oldpassword,
                 newpassword: newpassword,
                 confirm_newpassword: confirm_newpassword
