@@ -31,7 +31,11 @@ const user_mode = localStorage.getItem('user_mode');
           </div>
         </a>
         <center className='g_button' >
+          <a href="/Login">
             <button className='canclebuttonBlind'  >ออกจากระบบ</button>
+          </a>
+
+           
         </center>
       </div>
     );

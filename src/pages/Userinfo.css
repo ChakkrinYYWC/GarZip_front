@@ -68,6 +68,9 @@
     margin: 20px 20px 0px 20px;
 }
 
+.group_buttonn{
+    margin-top: 10%;
+}
 .g_button{
     margin-top: 100%;
 }
@@ -123,9 +126,10 @@
     color: white;
     border:0;
     border-radius: 15px;
-    margin-right: 5%;
-    flex-grow: 1;
+    margin-right: 1%;
+    margin-left:1% ;
     font-size: 20px;
     padding: 10px;
     height: 35px;
 }
+
