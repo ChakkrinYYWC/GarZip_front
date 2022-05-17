@@ -69,7 +69,7 @@ const UserInfo = () => {
               </div>
             </div>
           ))}
-          <center className='g_button' >
+          <center className='group_button' >
             <button className='savebutton' onClick={save} >บันทึก</button>
             <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
           </center>
@@ -108,7 +108,7 @@ const UserInfo = () => {
               </div>
             </div>
           ))}
-          <center className='g_button' >
+          <center className='group_buttonn' >
             <button className='savebuttonBlind' onClick={save} >บันทึก</button>
             <button className='canclebuttonBlind' onClick={cancle} >ยกเลิก</button>
           </center>

@@ -17,13 +17,13 @@
   color: white;
   padding-left: 20px;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
 }
 .book{
   margin: 10px;
 }
 .book .title{
-  font-size: 17px;
+  font-size: 18px;
   font-family: 'Bai Jamjuree', sans-serif;
 }
 .book .detial{
@@ -75,4 +75,17 @@
   box-shadow: 2px 2px 2px rgb(238, 232, 250);
  
 
+}
+
+
+
+.Blind h1{
+  color: white;
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: 22px;
+}
+.Blind .book .title{
+  font-size: 20px;
+  font-family: 'Bai Jamjuree', sans-serif;
 }
