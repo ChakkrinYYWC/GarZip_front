@@ -19,8 +19,8 @@ ion-header{
   text-align: center;
 }
 
-.name_pages{
- margin-left: 60px;
+.favbook .name_pages{
+ margin-left: 80px;
   text-align: center;
   color: white;
   font-weight: bold;
@@ -67,8 +67,52 @@ ion-header{
   
   
 }
+.Blind  .Popover{
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 15px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  background: rgb(39, 39, 39);
+  
+  
+}
 .Sort_book .Sort{
   font-size: 18px;
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
+.Blind .name_screen{
+  color: white;
+  padding: 15px 0px 0px 20px;
+
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
+.Blind .Sort_book .Sort{
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.Blind .book .detial{
+  font-size: 18px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  color: rgb(204, 200, 200);
+
+}
+
+.button-filter{
+  float: right;
+  padding-top: 2px;
+
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px; 
+  width: 70px;
+  font-weight: bold;
+  height: 30px;
+  margin-right: 10px;
+}

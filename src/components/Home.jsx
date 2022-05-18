@@ -70,122 +70,33 @@ const Home = () => {
             image: "https://คลังสื่อการสอน.com/wp-content/uploads/2021/11/IMG_3320-1024x1024.png"
         },
     ]
-    return (
-        <>
-            {
-                loading ?
-                    <div>loading...</div>
-                    :
-                    <>
-                        <IonPage className="HomePage">
-                            <IonContent fullscreen >
-                                <div className="bar">
-                                    <IonLabel >GARZIP</IonLabel>
-                                </div>
-                                <a href="/login">login</a>
-
-                                <div className='Catagory'>
-                                    <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    <Swiper 
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <IonList className='hot-book'>
-                                    <IonHeader className='Header'>
-                                        <IonIcon name="trophy-outline"></IonIcon>
-                                        <IonLabel className='title-category'> ยอดนิยม </IonLabel>
-                                        <IonIcon name="trophy-outline"></IonIcon>
-                                        <p >หนังสือที่ได้รับความนิยมสูงสุด</p>
-                                    </IonHeader>
-
-                                    {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_, idx) => (idx < 3)).map((book, index) => {
-                                        return (
-                                            <>
-                                                <IonItem key={index} onClick={() => doPlay} button className="item-list">
-                                                    <IonThumbnail slot="start" className='imge'>
-                                                        <img src={book.image} />
-                                                    </IonThumbnail>
-                                                    <IonLabel className="book">
-                                                        <IonLabel className='title'>{book.name}</IonLabel>
-                                                        <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
-                                                        <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
-                                                        <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
-                                                    </IonLabel>
-                                                </IonItem>
-                                                {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
-                                            </>
-
-                                        )
-                                    })}
-                                </IonList>
-
-                                <div className='Catagory-even'>
-                                    <IonLabel className='name_catagory'>เรื่องใหม่ล่าสุด</IonLabel>
-                                    <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonCard
-                                                            className='Card-book'
-                                                            onClick={() => doPlay}>
-                                                            <span className='image-b'>
-                                                                <img src={book.image} className='img-book' />
-                                                            </span>
-                                                            <IonCardContent className='CardContent'>
-                                                                <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                            </IonCardContent>
-                                                        </IonCard>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory'>
-                                    <IonLabel className='name_catagory'>นิยาย</IonLabel>
-                                    <IonRouterLink href="/Booklist/นิยาย" >
+    const user_mode = localStorage.getItem('user_mode');
+    if(user_mode === 'false'){
+        return (
+            <>
+                {
+                    loading ?
+                        <div>loading...</div>
+                        :
+                        <>
+                            <IonPage className="HomePage">
+                                <IonContent fullscreen >
+                                    <div className="bar">
+                                        <IonLabel >GARZIP</IonLabel>
+                                    </div>
+                                    <a href="/login">login</a>
+    
+                                    <div className='Catagory'>
+                                        <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
                                         <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                        <Swiper 
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
                                                             <IonCard
                                                                 className='Card-book'
                                                                 onClick={() => doPlay}>
@@ -196,30 +107,55 @@ const Home = () => {
                                                                     <IonCardTitle className='title'>{book.name}</IonCardTitle>
                                                                 </IonCardContent>
                                                             </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory-even'>
-                                    <IonLabel className='name_catagory'>ธุรกิจ</IonLabel>
-                                    <IonRouterLink href="/Booklist/ธุรกิจ" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ธุรกิจ').filter((_, idx) => (idx < 4)).map((book, index) => {
-
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <IonList className='hot-book'>
+                                        <IonHeader className='Header'>
+                                            <IonIcon name="trophy-outline"></IonIcon>
+                                            <IonLabel className='title-category'> ยอดนิยม </IonLabel>
+                                            <IonIcon name="trophy-outline"></IonIcon>
+                                            <p >หนังสือที่ได้รับความนิยมสูงสุด</p>
+                                        </IonHeader>
+    
+                                        {data.sort((a, b) => (a.view > b.view ? -1 : 1)).filter((_, idx) => (idx < 3)).map((book, index) => {
                                             return (
                                                 <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                    <IonItem key={index} onClick={() => doPlay} button className="item-list">
+                                                        <IonThumbnail slot="start" className='imge'>
+                                                            <img src={book.image} />
+                                                        </IonThumbnail>
+                                                        <IonLabel className="book">
+                                                            <IonLabel className='title'>{book.name}</IonLabel>
+                                                            <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                            <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
+                                                            <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
+                                                        </IonLabel>
+                                                    </IonItem>
+                                                    {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
+                                                </>
+    
+                                            )
+                                        })}
+                                    </IonList>
+    
+                                    <div className='Catagory-even'>
+                                        <IonLabel className='name_catagory'>เรื่องใหม่ล่าสุด</IonLabel>
+                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
                                                             <IonCard
                                                                 className='Card-book'
                                                                 onClick={() => doPlay}>
@@ -230,547 +166,367 @@ const Home = () => {
                                                                     <IonCardTitle className='title'>{book.name}</IonCardTitle>
                                                                 </IonCardContent>
                                                             </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory'>
-                                    <IonLabel className='name_catagory'>นิทาน</IonLabel>
-                                    <IonRouterLink href="/Booklist/นิทาน" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'นิทาน').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory-even'>
-                                    <IonLabel className='name_catagory'>ศาสนา</IonLabel>
-                                    <IonRouterLink href="/Booklist/ศาสนา" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ศาสนา').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory'>
-                                    <IonLabel className='name_catagory'>บทความ</IonLabel>
-                                    <IonRouterLink href="/Booklist/บทความ" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'บทความ').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory-even'>
-                                    <IonLabel className='name_catagory'>สืบสวน</IonLabel>
-                                    <IonRouterLink href="/Booklist/สืบสวน" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'สืบสวน').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory'>
-                                    <IonLabel className='name_catagory'>จิตวิทยา</IonLabel>
-                                    <IonRouterLink href="/Booklist/จิตวิทยา" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'จิตวิทยา').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-
-                                <div className='Catagory-even'>
-                                    <IonLabel className='name_catagory'>ทั่วไป</IonLabel>
-                                    <IonRouterLink href="/Booklist/ทั่วไป" >
-                                        <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
-                                    </IonRouterLink>
-                                    <Swiper
-                                        sspaceBetween={0}
-                                        slidesPerView={3.5} >
-                                        {data.filter(cate => cate.category == 'ทั่วไป').filter((_, idx) => (idx < 4)).map((book, index) => {
-
-                                            return (
-                                                <>
-                                                    <SwiperSlide className='Slide-book' >
-                                                        <IonRouterLink href={"/DetailBook/" + book._id} >
-                                                            <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
-                                                        </IonRouterLink>
-                                                    </SwiperSlide>
-
-                                                </>
-                                            )
-                                        })}
-
-                                    </Swiper>
-                                </div>
-                                <IonSlides pager={true} options={slideOpts}>
-                                    <IonSlide>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory'>
+                                        <IonLabel className='name_catagory'>นิยาย</IonLabel>
+                                        <IonRouterLink href="/Booklist/นิยาย" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory-even'>
+                                        <IonLabel className='name_catagory'>ธุรกิจ</IonLabel>
+                                        <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'ธุรกิจ').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory'>
+                                        <IonLabel className='name_catagory'>นิทาน</IonLabel>
+                                        <IonRouterLink href="/Booklist/นิทาน" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'นิทาน').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory-even'>
+                                        <IonLabel className='name_catagory'>ศาสนา</IonLabel>
+                                        <IonRouterLink href="/Booklist/ศาสนา" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'ศาสนา').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory'>
+                                        <IonLabel className='name_catagory'>บทความ</IonLabel>
+                                        <IonRouterLink href="/Booklist/บทความ" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'บทความ').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory-even'>
+                                        <IonLabel className='name_catagory'>สืบสวน</IonLabel>
+                                        <IonRouterLink href="/Booklist/สืบสวน" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'สืบสวน').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory'>
+                                        <IonLabel className='name_catagory'>จิตวิทยา</IonLabel>
+                                        <IonRouterLink href="/Booklist/จิตวิทยา" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'จิตวิทยา').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+    
+                                    <div className='Catagory-even'>
+                                        <IonLabel className='name_catagory'>ทั่วไป</IonLabel>
+                                        <IonRouterLink href="/Booklist/ทั่วไป" >
+                                            <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
+                                        </IonRouterLink>
+                                        <Swiper
+                                            sspaceBetween={0}
+                                            slidesPerView={3.5} >
+                                            {data.filter(cate => cate.category == 'ทั่วไป').filter((_, idx) => (idx < 4)).map((book, index) => {
+    
+                                                return (
+                                                    <>
+                                                        <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                                <IonCard
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                            </IonRouterLink>
+                                                        </SwiperSlide>
+    
+                                                    </>
+                                                )
+                                            })}
+    
+                                        </Swiper>
+                                    </div>
+                                    <IonSlides pager={true} options={slideOpts}>
+                                        <IonSlide>
+                                            
+                                        </IonSlide>
                                         
-                                    </IonSlide>
-                                    
-                                </IonSlides>
+                                    </IonSlides>
+    
+                                </IonContent>
+                            </IonPage>
+                        </>
+                }
+            </>
+    
+        );
+    }else{
+        return (
+            <>
+                {
+                    loading ?
+                        <div>loading...</div>
+                        :
+                        <>
+                            <IonPage className="BlindHOMEPage">
+                                <IonContent fullscreen >
+                                    <div className="bar">
+                                        <IonLabel >GARZIP</IonLabel>
+                                    </div>
+                                    {/* <a href="/login">login</a> */}
+    
+                                      
+                                    <IonItem className="item-list-Blind">
+    
+                                        <IonLabel className="title-category">
+                                     
+                                            <IonRouterLink href="/Booklist/ฟังต่อ" >
+                                                <IonLabel className='title-category-Blind'> ฟังต่อ </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ยอดนิยม" >
+                                                <IonLabel className='title-category-Blind'> ยอดนิยม </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
+                                                <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/นิยาย" >
+                                                <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                                <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/นิทาน" >
+                                                <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklistศาสนา" >
+                                                <IonLabel className='title-category-Blind'> ศาสนา </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/บทความ" >
+                                                <IonLabel className='title-category-Blind'> บทความ </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/สืบสวน" >
+                                                <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/จิตวิทยา " >
+                                                <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
+                                            </IonRouterLink>
+                                             <IonRouterLink href="/Booklist/ทั่วไป" >
+                                                <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
+                                            </IonRouterLink>
+                     
+                                        </IonLabel>
+                                    </IonItem>
+                                    {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
+         
+                                </IonContent>
+                            </IonPage>
+                        </>
+                }
+            </>
+    
+        );
+    }
 
 
-                                {/* <IonList>
-                                <IonListHeader>
-                                    <IonLabel>ฟังต่อ</IonLabel>
-                                    <p>ดูทั้งหมด</p>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        <IonCol
-                                            size="3"
-                                            className="new-track"
-                                            onClick={() => doPlay}
-                                        >
-                                            <img src="assets/icon/icon.png" />
-                                            <IonLabel>
-                                                <h3>##test##</h3>
-                                                <p>##test##</p>
-
-                                            </IonLabel>
-                                        </IonCol>
-
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>เรื่องใหม่ล่าสุด  </IonLabel>
-                                    <p>ดูทั้งหมด</p>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                        // className="new-track"
-                                                        onClick={() => doPlay}>
-                                                        <img src={book.image} />
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>นิยาย <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'นิยาย').filter((_, idx) => (idx < 4)).map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/นิยาย">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>ธุรกิจ <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'ธุรกิจ').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/ธุรกิจ">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>นิทาน <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'นิทาน').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/นิทาน">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>ศาสนา <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'ศาสนา').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/ศาสนา">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>บทความ <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'บทความ').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/บทความ">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>สืบสวน <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'สืบสวน').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/สืบสวน">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>จิตวิทยา <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'จิตวิทยา').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/จิตวิทยา">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList>
-                            <IonList>
-                                <IonListHeader>
-                                    <IonLabel>ทั่วไป <p>ดูทั้งหมด</p></IonLabel>
-                                </IonListHeader>
-                                <IonGrid>
-                                    <IonRow>
-                                        {data.filter(cate => cate.category == 'ทั่วไป').map((book, index) => {
-                                            return (
-                                                <>
-
-                                                    <IonCol
-                                                        size="3"
-                                                    // className="new-track"
-                                                    // onClick={() => doPlay}
-                                                    >
-                                                        <a rel="noopener" href="/Booklist/ทั่วไป">
-                                                            <img src={book.image} />
-                                                        </a>
-                                                        <IonLabel>
-                                                            <h3>{book.name}</h3>
-                                                            <p>{book.auther}</p>
-                                                            <p>{book.trailer}</p>
-                                                            <p>{book.view}</p>
-                                                        </IonLabel>
-                                                    </IonCol>
-
-                                                </>
-                                            )
-                                        })}
-                                    </IonRow>
-                                </IonGrid>
-                            </IonList> */}
-                            </IonContent>
-                        </IonPage>
-                    </>
-            }
-        </>
-
-    );
 };
 
 export default Home;
