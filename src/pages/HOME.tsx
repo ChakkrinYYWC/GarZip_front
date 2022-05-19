@@ -5,9 +5,7 @@ import './Tab1.css';
 
 const Tab1 = () => {
   return (
-    <IonPage>
       <Home/> 
-    </IonPage>
   //   <IonPage>
   //   <IonHeader>
   //     <IonToolbar>

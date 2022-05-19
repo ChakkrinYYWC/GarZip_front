@@ -67,7 +67,7 @@ const App: React.FC = () => (
             <Tab1 />
           </Route>
           <Route exact path="/">
-            <Redirect to="/HOME" />
+            <Redirect to="/Login" />
           </Route>
        
           {/* ---------Tab2---------- */}

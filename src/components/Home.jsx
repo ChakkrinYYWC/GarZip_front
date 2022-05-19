@@ -31,7 +31,7 @@ const Home = () => {
     async function getData() {
         await Axios.get("http://localhost:3000/book/app", {})
             .then((res) => {
-                console.log(res.data[0]);
+                // console.log(res.data[0]);
                 setData(res.data)
             })
             .catch((error) => {
@@ -44,32 +44,7 @@ const Home = () => {
         await getData()
         await setLoading(false);
     }, [])
-
-    // console.log(data)
-    // data.sort((a, b) => (a._id > b._id ? -1 : 1));
-
-    const testdata = [
-        {
-            title: "forth",
-            subtitle: "forth socute",
-            image: "https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
-        },
-        {
-            title: "forth",
-            subtitle: "forth socute",
-            image: "https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
-        },
-        {
-            title: "forth",
-            subtitle: "forth socute",
-            image: "https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/6ec5bab63858fa79f5958a9e7320655f.jpg"
-        },
-        {
-            title: "forth",
-            subtitle: "forth socute",
-            image: "https://คลังสื่อการสอน.com/wp-content/uploads/2021/11/IMG_3320-1024x1024.png"
-        },
-    ]
+    
     const user_mode = localStorage.getItem('user_mode');
     if(user_mode === 'false'){
         return (
