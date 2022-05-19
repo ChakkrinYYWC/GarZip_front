@@ -31,7 +31,7 @@ const Home = () => {
     async function getData() {
         await Axios.get("http://localhost:3000/book/app", {})
             .then((res) => {
-                console.log(res.data[0]);
+                console.log(res.data);
                 setData(res.data)
             })
             .catch((error) => {
@@ -153,8 +153,7 @@ const Home = () => {
                                     <Swiper
                                         sspaceBetween={0}
                                         slidesPerView={3.5} >
-                                        {data.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
-
+                                        {data.filter(cate => cate.status == 'New').sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
                                             return (
                                                 <>
                                                     <SwiperSlide className='Slide-book' >
