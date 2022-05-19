@@ -1,22 +1,37 @@
 import './Setting.css';
-import { IonToggle,IonIcon } from '@ionic/react';
+import { IonIcon } from '@ionic/react';
+import Axios from 'axios';
 
 
 const Setting = () => {
-const user_mode = localStorage.getItem('user_mode');
-  if(user_mode === 'false'){
+  const user_id = localStorage.getItem('user_id');
+  const user_mode = localStorage.getItem('user_mode');
+
+  async function changemode(){
+    console.log('changemode')
+    await Axios.post("http://localhost:3000/user/changemode", {
+      id: user_id, mode: user_mode
+    }).then((res) => {
+      if(res){
+      localStorage.setItem('user_mode', res.data);
+      window.location.replace("/setting");
+      }
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
+
+  if (user_mode === 'false') {
     return (
       <div className='page'>
         <div className='topper'>
           <center>ตั้งค่า</center>
         </div>
-        <div className="choice">
-          <span className="textchoice">สลับเป็นโหมดผู้พิการทางการมองเห็น</span>
-          {/* <span className="bottonchoice">hi</span> */}
-          <div className="bottonchoice">
-            <IonToggle value="isBlind" className="choice_Blide" />
+        <a>
+          <div onClick={changemode} className="choice">
+            <span className="textchoice">สลับเป็นโหมดผู้พิการทางการมองเห็น</span>
           </div>
-        </div>
+        </a>
         <a href="/setting/UserInfo">
           <div className="choice">
             <span className="textchoice">ข้อมูลส่วนตัว</span>
@@ -27,7 +42,6 @@ const user_mode = localStorage.getItem('user_mode');
           <div className="choice">
             <span className="textchoice">เปลี่ยนรหัสผ่าน</span>
             <IonIcon className="bottonchoice" name="chevron-forward-outline"></IonIcon>
-            {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
           </div>
         </a>
         <center className='g_button' >
@@ -35,20 +49,21 @@ const user_mode = localStorage.getItem('user_mode');
             <button className='canclebuttonBlind'  >ออกจากระบบ</button>
           </a>
 
-           
+
         </center>
       </div>
     );
-  }else{
+  } else {
     return (
       <div className='page'>
         <div className='topper'>
           <center>ตั้งค่า</center>
         </div>
-        <div className="choice">
-          <span className="textchoiceBlind">สลับเป็นโหมดปกติ</span>
-          {/* <span className="bottonchoice">hi</span> */}
-        </div>
+        <a onClick={changemode}>
+          <div className="choice">
+            <span className="textchoiceBlind">สลับเป็นโหมดสายตาปกติ</span>
+          </div>
+        </a>
         <a href="/setting/UserInfo">
           <div className="choice">
             <span className="textchoiceBlind">ข้อมูลส่วนตัว</span>
@@ -57,19 +72,17 @@ const user_mode = localStorage.getItem('user_mode');
         <a href="/setting/Changepassword">
           <div className="choice">
             <span className="textchoiceBlind">เปลี่ยนรหัสผ่าน</span>
-            {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
           </div>
         </a>
         <a href="/Login">
           <div className="choice">
             <span className="textchoiceBlind">ออกจากระบบ</span>
-            {/* <div className="bottonchoice"> <i class="fa-solid fa-angle-right"></i> </div> */}
           </div>
         </a>
       </div>
     );
   }
-  
+
 };
 
 export default Setting;
