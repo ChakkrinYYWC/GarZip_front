@@ -14,11 +14,9 @@ const slideOpts = {
     initialSlide: 1,
     speed: 400
 };
-
 const initialState = {
     name: ''
 }
-
 const Home = () => {
     // const { state, dispatch } = useContext(AppContext);
     const [loading, setLoading] = useState(true);
@@ -39,7 +37,6 @@ const Home = () => {
                 console.log(error)
             });
     }
-
     useEffect(async () => {
         await getData()
         await setLoading(false);
