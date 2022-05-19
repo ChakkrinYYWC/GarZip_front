@@ -1,0 +1,74 @@
+.choice {
+  padding-top: 8%;
+  padding-bottom: 10%;
+  font-size: 16px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  /* border-bottom:1px solid rgb(66, 66, 66); */
+}
+
+.textchoice {
+  color: white;
+  float: left;
+  margin-left: 5%;
+  font-size: 19px;
+}
+
+.textchoiceBlind {
+  color: white;
+  float: left;
+  margin-left: 5%;
+  font-size: 22px;
+}
+
+.bottonchoice {
+  color: white;
+  float: right;
+  margin-right: 3%;
+  font-size: 22px;
+}
+
+.page {
+  background-color: rgb(29, 29, 29);
+}
+
+.topper {
+
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  border-bottom: 2px solid rgb(26, 26, 26);
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+
+}
+
+
+.choice_Blide {
+  --background: rgb(62, 62, 62);
+  --background-checked: rgb(176, 145, 255);
+  --handle-background-checked: rgb(160, 82, 255);
+}
+
+.Setting .name_pages {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.cancleSettingbuttonBlind{
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  padding:10px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0);
+  border: gray solid 1px;
+  color: gray;
+  width: 80%;
+  margin: 20px 20px 0px 20px;
+}
