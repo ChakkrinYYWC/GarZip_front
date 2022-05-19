@@ -9,6 +9,8 @@ import { useState } from 'react'
 // import ExploreContainer from '../components/ExploreContainer';
 import './Login.css';
 import { Redirect } from 'react-router';
+import React from 'react'
+
 
 const LogIn = () => {
   const [present] = useIonAlert();

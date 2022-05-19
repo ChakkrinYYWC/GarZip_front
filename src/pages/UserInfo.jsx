@@ -2,6 +2,8 @@ import { IonContent, IonPage, IonButton } from '@ionic/react';
 import Axios from 'axios';
 import { useState, useEffect } from 'react'
 import './Userinfo.css';
+import React from 'react'
+
 
 const UserInfo = () => {
   const [data, setData] = useState([])
