@@ -189,6 +189,11 @@ if(user_mode === 'false'){
                       <IonIcon name="play-forward-outline"></IonIcon >
                     </IonButton>
                   </div>
+          
+                  {/* <center className='button_voie' >
+                    <button className='savebuttonBlind voie'  >เสียงผู้ชาย</button>
+                    <button className='savebuttonBlind voie'  >เสียงผู้หญิง</button>
+                  </center> */}
 
                   <div className='story-book'>
                     <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
@@ -285,8 +290,13 @@ if(user_mode === 'false'){
                     <IonButton fill="clear" mode="ios" className="savebuttonBlind">
                      บันทึก
                     </IonButton>
+                    {/* <IonButton fill="clear" mode="ios" className='savebuttonBlind voie'  >เสียงผู้ชาย</IonButton>
+                    <IonButton fill="clear" mode="ios" className='savebuttonBlind voie'  >เสียงผู้หญิง</IonButton> */}
                   </center>
-
+                  {/* <center className='button_voie' >
+                    <button className='savebuttonBlind'  >เสียงผู้ชาย</button>
+                    <button className='savebuttonBlind'  >เสียงผู้หญิง</button>
+                  </center> */}
                   <div className='story-book'>
                     <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
                     <div className='story'>{data[0].trailer}</div>

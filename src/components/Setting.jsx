@@ -41,7 +41,7 @@ const user_mode = localStorage.getItem('user_mode');
     );
   }else{
     return (
-      <div className='page' style="z-index: 102;">
+      <div className='page'>
         <div className='topper'>
           <center>ตั้งค่า</center>
         </div>
