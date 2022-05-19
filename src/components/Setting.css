@@ -29,6 +29,7 @@
 
 .page{
   background-color: rgb(29, 29, 29);
+  --z-index: 100;
 }
 
 .topper{

@@ -234,7 +234,7 @@ if(user_mode === 'false'){
                 <div className='DetailBook Blind' >
                   <div className="bar">
                   <IonButtons slot="start">
-                    <IonRouterLink href='/' className="button-back">ย้อนกลับ</IonRouterLink>
+                    <IonRouterLink href='/HOME' className="button-back">ย้อนกลับ</IonRouterLink>
                   </IonButtons>
   
                
@@ -299,7 +299,7 @@ if(user_mode === 'false'){
                         <IonItem key={i} className="item-list" href='/DetailBook'>
                           <span className="book">
                             <IonLabel className='title'>{image.text}</IonLabel>
-                            <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel>
+                            {/* <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel> */}
                             <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel>
                           </span>
 

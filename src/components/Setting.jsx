@@ -1,5 +1,5 @@
 import './Setting.css';
-import { IonToggle,IonIcon } from '@ionic/react';
+import { IonToggle,IonIcon,IonPage } from '@ionic/react';
 
 
 const Setting = () => {
@@ -41,7 +41,7 @@ const user_mode = localStorage.getItem('user_mode');
     );
   }else{
     return (
-      <div className='page'>
+      <div className='page' style="z-index: 102;">
         <div className='topper'>
           <center>ตั้งค่า</center>
         </div>

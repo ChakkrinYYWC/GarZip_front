@@ -177,7 +177,7 @@ div.story{
 } */
 
 
-.Blind .button-play,.button-play-back,.button-play-forward{
+.Blind .button-play,.Blind .button-play-back,.Blind .button-play-forward{
   font-size: 22px;
   background-color: rgb(60, 60, 60);
   color: rgb(255, 255, 255);
