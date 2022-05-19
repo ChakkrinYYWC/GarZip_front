@@ -10,6 +10,8 @@ import { If, Then, ElseIf, Else } from "react-if-elseif-else-render";
 
 
 const Search = ({ text, bookinfo, mode }) => {
+const user_mode = localStorage.getItem('user_mode');
+if(user_mode === 'false'){
     return (
         <>
             <IonContent fullscreen>
@@ -206,6 +208,134 @@ const Search = ({ text, bookinfo, mode }) => {
             </IonContent>
         </>
     );
+}else{
+    return (
+        <>
+            <IonContent fullscreen>
+                {
+                    text ?
+                        <div className='Booklist_search Blind'>
+                            <IonLabel className='name_catagory'>หมวดหมู่หนังสือ</IonLabel>
+                            <IonItem className="item-list-Blind">
+    
+                            <IonLabel className="title-category">
+                        
+                                
+                                <IonRouterLink href="/Booklist/นิยาย" >
+                                    <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                    <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/นิทาน" >
+                                    <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklistศาสนา" >
+                                    <IonLabel className='title-category-Blind'> ศาสนา </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/บทความ" >
+                                    <IonLabel className='title-category-Blind'> บทความ </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/สืบสวน" >
+                                    <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/จิตวิทยา " >
+                                    <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
+                                </IonRouterLink>
+                                <IonRouterLink href="/Booklist/ทั่วไป" >
+                                    <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
+                                </IonRouterLink>
+
+                            </IonLabel>
+                        </IonItem>
+
+
+                        </div>
+                        :
+                        <>
+                            <div className='Booklist  Blind'>
+                                <div className='name_catagory'>ผลการค้นหา</div>
+                                <If condition={mode == 'all'}>
+                                    <Then>
+                                        <IonList className='list-book'>
+                                            {bookinfo.found_book_name.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} className="item-list" >
+                                                      
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                        <IonList className='list-book'>
+                                            {bookinfo.fonud_book_auther.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} className="item-list">
+                                                    
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </Then>
+                                    <ElseIf condition={mode == 'name'}>
+                                        <IonList className='list-book'>
+                                            {bookinfo.found_book_name.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} className="item-list">
+                                                      
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </ElseIf>
+                                    <ElseIf condition={mode == 'auther'}>
+                                        <IonList className='list-book'>
+                                            {bookinfo.fonud_book_auther.map((book, i) => {
+                                                return (
+                                                    <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
+                                                        <IonItem key={i} className="item-list">
+                                                            
+                                                            <span className="book">
+                                                                <IonLabel className='title'>{book.name}</IonLabel>
+                                                                <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
+                                                                <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                                                            </span>
+                                                        </IonItem>
+                                                    </IonRouterLink>
+                                                )
+                                            })}
+                                        </IonList>
+                                    </ElseIf>
+                                </If>
+                            </div>
+                        </>
+                }
+
+            </IonContent>
+        </>
+    );
+}
+
 };
 
 export default Search;

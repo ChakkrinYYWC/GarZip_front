@@ -86,10 +86,10 @@ const LogIn = () => {
               onClick={submit}
             >เข้าสู่ระบบ</IonButton>
           </div>
-          <div className="login-with-facebook" >
+          {/* <div className="login-with-facebook" >
             <IonIcon className="icon-facebook" icon={logoFacebook} />
             <IonRouterLink href="#" className="link-login-with-facebook">เข้าสู่ระบบด้วยFacebook</IonRouterLink>
-          </div>
+          </div> */}
 
           <div className="forgotpass">
             <IonButton

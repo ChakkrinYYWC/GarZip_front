@@ -30,6 +30,8 @@
   margin-top: 40px;
   --border-radius:5px;
   box-shadow: 3px 3px 3px rgb(239, 237, 245);
+  object-fit: fill;
+
 }
 
 .data-book h3{
@@ -111,6 +113,7 @@ div.story{
   background: rgb(29, 29, 29);
   color: white;
   border-color: black;
+  font-size: 15px;
 }
 
 .button{
@@ -177,7 +180,7 @@ div.story{
 } */
 
 
-.Blind .button-play,.button-play-back,.button-play-forward{
+.Blind .button-play,.Blind .button-play-back,.Blind .button-play-forward{
   font-size: 22px;
   background-color: rgb(60, 60, 60);
   color: rgb(255, 255, 255);
@@ -192,7 +195,7 @@ div.story{
  
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
     padding: 5px;
     /* margin-right: 2%;
     margin-top: 4%; */
@@ -200,7 +203,7 @@ div.story{
     width: 80%;
     border-radius: 20px;
     color: white;
-    height: 45px;
+    height: 40px;
     background: rgb(221,134,213);
     background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
 }
@@ -232,7 +235,7 @@ div.story{
   margin: 50px 20px;
 }
 .Blind .range-time {
-  font-size: 24px;
+  font-size: 22px;
   --knob-size: 45px;
   --bar-height: 5px;
 }
@@ -250,4 +253,20 @@ div.story{
 }
 .Blind .story {
   margin-bottom: 50px;
+}
+
+.button_voie{
+  width: 100%;
+
+}
+.button_voie .savebuttonBlind{
+  width: 25%;
+  font-size: 16px;
+  margin: 30px 10px 20px 10px;
+  padding: 10px;
+}
+
+.voie:active{
+  background-color: rgb(176, 176, 176);
+
 }
