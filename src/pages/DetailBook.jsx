@@ -8,6 +8,7 @@ import Axios from "axios";
 import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
+const user_id = localStorage.getItem("user_id");
 
 const items = [
   {
@@ -38,10 +39,12 @@ const DetailBook = ({ ...props }) => {
   // const [name, setName] = useState(props.match.params.id)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
+  const [saved, setSaved] = useState(true);
   const [story, setStory] = useState('')
   const [play, setPlay] = useState(true)
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
+
 
   const speech = new Speech()
   async function getData() {
@@ -50,6 +53,7 @@ const DetailBook = ({ ...props }) => {
         // console.log(res.data[0].text);
         setStory(res.data[0].text)
         setData(res.data)
+        // console.log(res.data);
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
           setPitch(2)
@@ -63,8 +67,10 @@ const DetailBook = ({ ...props }) => {
       });
   }
 
+
   useEffect(async () => {
     await getData()
+    await checkBook(props.match.params.id)
     await setLoading(false);
   }, [])
 
@@ -89,7 +95,7 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    const percentagevalue = time*(story.length/100)
+    const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
     speech.speak({
       text: storysliced,
@@ -98,8 +104,8 @@ const DetailBook = ({ ...props }) => {
         onstart: () => {
           Axios.get("http://localhost:3000/playcount", {
           }).catch((error) => {
-              console.log(error)
-            });
+            console.log(error)
+          });
           // console.log("Start utterance");
           setPlay(false)
         },
@@ -134,7 +140,7 @@ const DetailBook = ({ ...props }) => {
           //   setTime(Math.round(event.charIndex/(asdf.length/100)))
           // }
           // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
-          setTime(Math.round((event.charIndex + percentagevalue)/(story.length/100)))
+          setTime(Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
         }
       }
     }).then(() => {
@@ -156,6 +162,46 @@ const DetailBook = ({ ...props }) => {
   // }
 
   // console.log(play)
+  const addBook = (id) => {
+    const data = { user_id };
+    console.log('add book')
+    Axios.post("http://localhost:3000/book/addFav/" + id, data, {})
+      .then((res) => {
+        setSaved(false)
+        // console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+  const removeBook = (id) => {
+    const data = { user_id };
+    console.log('remove book')
+    Axios.post("http://localhost:3000/book/removeFav/" + id, data, {})
+      .then((res) => {
+        setSaved(true)
+        // console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+  const checkBook = async (id) => {
+    const data = { user_id };
+    console.log('check book')
+    await Axios.post("http://localhost:3000/book/saveBook/" + id, data, {})
+      .then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          // console.log(res.data[i]);
+          if (res.data[i] == id) {
+            console.log('have book')
+            setSaved(false)
+            break
+          } else {
+            console.log('no have book')
+            setSaved(true)
+          }
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -173,10 +219,23 @@ const DetailBook = ({ ...props }) => {
                       <IonRouterLink href='/HOME' className="button-back">
                         <IonIcon name="chevron-back-outline" ></IonIcon>
                       </IonRouterLink>
-                      <IonRouterLink href='/HOME' className="button-save">
-                        <IonIcon name="heart-circle-outline"></IonIcon>
-                        <div className="save"></div>
-                      </IonRouterLink>
+                      {
+                        saved ?
+                        //โปร่ง
+                          <IonRouterLink onClick={() => addBook(data[0]._id)} className="button-save">
+                            <IonIcon name="bookmark-outline"></IonIcon>
+                            {/* <IonIcon name="bookmark"></IonIcon> */}
+                            {/* <IonIcon ios="ios-bookmark" md="md-bookmark" name="bookmark-outline"></IonIcon> */}
+                            <div className="save"></div>
+                          </IonRouterLink>
+                          :
+                          //ทึบ
+                          <IonRouterLink onClick={() => removeBook(data[0]._id)} className="button-save">
+                            <IonIcon name="bookmark"></IonIcon>
+                            <div className="save"></div>
+                          </IonRouterLink>
+                      }
+
                     </div>
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
@@ -185,7 +244,7 @@ const DetailBook = ({ ...props }) => {
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)}</p>
                     </div>
                     <div className='players'>
-                      <IonRange 
+                      <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -193,10 +252,10 @@ const DetailBook = ({ ...props }) => {
                         pin="true"
                         value={time}
                         debounce="1300"
-                        onIonChange={async e =>{
+                        onIonChange={async e => {
                           if (e.detail.value >= 95 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
-                          }else{
+                          } else {
                             setTime(e.detail.value)
                             console.log(e.detail.value)
                             // await playsound(e.detail.value)
