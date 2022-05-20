@@ -2,6 +2,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import Axios from 'axios';
 import { useState } from 'react'
 import './Changepassword.css';
+import React from 'react'
 
 const Changepassword = () => {
     const [oldpassword, setoldpassword] = useState('')
