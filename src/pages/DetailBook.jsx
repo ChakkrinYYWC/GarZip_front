@@ -81,7 +81,7 @@ const DetailBook = ({ ...props }) => {
     // }
   })
 
-  const asdf = 'Bobby สวัสดี woke up because he heard a dog. He heard a dog barking outside his window. Bobby woke up when he heard the dog barking. Bobby got out of bed. He got out of bed and walked to the window. He looked out the window. He saw a big brown dog. It was barking very loud. Bobby opened his window. He looked at the barking dog. Why are you barking so loud, he asked the dog. The dog looked at Bobby. Then it stopped barking.'
+  const asdf = 'Bobby woke up because he heard a dog. He heard a dog barking outside his window. Bobby woke up when he heard the dog barking. Bobby got out of bed. He got out of bed and walked to the window. He looked out the window. He saw a big brown dog. It was barking very loud. Bobby opened his window. He looked at the barking dog. Why are you barking so loud, he asked the dog. The dog looked at Bobby. Then it stopped barking.'
   const sdfg = 'Nancy wants to live a long time. She wants to live for one hundred years. She is five years old now. She wants to live 95 more years. Then she will be 100. Her father is 30 years old. He wants to live a long time too. He wants to live for one hundred years. He wants to live for 70 more years. "Daddy, we will grow old together, okay?" Nancy said to her father. "Yes, honey, we will grow old together," he said to Nancy. Then Nancy smiled. She gave her daddy a big hug.'
   const dfgh = 'Johnny jumped over the dog. The dog was lying on the ground. Johnny jumped over it. The dog saw Johnny jump over it. The dog got up. The dog got up and barked at Johnny. Johnny laughed. He laughed while the dog barked. Johnny ran over to the fence. The dog chased him to the fence. Johnny jumped over the fence. He turned around and looked at the dog. The dog stopped at the fence. The dog could not jump over the fence. Johnny said, "Jump, jump!" The dog barked, but did not jump.'
   const zxcv = "Fred had a red rubber ball. He kicked the ball. It flew through the air. He picked it up. He threw it against a wall. The ball came back to Fred. He kicked it with his foot again. The ball flew over the wall. He picked it up again. He bounced it on the street. The ball bounced up and down. Then it stopped bouncing up and down. It didn't move. Fred's dog barked at the ball. Fred kicked the ball. His dog ran after the ball."
@@ -89,8 +89,8 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    const percentagevalue = time*(asdf.length/100)
-    const storysliced = asdf.slice(percentagevalue, asdf.length)
+    const percentagevalue = time*(story.length/100)
+    const storysliced = story.slice(percentagevalue, story.length)
     console.log(storysliced)
     speech.speak({
       text: storysliced,
@@ -136,7 +136,7 @@ const DetailBook = ({ ...props }) => {
           //   setTime(Math.round(event.charIndex/(asdf.length/100)))
           // }
           // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
-          setTime(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
+          setTime(Math.round((event.charIndex + percentagevalue)/(story.length/100)))
         }
       }
     }).then(() => {
