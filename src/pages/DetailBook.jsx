@@ -91,6 +91,7 @@ const DetailBook = ({ ...props }) => {
   async function playsound() {
     const percentagevalue = time*(story.length/100)
     const storysliced = story.slice(percentagevalue, story.length)
+    console.log(storysliced)
     speech.speak({
       text: storysliced,
       queue: false,
@@ -111,6 +112,7 @@ const DetailBook = ({ ...props }) => {
           // sumsentencetime = 0
           // sentence +=1
           console.log("readingtime " + readingtime)
+          setPlay(true)
         },
         onresume: () => {
           // console.log("Resume utterance");
@@ -139,7 +141,6 @@ const DetailBook = ({ ...props }) => {
       }
     }).then(() => {
       // console.log("Success !")
-      setPlay(true)
     }).catch(e => {
       console.error("An error occurred :", e)
     })
