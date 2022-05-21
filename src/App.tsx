@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { home, search, heart, settings } from 'ionicons/icons';
+import { home, search, book, settings } from 'ionicons/icons';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -61,6 +61,7 @@ const App: React.FC = () => (
           </Route>
 
           <Route path="/DetailBook/:id" component={DetailBook}/>
+          {/* <Route path="/addFav/:id" component={DetailBook}/> */}
           <Route path="/Booklist/:name" component={Booklist}/>
           {/* ---------Home---------- */}
           <Route exact path="/HOME" >
@@ -103,7 +104,7 @@ const App: React.FC = () => (
             <IonLabel>ค้นหา</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={heart} />
+            <IonIcon icon={book} />
             <IonLabel>ชั้นหนังสือ</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab4" href="/setting">
