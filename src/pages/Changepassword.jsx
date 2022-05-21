@@ -106,7 +106,7 @@ const Changepassword = () => {
                     <center className='group_button'>
                         <button className='savebuttonBlind' onClick={submit} >บันทึก</button>
                         <IonRouterLink onclick="history.back()" className="button-back">
-                            <button className='canclebutton'>ยกเลิก</button>
+                            <button className='canclebuttonBlind'>ยกเลิก</button>
                         </IonRouterLink>
                     </center>
                 </IonContent>
