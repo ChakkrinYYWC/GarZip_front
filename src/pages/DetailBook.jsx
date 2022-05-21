@@ -307,13 +307,13 @@ const DetailBook = ({ ...props }) => {
                       </IonButton>
                     </div>
                     <div className='Check-pitch'>
-                      <span>
+                      <span className='G_Checkbox'>
                       <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      <IonLabel position="floating" className="text">เสียงผู้ชาย</IonLabel>
                       </span>
                       <span>
                       <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                      <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </span>
                     </div>
 
@@ -434,11 +434,11 @@ const DetailBook = ({ ...props }) => {
                     <div className='Check-pitch'>
                       <div>
                       <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
                       </div>
                       <div>
                       <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                      <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
                     </div>
 
