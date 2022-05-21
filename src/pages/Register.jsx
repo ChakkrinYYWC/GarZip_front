@@ -35,7 +35,7 @@ const LogIn = () => {
         </IonHeader>
         <div className='register'>
           <div className="bar">
-            <IonRouterLink href='/login' className="button-back">ย้อนกลับ</IonRouterLink>
+            <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
           </div>
           <div className="heading-register ion-padding">
             <h1>สมัครสมาชิก</h1>

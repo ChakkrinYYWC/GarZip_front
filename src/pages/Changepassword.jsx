@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonRouterLink } from '@ionic/react';
 import Axios from 'axios';
 import { useState } from 'react'
 import './Changepassword.css';
@@ -25,12 +25,8 @@ const Changepassword = () => {
         });
     }
 
-    async function cancle() {
-        window.location.href = "/setting";
-    }
-
     const user_mode = localStorage.getItem('user_mode');
-    if (user_mode === 'false'){
+    if (user_mode === 'false') {
         return (
             <IonPage className="page">
                 <div className='topper'>
@@ -66,13 +62,14 @@ const Changepassword = () => {
                     </div>
                     <center className='group_button'>
                         <button className='savebutton' onClick={submit} >บันทึก</button>
-                        <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
-                       
+                        <IonRouterLink onclick="history.back()" className="button-back">
+                            <button className='canclebutton'>ยกเลิก</button>
+                        </IonRouterLink>
                     </center>
                 </IonContent>
             </IonPage>
         );
-    }else{
+    } else {
         return (
             <IonPage className="page">
                 <div className='topper'>
@@ -108,8 +105,9 @@ const Changepassword = () => {
                     </div>
                     <center className='group_button'>
                         <button className='savebuttonBlind' onClick={submit} >บันทึก</button>
-                        <button className='canclebuttonBlind' onClick={cancle} >ยกเลิก</button>
-                       
+                        <IonRouterLink onclick="history.back()" className="button-back">
+                            <button className='canclebutton'>ยกเลิก</button>
+                        </IonRouterLink>
                     </center>
                 </IonContent>
             </IonPage>
