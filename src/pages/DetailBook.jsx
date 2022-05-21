@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   IonContent, IonPage, IonImg, IonText, IonIcon, IonLabel, IonButton,
-  IonItem, IonRouterLink, IonRange, IonList, IonButtons, IonThumbnail
+  IonItem, IonRouterLink, IonRange, IonList, IonButtons, IonThumbnail, IonCheckbox
 } from '@ionic/react';
 import './DetailBook.css';
 import Axios from "axios";
@@ -40,6 +40,8 @@ const DetailBook = ({ ...props }) => {
   const [loading, setLoading] = useState(true);
   const [story, setStory] = useState('')
   const [play, setPlay] = useState(true)
+  const [man, setMan] = useState(Boolean)
+  const [woman, setWoman] = useState(Boolean)
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
 
@@ -52,10 +54,14 @@ const DetailBook = ({ ...props }) => {
         setData(res.data)
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
-          setPitch(2)
+          setMan(true)
+          setWoman(false)
+          setPitch(0.125)
         }
         if (random_boolean === false) {
-          setPitch(0.125)
+          setMan(false)
+          setWoman(true)
+          setPitch(1.5)
         }
       })
       .catch((error) => {
@@ -89,7 +95,8 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    const percentagevalue = time*(story.length/100)
+    console.log(pitch)
+    const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
     console.log(storysliced)
     speech.speak({
@@ -99,8 +106,8 @@ const DetailBook = ({ ...props }) => {
         onstart: () => {
           Axios.get("http://localhost:3000/playcount", {
           }).catch((error) => {
-              console.log(error)
-            });
+            console.log(error)
+          });
           // console.log("Start utterance");
           setPlay(false)
         },
@@ -136,7 +143,7 @@ const DetailBook = ({ ...props }) => {
           //   setTime(Math.round(event.charIndex/(asdf.length/100)))
           // }
           // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
-          setTime(Math.round((event.charIndex + percentagevalue)/(story.length/100)))
+          setTime(Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
         }
       }
     }).then(() => {
@@ -183,10 +190,10 @@ const DetailBook = ({ ...props }) => {
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
-                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)}</p>
+                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                     </div>
                     <div className='players'>
-                      <IonRange 
+                      <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -194,10 +201,10 @@ const DetailBook = ({ ...props }) => {
                         pin="true"
                         value={time}
                         debounce="1300"
-                        onIonChange={async e =>{
+                        onIonChange={async e => {
                           if (e.detail.value >= 95 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
-                          }else{
+                          } else {
                             setTime(e.detail.value)
                             console.log(e.detail.value)
                             // await playsound(e.detail.value)
@@ -239,6 +246,16 @@ const DetailBook = ({ ...props }) => {
                       <IonButton fill="clear" mode="ios" className='button-play-forward'>
                         <IonIcon name="play-forward-outline"></IonIcon >
                       </IonButton>
+                    </div>
+                    <div className='Check-pitch'>
+                      <span>
+                      <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
+                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      </span>
+                      <span>
+                      <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
+                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                      </span>
                     </div>
 
                     <div className='story-book'>
@@ -296,7 +313,24 @@ const DetailBook = ({ ...props }) => {
                       <p>ระยะเวลา : {data[0].text.length}  น.</p>
                     </div>
                     <div className='players'>
-                      <IonRange className='range-time'>
+                      <IonRange
+                        className='range-time'
+                        step="1"
+                        min="0"
+                        max="100"
+                        pin="true"
+                        value={time}
+                        debounce="1300"
+                        onIonChange={async e => {
+                          if (e.detail.value >= 95 && e.detail.value <= 110) {
+                            console.log(e.detail.value + ' and theres is no need to do anything.')
+                          } else {
+                            setTime(e.detail.value)
+                            console.log(e.detail.value)
+                            // await playsound(e.detail.value)
+                          }
+                        }}
+                      >
                         <IonLabel slot="start" className='start-time'>
                           <IonText>
                             <b>
@@ -337,6 +371,17 @@ const DetailBook = ({ ...props }) => {
                         บันทึก
                       </IonButton>
                     </center>
+
+                    <div className='Check-pitch'>
+                      <div>
+                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
+                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      </div>
+                      <div>
+                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
+                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                      </div>
+                    </div>
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
