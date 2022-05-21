@@ -44,9 +44,9 @@ const Setting = () => {
             <IonIcon className="bottonchoice" name="chevron-forward-outline"></IonIcon>
           </div>
         </a>
-        <center className='g_button' >
+        <center className='group_buttonn out' >
           <a href="/Login">
-            <button className='canclebuttonBlind'  >ออกจากระบบ</button>
+            <button className="canclebuttonBlind"  >ออกจากระบบ</button>
           </a>
 
 

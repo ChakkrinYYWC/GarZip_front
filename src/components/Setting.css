@@ -52,3 +52,18 @@
   --background-checked:rgb(176, 145, 255);
   --handle-background-checked:rgb(160, 82, 255);
 }
+
+
+
+.canclebuttonBlind {
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  padding:10px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0);
+  border: gray solid 1px;
+  color: gray;
+  width: 100%;
+  margin: 20px 20px 0px 20px;
+}
