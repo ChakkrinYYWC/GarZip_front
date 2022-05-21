@@ -1,8 +1,9 @@
-import { IonContent, IonPage, IonButton } from '@ionic/react';
+import { IonContent, IonPage, IonRouterLink, IonTabButton } from '@ionic/react';
 import Axios from 'axios';
 import { useState, useEffect } from 'react'
 import './Userinfo.css';
 import React from 'react'
+import Setting from './Tab4';
 
 
 const UserInfo = () => {
@@ -30,10 +31,6 @@ const UserInfo = () => {
     }).catch((error) => {
       console.log(error)
     });
-  }
-
-  async function cancle() {
-    window.location.href = "/setting";
   }
 
   useEffect(async () => {
@@ -73,7 +70,9 @@ const UserInfo = () => {
           ))}
           <center className='group_button' >
             <button className='savebutton' onClick={save} >บันทึก</button>
-            <button className='canclebutton' onClick={cancle} >ยกเลิก</button>
+            <IonRouterLink onclick="history.back()" className="button-back">
+              <button className='canclebutton'>ยกเลิก</button>
+            </IonRouterLink>
           </center>
 
         </IonContent>
@@ -112,7 +111,9 @@ const UserInfo = () => {
           ))}
           <center className='group_buttonn' >
             <button className='savebuttonBlind' onClick={save} >บันทึก</button>
-            <button className='canclebuttonBlind' onClick={cancle} >ยกเลิก</button>
+            <IonRouterLink onclick="history.back()" className="button-back">
+              <button className='canclebutton'>ยกเลิก</button>
+            </IonRouterLink>
           </center>
 
         </IonContent>

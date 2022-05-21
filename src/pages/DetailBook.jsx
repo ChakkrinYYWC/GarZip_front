@@ -224,7 +224,7 @@ const DetailBook = ({ ...props }) => {
                 <IonContent  >
                   <div className='DetailBook' >
                     <div className="bar">
-                      <IonRouterLink href='/HOME' className="button-back">
+                      <IonRouterLink onclick="history.back()" className="button-back">
                         <IonIcon name="chevron-back-outline" ></IonIcon>
                       </IonRouterLink>
                       {
@@ -361,7 +361,7 @@ const DetailBook = ({ ...props }) => {
                   <div className='DetailBook Blind' >
                     <div className="bar">
                       <IonButtons slot="start">
-                        <IonRouterLink href='/' className="button-back">ย้อนกลับ</IonRouterLink>
+                        <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
                       </IonButtons>
 
 
