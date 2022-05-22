@@ -8,6 +8,7 @@ import Axios from "axios";
 import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
+import { useHistory, withRouter, useNavigate } from "react-router-dom";
 const user_id = localStorage.getItem("user_id");
 
 const items = [
@@ -48,6 +49,7 @@ const DetailBook = ({ ...props }) => {
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
   const [countview, setCountview] = useState(false)
+  const history = useHistory();
   var indexview = 0
 
   const speech = new Speech()
@@ -59,7 +61,7 @@ const DetailBook = ({ ...props }) => {
         setData(res.data)
         setEpisode(res.data[0].chapter)
 
-        console.log(res.data[0].chapter)
+        // console.log(res.data[0].chapter)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -159,7 +161,7 @@ const DetailBook = ({ ...props }) => {
           // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
           add_view: {
 
-            if (count == 5.00 && indexview == 0) {
+            if (count > 5.00 && indexview == 0) {
               console.log('view up!')
               indexview = indexview + 1
 
@@ -233,6 +235,12 @@ const DetailBook = ({ ...props }) => {
       .catch((error) => console.log(error));
   };
 
+  async function handleClick(event) {
+    // history.push("/DetailBook/" + "62434b1a6a83fb5fa8aff21b");
+    // window.location.reload(false);
+    
+  }
+
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -272,7 +280,7 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดวิว : {data[0].view} </p>
+                      <p>ยอดผู้ฟัง : {data[0].view} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
@@ -311,9 +319,10 @@ const DetailBook = ({ ...props }) => {
                       </IonRange>
                     </div>
                     <div className='mix-button'>
-                      <IonButton fill="clear" mode="ios" className='button-play-back'>
+                      <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => handleClick(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
+
                       {
                         play ?
                           <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
@@ -347,28 +356,31 @@ const DetailBook = ({ ...props }) => {
 
                     {
                       episode == undefined ?
-                      <>
-                      </>
-                      :
-                      <div className='episode-Booklist'>
-                        <h1>ตอน</h1>
-                        <IonList className='list-book'>
-                          {episode.map((book, i) => (
-                            <IonItem key={i} className="item-list" href='/DetailBook'>
-                              <IonThumbnail slot="start" className='image' >
-                                <IonImg src={book.image} />
-                              </IonThumbnail>
-                              <span className="book">
-                                {/* <h1>ddfdfd</h1> */}
-                                <IonLabel className='title'>{book.name}</IonLabel>
-                                <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
-                                {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
-                              </span>
+                        <>
+                        </>
+                        :
+                        <div className='episode-Booklist'>
+                          {/* <h1>ตอน</h1> */}
+                          <IonList className='list-book'>
+                            {episode.map((book, i) => {
+                              // console.log(book)
+                              return (
+                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                  <IonThumbnail slot="start" className='image' >
+                                    <IonImg src={book.image} />
+                                  </IonThumbnail>
+                                  <span className="book">
+                                    {/* <h1>ddfdfd</h1> */}
+                                    <IonLabel className='title'>{book.name}</IonLabel>
+                                    <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
+                                    {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
+                                  </span>
 
-                            </IonItem>
-                          ))}
-                        </IonList>
-                      </div>
+                                </IonItem>
+                              )
+                            })}
+                          </IonList>
+                        </div>
                     }
                   </div>
 
@@ -463,12 +475,12 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='Check-pitch'>
                       <div>
-                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
-                      <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
+                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
+                        <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
                       </div>
                       <div>
-                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
-                      <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
+                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
+                        <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
                     </div>
 
