@@ -65,20 +65,21 @@ const Home = () => {
                                             sspaceBetween={0}
                                             slidesPerView={3.5} >
                                             {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
-
                                                 return (
                                                     <>
                                                         <SwiperSlide className='Slide-book' >
+                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
                                                             <IonCard
-                                                                className='Card-book'
-                                                                onClick={() => doPlay}>
-                                                                <span className='image-b'>
-                                                                    <img src={book.image} className='img-book' />
-                                                                </span>
-                                                                <IonCardContent className='CardContent'>
-                                                                    <IonCardTitle className='title'>{book.name}</IonCardTitle>
-                                                                </IonCardContent>
-                                                            </IonCard>
+                                                                    className='Card-book'
+                                                                    onClick={() => doPlay}>
+                                                                    <span className='image-b'>
+                                                                        <img src={book.image} className='img-book' />
+                                                                    </span>
+                                                                    <IonCardContent className='CardContent'>
+                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                    </IonCardContent>
+                                                                </IonCard>
+                                                           </IonRouterLink>
                                                         </SwiperSlide>
 
                                                     </>
