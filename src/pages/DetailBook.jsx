@@ -310,7 +310,7 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
-                      <p>ระยะเวลา : {data[0].text.length}  น.</p>
+                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                     </div>
                     <div className='players'>
                       <IonRange
