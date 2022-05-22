@@ -247,7 +247,7 @@ const DetailBook = ({ ...props }) => {
                 <IonContent  >
                   <div className='DetailBook' >
                     <div className="bar">
-                      <IonRouterLink href='/HOME' className="button-back">
+                      <IonRouterLink onclick="history.back()" className="button-back">
                         <IonIcon name="chevron-back-outline" ></IonIcon>
                       </IonRouterLink>
                       {
@@ -330,7 +330,7 @@ const DetailBook = ({ ...props }) => {
                       </IonButton>
                     </div>
                     <div className='Check-pitch'>
-                      <span>
+                      <span className='G_Checkbox'>
                         <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
                         <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
                       </span>
@@ -391,7 +391,7 @@ const DetailBook = ({ ...props }) => {
                   <div className='DetailBook Blind' >
                     <div className="bar">
                       <IonButtons slot="start">
-                        <IonRouterLink href='/' className="button-back">ย้อนกลับ</IonRouterLink>
+                        <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
                       </IonButtons>
 
 
@@ -463,12 +463,12 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='Check-pitch'>
                       <div>
-                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
-                        <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
+                      <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
                       </div>
                       <div>
-                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
-                        <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
+                      <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
                     </div>
 

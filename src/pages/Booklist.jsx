@@ -46,7 +46,7 @@ const Booklist = ({ ...props }) => {
   
   
               <IonButtons slot="start">
-                <IonRouterLink href='/HOME' className="button-back">
+                <IonRouterLink onclick="history.back()" className="button-back">
                     <IonIcon name="chevron-back-outline" ></IonIcon>
                 </IonRouterLink>
                 {/* <IonBackButton  icon="chevron-back-outline" text="" defaultHref="/HOME" /> */}
@@ -94,7 +94,7 @@ const Booklist = ({ ...props }) => {
           <div className='Booklist Blind'>
             <div className="bar">
               <IonButtons slot="start">
-                <IonRouterLink href='/HOME' className="button-back">ย้อนกลับ</IonRouterLink>
+                <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
               </IonButtons>
   
             </div>
