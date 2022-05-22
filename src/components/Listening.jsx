@@ -52,13 +52,13 @@ const Listening = (classes, ...props) => {
 
     }
   }, [classes.currentId])
-  console.log(data.sort((a, b) => (a.savebook._id > b.savebook._id ? 1 : -1)))
+  // console.log(data.sort((a, b) => (a.savebook._id > b.savebook._id ? 1 : -1)))
   return (
     <IonContent fullscreen>
       <div className='Booklist'>
         <IonList className='list-book'>
-          {data.sort().map((book, i) => {
-            // console.log(book)
+          {data.map((book, i) => {
+            console.log(book)
             return (
               <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
                 <IonItem key={i} className="item-list" >
@@ -67,13 +67,12 @@ const Listening = (classes, ...props) => {
                   </IonThumbnail>
                   <span className="book">
                     <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
-                    <IonLabel className='title'>{book.savebook[0]._id}</IonLabel>
+                    {/* <IonLabel className='title'>{book.savebook[0]._id}</IonLabel> */}
                     <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
                     <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
                   </span>
                 </IonItem>
               </IonRouterLink>
-              // <h1>{book[i]}</h1>
             )
 
           })}
