@@ -48,9 +48,9 @@ const Tab3 = () => {
                 <IonLabel className='Sort' onClick={e => setName(1, "เพิ่มล่าสุด")}>เพิ่มล่าสุด</IonLabel>
               </IonItem>
 
-              <IonItem button={true} detail={false} className='Sort_book'>
+              {/* <IonItem button={true} detail={false} className='Sort_book'>
                 <IonLabel className='Sort' onClick={e => setName(2, 'ฟังล่าสุด')}>ฟังล่าสุด</IonLabel>
-              </IonItem>
+              </IonItem> */}
 
               <IonItem button={true} detail={false} className='Sort_book'>
               <IonLabel className='Sort' onClick={e => setName(3, 'เรียงตามชื่อเรื่อง')}>เรียงตามชื่อเรื่อง</IonLabel>
