@@ -72,3 +72,16 @@
   width: 80%;
   margin: 20px 20px 0px 20px;
 }
+
+.umm .canclebuttonBlind {
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  padding:15px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0);
+  border: gray solid 1px;
+  color: gray;
+  width: 80%;
+  margin: 20px 20px 0px 40px;
+}

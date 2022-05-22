@@ -57,8 +57,8 @@ const Tab4 = () => {
               <IonIcon className="bottonchoice" name="chevron-forward-outline"></IonIcon>
             </div>
           </a>
-          <div className='g_button' >
-            <a href="/Login">
+          <div className='g_button umm' >
+            <a href="/Login" className='umm'>
               <button className='canclebuttonBlind'>ออกจากระบบ</button>
             </a>
           </div>

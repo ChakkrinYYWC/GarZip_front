@@ -90,7 +90,7 @@
     background: linear-gradient(180deg, rgba(221,134,213,1) 7%, rgba(168,109,250,1) 45%, rgba(139,87,236,1) 83%, rgba(129,156,173,1) 100%);
 }
 
-.canclebuttonBlind{
+ .canclebuttonBlind {
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: bold;
     font-size: 22px;
@@ -100,7 +100,7 @@
     border: gray solid 1px;
     color: gray;
     width: 80%;
-    margin: 20px 20px 0px 40px;
+    margin: 20px 20px 0px 20px;
 }
 
 .userinfochoiceBlind{
