@@ -112,7 +112,7 @@ const UserInfo = () => {
           <center className='group_buttonn' >
             <button className='savebuttonBlind' onClick={save} >บันทึก</button>
             <IonRouterLink onclick="history.back()" className="button-back">
-              <button className='canclebutton'>ยกเลิก</button>
+              <button className='canclebuttonBlind'>ยกเลิก</button>
             </IonRouterLink>
           </center>
 

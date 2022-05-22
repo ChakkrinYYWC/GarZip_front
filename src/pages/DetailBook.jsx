@@ -8,6 +8,8 @@ import Axios from "axios";
 import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
+import { useHistory, withRouter, useNavigate } from "react-router-dom";
+const user_id = localStorage.getItem("user_id");
 
 const items = [
   {
@@ -38,12 +40,17 @@ const DetailBook = ({ ...props }) => {
   // const [name, setName] = useState(props.match.params.id)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
+  const [saved, setSaved] = useState(true);
   const [story, setStory] = useState('')
   const [play, setPlay] = useState(true)
   const [man, setMan] = useState(Boolean)
   const [woman, setWoman] = useState(Boolean)
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
+  const [episode, setEpisode] = useState([])
+  const [countview, setCountview] = useState(false)
+  const history = useHistory();
+  var indexview = 0
 
   const speech = new Speech()
   async function getData() {
@@ -52,6 +59,10 @@ const DetailBook = ({ ...props }) => {
         // console.log(res.data[0].text);
         setStory(res.data[0].text)
         setData(res.data)
+        setEpisode(res.data[0].chapter)
+
+        // console.log(res.data[0].chapter)
+
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
           setMan(true)
@@ -69,8 +80,10 @@ const DetailBook = ({ ...props }) => {
       });
   }
 
+
   useEffect(async () => {
     await getData()
+    await checkBook(props.match.params.id)
     await setLoading(false);
   }, [])
 
@@ -95,7 +108,7 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    console.log(pitch)
+    console.log('pitch::', pitch)
     const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
     console.log(storysliced)
@@ -108,11 +121,11 @@ const DetailBook = ({ ...props }) => {
           }).catch((error) => {
             console.log(error)
           });
-          // console.log("Start utterance");
+          console.log("Start utterance");
           setPlay(false)
         },
         onend: () => {
-          // console.log("End utterance");
+          console.log("End utterance");
           // console.log("sumsentencetime "+sumsentencetime)
           // allsentencetime += sumsentencetime/word
           // // console.log("allsentencetime "+allsentencetime)
@@ -144,10 +157,28 @@ const DetailBook = ({ ...props }) => {
           // }
           // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
           setTime(Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
+          var count = (Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
+          // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
+          add_view: {
+
+            if (count > 5.00 && indexview == 0) {
+              console.log('view up!')
+              indexview = indexview + 1
+
+              Axios.post("http://localhost:3000/book/updateview/" + data[0]._id, {})
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((error) => console.log(error));
+
+
+              break add_view;
+            }
+            // console.log(countview)
+          }
         }
       }
     }).then(() => {
-      // console.log("Success !")
     }).catch(e => {
       console.error("An error occurred :", e)
     })
@@ -164,6 +195,52 @@ const DetailBook = ({ ...props }) => {
   // }
 
   // console.log(play)
+  const addBook = (id) => {
+    const data = { user_id };
+    console.log('add book')
+    Axios.post("http://localhost:3000/book/addFav/" + id, data, {})
+      .then((res) => {
+        setSaved(false)
+        // console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+  const removeBook = (id) => {
+    const data = { user_id };
+    console.log('remove book')
+    Axios.post("http://localhost:3000/book/removeFav/" + id, data, {})
+      .then((res) => {
+        setSaved(true)
+        // console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+  const checkBook = async (id) => {
+    const data = { user_id };
+    console.log('check book')
+    await Axios.post("http://localhost:3000/book/saveBook/" + id, data, {})
+      .then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          // console.log(res.data[i]);
+          if (res.data[i] == id) {
+            console.log('have book')
+            setSaved(false)
+            break
+          } else {
+            console.log('no have book')
+            setSaved(true)
+          }
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  async function handleClick(event) {
+    // history.push("/DetailBook/" + "62434b1a6a83fb5fa8aff21b");
+    // window.location.reload(false);
+    
+  }
+
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -181,16 +258,29 @@ const DetailBook = ({ ...props }) => {
                       <IonRouterLink onclick="history.back()" className="button-back">
                         <IonIcon name="chevron-back-outline" ></IonIcon>
                       </IonRouterLink>
-                      <IonRouterLink href='/HOME' className="button-save">
-                        <IonIcon name="heart-circle-outline"></IonIcon>
-                        <div className="save"></div>
-                      </IonRouterLink>
+                      {
+                        saved ?
+                          //โปร่ง
+                          <IonRouterLink onClick={() => addBook(data[0]._id)} className="button-save">
+                            <IonIcon name="bookmark-outline"></IonIcon>
+                            {/* <IonIcon ios="ios-bookmark" md="md-bookmark" name="bookmark-outline"></IonIcon> */}
+                            <div className="save"></div>
+                          </IonRouterLink>
+                          :
+                          //ทึบ
+                          <IonRouterLink onClick={() => removeBook(data[0]._id)} className="button-save">
+                            <IonIcon name="bookmark"></IonIcon>
+                            <div className="save"></div>
+                          </IonRouterLink>
+                      }
+
                     </div>
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
+                      <p>ยอดผู้ฟัง : {data[0].view} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
@@ -229,9 +319,10 @@ const DetailBook = ({ ...props }) => {
                       </IonRange>
                     </div>
                     <div className='mix-button'>
-                      <IonButton fill="clear" mode="ios" className='button-play-back'>
+                      <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => handleClick(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
+
                       {
                         play ?
                           <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
@@ -248,13 +339,13 @@ const DetailBook = ({ ...props }) => {
                       </IonButton>
                     </div>
                     <div className='Check-pitch'>
-                      <span>
-                      <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                      <span className='G_Checkbox'>
+                        <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
+                        <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
                       </span>
                       <span>
-                      <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                        <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
+                        <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
                       </span>
                     </div>
 
@@ -263,24 +354,34 @@ const DetailBook = ({ ...props }) => {
                       <div className='story'>{data[0].trailer}</div>
                     </div>
 
-                    <div className='episode-Booklist'>
-                      <h1>ตอน</h1>
-                      <IonList className='list-book'>
-                        {items.map((image, i) => (
-                          <IonItem key={i} className="item-list" href='/DetailBook'>
-                            <IonThumbnail slot="start" className='image' >
-                              <IonImg src={image.src} />
-                            </IonThumbnail>
-                            <span className="book">
-                              <IonLabel className='title'>{image.text}</IonLabel>
-                              <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel>
-                              <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel>
-                            </span>
+                    {
+                      episode == undefined ?
+                        <>
+                        </>
+                        :
+                        <div className='episode-Booklist'>
+                          {/* <h1>ตอน</h1> */}
+                          <IonList className='list-book'>
+                            {episode.map((book, i) => {
+                              // console.log(book)
+                              return (
+                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                  <IonThumbnail slot="start" className='image' >
+                                    <IonImg src={book.image} />
+                                  </IonThumbnail>
+                                  <span className="book">
+                                    {/* <h1>ddfdfd</h1> */}
+                                    <IonLabel className='title'>{book.name}</IonLabel>
+                                    <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
+                                    {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
+                                  </span>
 
-                          </IonItem>
-                        ))}
-                      </IonList>
-                    </div>
+                                </IonItem>
+                              )
+                            })}
+                          </IonList>
+                        </div>
+                    }
                   </div>
 
                 </IonContent>
@@ -374,12 +475,12 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='Check-pitch'>
                       <div>
-                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
+                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
+                        <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
                       </div>
                       <div>
-                      <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman}/>
-                      <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
+                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
+                        <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
                     </div>
 
