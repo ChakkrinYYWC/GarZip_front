@@ -9,7 +9,7 @@ import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
 import { useHistory, withRouter, useNavigate } from "react-router-dom";
-const user_id = localStorage.getItem("user_id");
+
 
 const items = [
   {
@@ -39,6 +39,7 @@ const DetailBook = ({ ...props }) => {
 
   // const [name, setName] = useState(props.match.params.id)
   const [data, setData] = useState([])
+  const [timeuser, setTimeuser] = useState([])
   const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(true);
   const [story, setStory] = useState('')
@@ -48,8 +49,9 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
-  const [countview, setCountview] = useState(false)
+  // const [countTime, setCountTime] = useState(true)
   const history = useHistory();
+  const user_id = localStorage.getItem("user_id");
   var indexview = 0
 
   const speech = new Speech()
@@ -60,6 +62,7 @@ const DetailBook = ({ ...props }) => {
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
+        console.log(timeuser)
 
         // console.log(res.data[0].chapter)
 
@@ -79,12 +82,37 @@ const DetailBook = ({ ...props }) => {
         console.log(error)
       });
   }
-
-
+  async function getUser() {
+    await Axios.get("http://localhost:3000/user/app/" + user_id, {}).then(async (res) => {
+      // console.log(res.data[0].continue_book.length)
+      setTimeuser(res.data[0].continue_book)
+      add_time: {
+      for (let i = 0; i < res.data[0].continue_book.length; i++) {
+        console.log('continue_book: ' + res.data[0].continue_book[i]._id)
+        console.log(props.match.params.id)
+          if (res.data[0].continue_book[i]._id == props.match.params.id) {
+            // console.log('**')
+            // console.log(res.data[0].continue_book[i].time)
+            setTime(res.data[0].continue_book[i].time)
+            break add_time;
+          } else {
+            // console.log('##')
+            setTime(0)
+          }
+        }
+      }
+      // setUser(res.data[0].continue_book)
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
+  // console.log(timeuser)
   useEffect(async () => {
+    await getUser()
     await getData()
     await checkBook(props.match.params.id)
     await setLoading(false);
+
   }, [])
 
   speech.init({
@@ -137,7 +165,7 @@ const DetailBook = ({ ...props }) => {
         onresume: () => {
           // console.log("Resume utterance");
         },
-        onpause: () => {
+        onpause: async () => {
           console.log("Pause utterance");
           setPlay(true)
         },
@@ -160,18 +188,14 @@ const DetailBook = ({ ...props }) => {
           var count = (Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
           // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
           add_view: {
-
             if (count > 5.00 && indexview == 0) {
               console.log('view up!')
               indexview = indexview + 1
-
               Axios.post("http://localhost:3000/book/updateview/" + data[0]._id, {})
                 .then((res) => {
                   console.log(res);
                 })
                 .catch((error) => console.log(error));
-
-
               break add_view;
             }
             // console.log(countview)
@@ -235,12 +259,30 @@ const DetailBook = ({ ...props }) => {
       .catch((error) => console.log(error));
   };
 
-  async function handleClick(event) {
-    // history.push("/DetailBook/" + "62434b1a6a83fb5fa8aff21b");
-    // window.location.reload(false);
-    
-  }
+  const addTime = (id, time) => {
+    const data = { user_id, time };
+    console.log('add book')
+    Axios.post("http://localhost:3000/book/continue/" + id, data, {})
+      .then((res) => {
+        // setSaved(false)
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
 
+  const removeTime = (id) => {
+    const data = { user_id };
+    console.log('remove time')
+    Axios.post("http://localhost:3000/book/removeContinue/" + id, data, {})
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+}
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -280,7 +322,7 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดผู้ฟัง : {data[0].view} ครั้ง </p>
+                      <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
@@ -294,9 +336,13 @@ const DetailBook = ({ ...props }) => {
                         onIonChange={async e => {
                           if (e.detail.value >= 95 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
+                            removeTime(data[0]._id)
                           } else {
+
                             setTime(e.detail.value)
+
                             console.log(e.detail.value)
+
                             // await playsound(e.detail.value)
                           }
                         }}
@@ -319,7 +365,7 @@ const DetailBook = ({ ...props }) => {
                       </IonRange>
                     </div>
                     <div className='mix-button'>
-                      <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => handleClick(event)}>
+                      <IonButton fill="clear" mode="ios" className='button-play-back'>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
 
@@ -329,7 +375,13 @@ const DetailBook = ({ ...props }) => {
                             <IonIcon name="play-circle-outline" ></IonIcon>
                           </IonButton >
                           :
-                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => speech.pause()} >
+                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => {
+                            speech.pause()
+                            // console.log(time)
+                            if (time > 2) {
+                              addTime(data[0]._id, time)
+                            }
+                          }} >
                             <IonIcon name="pause-circle-outline"></IonIcon>
                           </IonButton>
                       }
@@ -365,6 +417,7 @@ const DetailBook = ({ ...props }) => {
                             {episode.map((book, i) => {
                               // console.log(book)
                               return (
+
                                 <IonItem key={i} className="item-list" href='/DetailBook'>
                                   <IonThumbnail slot="start" className='image' >
                                     <IonImg src={book.image} />
@@ -375,8 +428,8 @@ const DetailBook = ({ ...props }) => {
                                     <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
                                     {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
                                   </span>
-
                                 </IonItem>
+
                               )
                             })}
                           </IonList>
