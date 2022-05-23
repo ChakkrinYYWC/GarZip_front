@@ -20,8 +20,9 @@ import UserInfo from './pages/UserInfo';
 import Changepassword from './pages/Changepassword';
 import Tab1 from './pages/HOME';
 import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+// import Tab3 from './pages/Tab3';
 import Setting from './pages/Tab4';
+import Tab3 from './pages/Tap3';
 
 
 
@@ -76,9 +77,10 @@ const App: React.FC = () => (
             <Tab2 />
           </Route>
           {/* ---------Tab3---------- */}
-          <Route path="/tab3">
+          {/* <Route path="/tab3">
             <Tab3 />
-          </Route>
+          </Route> */}
+          <Route path="/Tab3" component={Tab3}/>
          
           {/* ---------setting---------- */}
           <Route path="/setting">
@@ -103,7 +105,7 @@ const App: React.FC = () => (
             <IonIcon icon={search} />
             <IonLabel>ค้นหา</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="tab31" href="/Tab3">
             <IonIcon icon={book} />
             <IonLabel>ชั้นหนังสือ</IonLabel>
           </IonTabButton>

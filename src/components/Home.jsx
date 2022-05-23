@@ -486,6 +486,9 @@ const Home = () => {
                                             <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
                                                 <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
                                             </IonRouterLink>
+
+
+
                                             <IonRouterLink href="/Booklist/นิยาย" >
                                                 <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
                                             </IonRouterLink>
