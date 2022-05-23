@@ -26,6 +26,11 @@ const Booklist = ({ ...props }) => {
     await getData()
     await setLoading(false);
   }, [])
+
+  function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+}
+
   const user_mode = localStorage.getItem('user_mode');
   if(user_mode === 'false'){
     return (
@@ -69,7 +74,7 @@ const Booklist = ({ ...props }) => {
                       <span className="book">
                         <IonLabel className='title'>{book.name}</IonLabel>
                         <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
-                        <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                        <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.view)} ครั้ง</IonLabel>
                       </span>
                     </IonItem>
                   </IonRouterLink>
@@ -99,19 +104,16 @@ const Booklist = ({ ...props }) => {
   
             </div>
             <h1>{props.match.params.name}</h1>
-  
             {/* <IonRouterLink href='/DetailBook/' className="button-back"> */}
             <IonList className='list-book'>
               {data.map((book, i) => {
                 return (
                   <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-  
                     <IonItem key={i} className="item-list" >
-                     
                       <span className="book">
                         <IonLabel className='title'>{book.name}</IonLabel>
                         <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
-                        <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                        <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.view)} ครั้ง</IonLabel>
                       </span>
                     </IonItem>
                   </IonRouterLink>
