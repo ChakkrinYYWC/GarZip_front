@@ -52,13 +52,18 @@ const Listening = (classes, ...props) => {
 
     }
   }, [classes.currentId])
+
+  function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+}
+
   // console.log(data.sort((a, b) => (a.savebook._id > b.savebook._id ? 1 : -1)))
   return (
     <IonContent fullscreen>
       <div className='Booklist'>
         <IonList className='list-book'>
           {data.map((book, i) => {
-            console.log(book)
+            // console.log(book)
             return (
               <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
                 <IonItem key={i} className="item-list" >
@@ -69,7 +74,8 @@ const Listening = (classes, ...props) => {
                     <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
                     {/* <IonLabel className='title'>{book.savebook[0]._id}</IonLabel> */}
                     <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
-                    <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
+                    <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.savebook[0].view)} ครั้ง</IonLabel>
+                    {/* <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel> */}
                   </span>
                 </IonItem>
               </IonRouterLink>
