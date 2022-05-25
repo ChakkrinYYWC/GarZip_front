@@ -462,7 +462,7 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
+                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
