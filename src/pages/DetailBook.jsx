@@ -56,15 +56,12 @@ const DetailBook = ({ ...props }) => {
 
   const speech = new Speech()
   async function getData() {
-    await Axios.get("http://localhost:3000/book/app/detail/" + props.match.params.id, {})
+    await Axios.get("https://garzipback.herokuapp.com/book/app/detail/" + props.match.params.id, {})
       .then((res) => {
-        // console.log(res.data[0].text);
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
         console.log(timeuser)
-
-        // console.log(res.data[0].chapter)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -145,7 +142,7 @@ const DetailBook = ({ ...props }) => {
       queue: false,
       listeners: {
         onstart: () => {
-          Axios.get("http://localhost:3000/playcount", {
+          Axios.get("https://garzipback.herokuapp.com/playcount", {
           }).catch((error) => {
             console.log(error)
           });
@@ -191,7 +188,8 @@ const DetailBook = ({ ...props }) => {
             if (count > 5.00 && indexview == 0) {
               console.log('view up!')
               indexview = indexview + 1
-              Axios.post("http://localhost:3000/book/updateview/" + data[0]._id, {})
+
+              Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
                 .then((res) => {
                   console.log(res);
                 })
@@ -222,7 +220,7 @@ const DetailBook = ({ ...props }) => {
   const addBook = (id) => {
     const data = { user_id };
     console.log('add book')
-    Axios.post("http://localhost:3000/book/addFav/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/addFav/" + id, data, {})
       .then((res) => {
         setSaved(false)
         // console.log(res);
@@ -232,7 +230,7 @@ const DetailBook = ({ ...props }) => {
   const removeBook = (id) => {
     const data = { user_id };
     console.log('remove book')
-    Axios.post("http://localhost:3000/book/removeFav/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/removeFav/" + id, data, {})
       .then((res) => {
         setSaved(true)
         // console.log(res);
@@ -242,7 +240,7 @@ const DetailBook = ({ ...props }) => {
   const checkBook = async (id) => {
     const data = { user_id };
     console.log('check book')
-    await Axios.post("http://localhost:3000/book/saveBook/" + id, data, {})
+    await Axios.post("https://garzipback.herokuapp.com/book/saveBook/" + id, data, {})
       .then((res) => {
         for (let i = 0; i < res.data.length; i++) {
           // console.log(res.data[i]);
@@ -255,14 +253,28 @@ const DetailBook = ({ ...props }) => {
             setSaved(true)
           }
         }
-      })
-      .catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
   };
 
+  async function BackStory(event) {
+    console.log(data)
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/back/"+ props.match.params.id +"/"+ data[0].category, {
+    }).then((res) => {
+      window.location.replace("/DetailBook/"+res.data);
+    }).catch((error) => console.log(error));
+
+  }
+  async function FowardStory(event) {
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/next/"+ props.match.params.id +"/"+ data[0].category, {
+    }).then((res) => {
+      window.location.replace("/DetailBook/"+res.data);
+    }).catch((error) => console.log(error));
+
+  }
   const addTime = (id, time) => {
     const data = { user_id, time };
     console.log('add book')
-    Axios.post("http://localhost:3000/book/continue/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/continue/" + id, data, {})
       .then((res) => {
         // setSaved(false)
         console.log(res);
@@ -273,7 +285,7 @@ const DetailBook = ({ ...props }) => {
   const removeTime = (id) => {
     const data = { user_id };
     console.log('remove time')
-    Axios.post("http://localhost:3000/book/removeContinue/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/removeContinue/" + id, data, {})
       .then((res) => {
         console.log(res);
       })
@@ -363,7 +375,7 @@ const DetailBook = ({ ...props }) => {
                       </IonRange>
                     </div>
                     <div className='mix-button'>
-                      <IonButton fill="clear" mode="ios" className='button-play-back'>
+                      <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
 
@@ -384,7 +396,7 @@ const DetailBook = ({ ...props }) => {
                           </IonButton>
                       }
 
-                      <IonButton fill="clear" mode="ios" className='button-play-forward'>
+                      <IonButton fill="clear" mode="ios" className='button-play-forward' onClick={(event) => FowardStory(event)}>
                         <IonIcon name="play-forward-outline"></IonIcon >
                       </IonButton>
                     </div>
@@ -461,6 +473,7 @@ const DetailBook = ({ ...props }) => {
                     </div>
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
+                      <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                       <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>

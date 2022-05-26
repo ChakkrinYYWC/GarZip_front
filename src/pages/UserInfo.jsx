@@ -13,7 +13,7 @@ const UserInfo = () => {
   const user_name = localStorage.getItem('user_name')
 
   async function getData() {
-    await Axios.post("http://localhost:3000/user", {
+    await Axios.post("https://garzipback.herokuapp.com/user", {
       username: user_name
     }).then((res) => {
       // console.log(res.data[0])
@@ -24,7 +24,7 @@ const UserInfo = () => {
   }
 
   async function save() {
-    await Axios.put("http://localhost:3000/user/all", {
+    await Axios.put("https://garzipback.herokuapp.com/user/all", {
       data: { id: data[0]._id, username: username, email: email }
     }).then((res) => {
       window.location.href = "/setting";

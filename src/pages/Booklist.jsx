@@ -12,7 +12,7 @@ const Booklist = ({ ...props }) => {
   const [loading, setLoading] = useState(true);
 
   async function getData() {
-    await Axios.get("http://localhost:3000/book/app/" + props.match.params.name, {})
+    await Axios.get("https://garzipback.herokuapp.com/book/app/" + props.match.params.name, {})
       .then((res) => {
         // console.log(res.data);
         setData(res.data)

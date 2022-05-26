@@ -18,7 +18,7 @@ const LogIn = () => {
   const [password, setPassword] = useState('')
 
   async function submit() {
-    await Axios.post("http://localhost:3000/auth/login", {
+    await Axios.post("https://garzipback.herokuapp.com/auth/login", {
       username: username, password: password
     }).then((res) => {
       if(res){
@@ -38,7 +38,7 @@ const LogIn = () => {
 
   async function changepasswordRequest(data) {
     const email = data.email
-    await Axios.post("http://localhost:3000/auth/passwordforgotten", {
+    await Axios.post("https://garzipback.herokuapp.com/auth/passwordforgotten", {
       email: email
     }).catch((error) => {
       console.log(error)
