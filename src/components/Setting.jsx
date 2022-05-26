@@ -9,7 +9,7 @@ const Setting = () => {
 
   async function changemode(){
     console.log('changemode')
-    await Axios.post("http://localhost:3000/user/changemode", {
+    await Axios.post("https://garzipback.herokuapp.com/user/changemode", {
       id: user_id, mode: user_mode
     }).then((res) => {
       if(res){
