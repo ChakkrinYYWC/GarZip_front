@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@awesome-cordova-plugins/keyboard": "^5.40.0",
-    "@capacitor/android": "3.4.0",
+    "@capacitor/android": "3.5.1",
     "@capacitor/app": "^1.1.0",
     "@capacitor/core": "^3.4.0",
     "@capacitor/haptics": "1.1.4",

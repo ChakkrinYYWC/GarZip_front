@@ -142,14 +142,15 @@ const DetailBook = ({ ...props }) => {
       queue: false,
       listeners: {
         onstart: () => {
+          setPlay(false)
           Axios.get("https://garzipback.herokuapp.com/playcount", {
           }).catch((error) => {
             console.log(error)
           });
           console.log("Start utterance");
-          setPlay(false)
         },
         onend: () => {
+          setPlay(true)
           console.log("End utterance");
           // console.log("sumsentencetime "+sumsentencetime)
           // allsentencetime += sumsentencetime/word
@@ -157,14 +158,13 @@ const DetailBook = ({ ...props }) => {
           // sumsentencetime = 0
           // sentence +=1
           console.log("readingtime " + readingtime)
-          setPlay(true)
         },
         onresume: () => {
           // console.log("Resume utterance");
         },
         onpause: async () => {
-          console.log("Pause utterance");
           setPlay(true)
+          console.log("Pause utterance");
         },
         onboundary: event => {
           // console.log(
@@ -201,6 +201,7 @@ const DetailBook = ({ ...props }) => {
         }
       }
     }).then(() => {
+      setPlay(true)
     }).catch(e => {
       console.error("An error occurred :", e)
     })
@@ -531,10 +532,10 @@ const DetailBook = ({ ...props }) => {
                             หยุด
                           </IonButton>
                       }
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
                         ก่อนหน้า
                       </IonButton >
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => FowardStory(event)}>
                         ถัดไป
                       </IonButton>
 
