@@ -9,7 +9,7 @@ import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
 import { useHistory, withRouter, useNavigate } from "react-router-dom";
-const user_id = localStorage.getItem("user_id");
+
 
 const items = [
   {
@@ -39,6 +39,7 @@ const DetailBook = ({ ...props }) => {
 
   // const [name, setName] = useState(props.match.params.id)
   const [data, setData] = useState([])
+  const [timeuser, setTimeuser] = useState([])
   const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(true);
   const [story, setStory] = useState('')
@@ -48,8 +49,9 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
-  const [countview, setCountview] = useState(false)
+  // const [countTime, setCountTime] = useState(true)
   const history = useHistory();
+  const user_id = localStorage.getItem("user_id");
   var indexview = 0
 
   const speech = new Speech()
@@ -59,6 +61,7 @@ const DetailBook = ({ ...props }) => {
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
+        console.log(timeuser)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -76,12 +79,37 @@ const DetailBook = ({ ...props }) => {
         console.log(error)
       });
   }
-
-
+  async function getUser() {
+    await Axios.get("http://localhost:3000/user/app/" + user_id, {}).then(async (res) => {
+      // console.log(res.data[0].continue_book.length)
+      setTimeuser(res.data[0].continue_book)
+      add_time: {
+        for (let i = 0; i < res.data[0].continue_book.length; i++) {
+          console.log('continue_book: ' + res.data[0].continue_book[i]._id)
+          console.log(props.match.params.id)
+          if (res.data[0].continue_book[i]._id == props.match.params.id) {
+            // console.log('**')
+            // console.log(res.data[0].continue_book[i].time)
+            setTime(res.data[0].continue_book[i].time)
+            break add_time;
+          } else {
+            // console.log('##')
+            setTime(0)
+          }
+        }
+      }
+      // setUser(res.data[0].continue_book)
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
+  // console.log(timeuser)
   useEffect(async () => {
+    await getUser()
     await getData()
     await checkBook(props.match.params.id)
     await setLoading(false);
+
   }, [])
 
   speech.init({
@@ -134,7 +162,7 @@ const DetailBook = ({ ...props }) => {
         onresume: () => {
           // console.log("Resume utterance");
         },
-        onpause: () => {
+        onpause: async () => {
           console.log("Pause utterance");
           setPlay(true)
         },
@@ -157,7 +185,6 @@ const DetailBook = ({ ...props }) => {
           var count = (Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
           // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
           add_view: {
-
             if (count > 5.00 && indexview == 0) {
               console.log('view up!')
               indexview = indexview + 1
@@ -167,8 +194,6 @@ const DetailBook = ({ ...props }) => {
                   console.log(res);
                 })
                 .catch((error) => console.log(error));
-
-
               break add_view;
             }
             // console.log(countview)
@@ -246,7 +271,30 @@ const DetailBook = ({ ...props }) => {
     }).catch((error) => console.log(error));
 
   }
+  const addTime = (id, time) => {
+    const data = { user_id, time };
+    console.log('add book')
+    Axios.post("https://garzipback.herokuapp.com/book/continue/" + id, data, {})
+      .then((res) => {
+        // setSaved(false)
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
 
+  const removeTime = (id) => {
+    const data = { user_id };
+    console.log('remove time')
+    Axios.post("https://garzipback.herokuapp.com/book/removeContinue/" + id, data, {})
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+  }
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -286,7 +334,7 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดผู้ฟัง : {data[0].view} ครั้ง </p>
+                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
@@ -300,9 +348,11 @@ const DetailBook = ({ ...props }) => {
                         onIonChange={async e => {
                           if (e.detail.value >= 95 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
+                            removeTime(data[0]._id)
                           } else {
                             setTime(e.detail.value)
                             console.log(e.detail.value)
+
                             // await playsound(e.detail.value)
                           }
                         }}
@@ -335,7 +385,13 @@ const DetailBook = ({ ...props }) => {
                             <IonIcon name="play-circle-outline" ></IonIcon>
                           </IonButton >
                           :
-                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => speech.pause()} >
+                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => {
+                            speech.pause()
+                            // console.log(time)
+                            if (time > 2) {
+                              addTime(data[0]._id, time)
+                            }
+                          }} >
                             <IonIcon name="pause-circle-outline"></IonIcon>
                           </IonButton>
                       }
@@ -371,6 +427,7 @@ const DetailBook = ({ ...props }) => {
                             {episode.map((book, i) => {
                               // console.log(book)
                               return (
+
                                 <IonItem key={i} className="item-list" href='/DetailBook'>
                                   <IonThumbnail slot="start" className='image' >
                                     <IonImg src={book.image} />
@@ -381,8 +438,8 @@ const DetailBook = ({ ...props }) => {
                                     <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
                                     {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
                                   </span>
-
                                 </IonItem>
+
                               )
                             })}
                           </IonList>
@@ -418,6 +475,7 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
+                      <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       <IonRange
@@ -431,6 +489,7 @@ const DetailBook = ({ ...props }) => {
                         onIonChange={async e => {
                           if (e.detail.value >= 95 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
+                            removeTime(data[0]._id)
                           } else {
                             setTime(e.detail.value)
                             console.log(e.detail.value)
@@ -463,7 +522,12 @@ const DetailBook = ({ ...props }) => {
                             ฟัง
                           </IonButton >
                           :
-                          <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => speech.pause()} >
+                          <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => {
+                            speech.pause()
+                            if (time > 2) {
+                              addTime(data[0]._id, time)
+                            }
+                          }} >
                             หยุด
                           </IonButton>
                       }
@@ -474,9 +538,20 @@ const DetailBook = ({ ...props }) => {
                         ถัดไป
                       </IonButton>
 
-                      <IonButton fill="clear" mode="ios" className="savebuttonBlind">
-                        บันทึก
-                      </IonButton>
+                      {
+                        saved ?
+                          <IonRouterLink onClick={() => addBook(data[0]._id)}>
+                            <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              บันทึก
+                            </IonButton>
+                          </IonRouterLink>
+                          :
+                          <IonRouterLink onClick={() => removeBook(data[0]._id)} >
+                            <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              ยกเลิกบันทึก
+                            </IonButton>
+                          </IonRouterLink>
+                      }
                     </center>
 
                     <div className='Check-pitch'>
@@ -495,21 +570,30 @@ const DetailBook = ({ ...props }) => {
                       <div className='story'>{data[0].trailer}</div>
                     </div>
 
-                    <div className='episode-Booklist'>
-                      <h1>ตอน</h1>
-                      <IonList className='list-book'>
-                        {items.map((image, i) => (
-                          <IonItem key={i} className="item-list" href='/DetailBook'>
-                            <span className="book">
-                              <IonLabel className='title'>{image.text}</IonLabel>
-                              <IonLabel className='detial'>เขียนโดย : {image.who}</IonLabel>
-                              <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel>
-                            </span>
+                    {
+                      episode == undefined ?
+                        <>
+                        </>
+                        :
+                        <div className='episode-Booklist'>
+                          <h1>ตอน</h1>
+                          <IonList className='list-book'>
+                            {episode.map((book, i) => {
+                              return (
+                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                  <span className="book">
+                                    <IonLabel className='title'>{book.name}</IonLabel>
+                                    <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
+                                    {/* <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel> */}
+                                  </span>
 
-                          </IonItem>
-                        ))}
-                      </IonList>
-                    </div>
+                                </IonItem>
+                              )
+                            })}
+                          </IonList>
+                        </div>
+                    }
+
                   </div>
 
                 </IonContent>

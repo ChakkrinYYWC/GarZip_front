@@ -14,6 +14,8 @@ const Listening = (classes, ...props) => {
   const [lastdata, setLastdata] = useState()
   const [addLast, setAddLast] = useState()
   const [filterName, setFilterName] = useState()
+  const user_mode = localStorage.getItem('user_mode');
+  console.log(props)
 
   async function getData() {
     await Axios.get("https://garzipback.herokuapp.com/book/bookshelf/" + user_id, {})
@@ -37,8 +39,8 @@ const Listening = (classes, ...props) => {
       // window.location.reload();
       if (classes.currentId == 1) {
         console.log('เพิ่มใหม่ล่าสุด')
-      // } else if (classes.currentId == 2) {
-      //   console.log('ฟังล่าสุด**')
+        // } else if (classes.currentId == 2) {
+        //   console.log('ฟังล่าสุด**')
         // setData(data.sort((a, b) => (a._id > b._id ? -1 : 1)))
       } else if (classes.currentId == 3) {
         console.log('เรียงตามชื่อเรื่อง')
@@ -52,34 +54,65 @@ const Listening = (classes, ...props) => {
 
     }
   }, [classes.currentId])
-  // console.log(data.sort((a, b) => (a.savebook._id > b.savebook._id ? 1 : -1)))
-  return (
-    <IonContent fullscreen>
-      <div className='Booklist'>
-        <IonList className='list-book'>
-          {data.map((book, i) => {
-            console.log(book)
-            return (
-              <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
-                <IonItem key={i} className="item-list" >
-                  <IonThumbnail slot="start" className='image'>
-                    <IonImg src={book.savebook[0].image} />
-                  </IonThumbnail>
-                  <span className="book">
-                    <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
-                    {/* <IonLabel className='title'>{book.savebook[0]._id}</IonLabel> */}
-                    <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
-                    <IonLabel className='detial'>ระยะเวลา : 00.00 น.</IonLabel>
-                  </span>
-                </IonItem>
-              </IonRouterLink>
-            )
 
-          })}
-        </IonList>
-      </div>
-    </IonContent>
-  );
+  function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+  }
+  // console.log(data.sort((a, b) => (a.savebook._id > b.savebook._id ? 1 : -1)))
+
+  if (user_mode === 'false') {
+    return (
+      <IonContent fullscreen>
+        <div className='Booklist'>
+          <IonList className='list-book'>
+            {data.map((book, i) => {
+              return (
+                <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
+                  <IonItem key={i} className="item-list" >
+                    <IonThumbnail slot="start" className='image'>
+                      <IonImg src={book.savebook[0].image} />
+                    </IonThumbnail>
+                    <span className="book">
+                      <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
+                      <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
+                      <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.savebook[0].view)} ครั้ง</IonLabel>
+                    </span>
+                  </IonItem>
+                </IonRouterLink>
+              )
+            })
+            }
+          </IonList>
+        </div>
+      </IonContent>
+    )
+  } else {
+    return (
+      <IonContent fullscreen>
+        <div className='name_screen'></div>
+        <div className='Booklist'>
+          <IonList className='list-book'>
+            {
+              data.map((book, i) => {
+                return (
+                  <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
+                    <IonItem key={i} className="item-list" >
+                      <span className="book">
+                        <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
+                        <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
+                        <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.savebook[0].view)} ครั้ง</IonLabel>
+                      </span>
+                    </IonItem>
+                  </IonRouterLink>
+                )
+              })
+            }
+          </IonList>
+        </div>
+      </IonContent>
+    )
+  }
 };
+
 
 export default Listening;

@@ -9,6 +9,7 @@ import {
 import Axios from "axios";
 import moment from "moment";
 import { Swiper, SwiperSlide } from 'swiper/react';
+const user_id = localStorage.getItem("user_id");
 
 const slideOpts = {
     initialSlide: 1,
@@ -21,6 +22,7 @@ const Home = () => {
     // const { state, dispatch } = useContext(AppContext);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([])
+    const [user, setUser] = useState([])
 
     const doPlay = {
 
@@ -31,6 +33,18 @@ const Home = () => {
             .then((res) => {
                 // console.log(res.data[0]);
                 setData(res.data)
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log('#1')
+                console.log(error)
+            });
+    }
+    async function getUser() {
+        await Axios.get("http://localhost:3000/book/continue/"+ user_id, {})
+            .then((res) => {
+                // console.log(res.data);
+                setUser(res.data)
             })
             .catch((error) => {
                 console.log('#2')
@@ -39,8 +53,13 @@ const Home = () => {
     }
     useEffect(async () => {
         await getData()
-        await setLoading(false);
+        await getUser()
+        // await setLoading(false);
     }, [])
+
+    function kFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+    }
 
     const user_mode = localStorage.getItem('user_mode');
     if (user_mode === 'false') {
@@ -48,7 +67,8 @@ const Home = () => {
             <>
                 {
                     loading ?
-                        <div>loading...</div>
+                        // <div>loading...</div>
+                        <></>
                         :
                         <>
                             <IonPage className="HomePage">
@@ -64,19 +84,21 @@ const Home = () => {
                                         <Swiper
                                             sspaceBetween={0}
                                             slidesPerView={3.5} >
-                                            {data.sort((a, b) => (a._id > b._id ? -1 : 1)).filter((_, idx) => (idx < 4)).map((book, index) => {
+                                            {user.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
+                                            // {user.map((book, index) => {
+                                                console.log(book.continue_book[0])
                                                 return (
                                                     <>
                                                         <SwiperSlide className='Slide-book' >
-                                                            <IonRouterLink href={"/DetailBook/" + book._id} >
+                                                            <IonRouterLink href={"/DetailBook/" + book.continue_book[0]._id} >
                                                             <IonCard
                                                                     className='Card-book'
                                                                     onClick={() => doPlay}>
                                                                     <span className='image-b'>
-                                                                        <img src={book.image} className='img-book' />
+                                                                        <img src={book.continue_book[0].image} className='img-book' />
                                                                     </span>
                                                                     <IonCardContent className='CardContent'>
-                                                                        <IonCardTitle className='title'>{book.name}</IonCardTitle>
+                                                                        <IonCardTitle className='title'>{book.continue_book[0].name}</IonCardTitle>
                                                                     </IonCardContent>
                                                                 </IonCard>
                                                            </IonRouterLink>
@@ -109,7 +131,7 @@ const Home = () => {
                                                                 <IonLabel className='title'>{book.name}</IonLabel>
                                                                 <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
                                                                 <IonLabel className='detial'>ระยะเวลา : {book.trailer} น.</IonLabel>
-                                                                <IonLabel className='detial'>ยอดวิว : {book.view} ครั้ง</IonLabel>
+                                                                <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.view)} ครั้ง</IonLabel>
                                                             </IonLabel>
                                                         </IonItem>
                                                     </IonRouterLink>
@@ -464,6 +486,9 @@ const Home = () => {
                                             <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
                                                 <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
                                             </IonRouterLink>
+
+
+
                                             <IonRouterLink href="/Booklist/นิยาย" >
                                                 <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
                                             </IonRouterLink>
