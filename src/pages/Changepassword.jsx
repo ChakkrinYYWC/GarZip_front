@@ -19,7 +19,7 @@ const Changepassword = () => {
                 confirm_newpassword: confirm_newpassword
             }
         }).then((res) => {
-            window.location.href = "/setting";
+            window.location.replace("/setting");
         }).catch((error) => {
             console.log(error)
         });
