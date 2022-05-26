@@ -27,7 +27,7 @@ const Home = () => {
     };
 
     async function getData() {
-        await Axios.get("http://localhost:3000/book/app", {})
+        await Axios.get("https://garzipback.herokuapp.com/book/app", {})
             .then((res) => {
                 // console.log(res.data[0]);
                 setData(res.data)

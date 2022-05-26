@@ -11,7 +11,7 @@ const Changepassword = () => {
 
     async function submit() {
         const user_id = localStorage.getItem('user_id')
-        await Axios.put("http://localhost:3000/user/password", {
+        await Axios.put("https://garzipback.herokuapp.com/user/password", {
             data: {
                 id: user_id,
                 oldpassword: oldpassword,

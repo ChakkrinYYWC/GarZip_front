@@ -19,7 +19,7 @@ const LogIn = () => {
     console.log(password)
     console.log(c_password)
     console.log(mode)
-    await Axios.post("http://localhost:3000/auth/register", {
+    await Axios.post("https://garzipback.herokuapp.com/auth/register", {
       username: username, email: email, password: password, c_password: c_password, mode: mode
     }).then((res) => {
       window.location.replace("/login");
