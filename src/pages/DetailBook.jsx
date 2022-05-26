@@ -488,7 +488,7 @@ const DetailBook = ({ ...props }) => {
                         value={time}
                         debounce="1300"
                         onIonChange={async e => {
-                          if (e.detail.value >= 95 && e.detail.value <= 110) {
+                          if (e.detail.value >= 94 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
                             removeTime(data[0]._id)
                           } else {
@@ -532,10 +532,10 @@ const DetailBook = ({ ...props }) => {
                             หยุด
                           </IonButton>
                       }
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
                         ก่อนหน้า
                       </IonButton >
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => FowardStory(event)}>
                         ถัดไป
                       </IonButton>
 

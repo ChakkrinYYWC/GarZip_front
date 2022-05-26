@@ -483,7 +483,7 @@ const Home = () => {
                                             <IonRouterLink href="/Booklist/ยอดนิยม" >
                                                 <IonLabel className='title-category-Blind'> ยอดนิยม </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
+                                            <IonRouterLink href="/Booklist/ใหม่ล่าสุด" >
                                                 <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
                                             </IonRouterLink>
 
