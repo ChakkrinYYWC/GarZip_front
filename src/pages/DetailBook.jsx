@@ -49,19 +49,17 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
-  // const [countTime, setCountTime] = useState(true)
   const history = useHistory();
   const user_id = localStorage.getItem("user_id");
   var indexview = 0
-
   const speech = new Speech()
+
   async function getData() {
     await Axios.get("https://garzipback.herokuapp.com/book/app/detail/" + props.match.params.id, {})
       .then((res) => {
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
-        console.log(timeuser)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -118,6 +116,7 @@ const DetailBook = ({ ...props }) => {
     'rate': 1,
     'pitch': pitch,
     'splitSentences': false,
+    // 'voice':'Google UK English Male',
     // 'listeners': {
     //   'onvoiceschanged': (voices) => {
     //     console.log("Event voiceschanged", voices)
@@ -133,7 +132,6 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    console.log('pitch::', pitch)
     const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
     console.log(storysliced)
@@ -147,51 +145,29 @@ const DetailBook = ({ ...props }) => {
           }).catch((error) => {
             console.log(error)
           });
-          console.log("Start utterance");
         },
         onend: () => {
           setPlay(true)
-          console.log("End utterance");
-          // console.log("sumsentencetime "+sumsentencetime)
-          // allsentencetime += sumsentencetime/word
-          // // console.log("allsentencetime "+allsentencetime)
-          // sumsentencetime = 0
-          // sentence +=1
-          console.log("readingtime " + readingtime)
         },
         onresume: () => {
-          // console.log("Resume utterance");
+          // setPlay(false)
         },
         onpause: async () => {
           setPlay(true)
-          console.log("Pause utterance");
         },
         onboundary: event => {
-          // console.log(
-          //   event.name +
-          //   " boundary reached after " +
-          //   ((event.elapsedTime) / 1000) +
-          //   " seconds. At char " +
-          //   event.charIndex
-          // );
           readingtime = (((event.elapsedTime) / 1000) / event.charIndex)
-          // if(Math.round((event.charIndex/(asdf.length/100)) == 0)||(Math.round(event.charIndex/(asdf.length/100)) == Infinity)){
-          //   console.log('finish')
-          // }else{
-          //   setTime(Math.round(event.charIndex/(asdf.length/100)))
-          // }
-          // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
           setTime(Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
           var count = (Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
-          // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
+
           add_view: {
             if (count > 5.00 && indexview == 0) {
-              console.log('view up!')
+              // console.log('view up!')
               indexview = indexview + 1
 
               Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
                 .then((res) => {
-                  console.log(res);
+                  // console.log(res);
                 })
                 .catch((error) => console.log(error));
               break add_view;
@@ -201,7 +177,7 @@ const DetailBook = ({ ...props }) => {
         }
       }
     }).then(() => {
-      setPlay(true)
+      // setPlay(true)
     }).catch(e => {
       console.error("An error occurred :", e)
     })
@@ -382,12 +358,22 @@ const DetailBook = ({ ...props }) => {
 
                       {
                         play ?
-                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
+                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => {
+                            // if(resume == false){
+                            //   console.log('play')
+                              playsound()
+                              setPlay(false)
+                            // }if(resume == true){
+                            //   console.log('resume')
+                            //   speech.resume()
+                            // }
+                          }}>
                             <IonIcon name="play-circle-outline" ></IonIcon>
                           </IonButton >
                           :
                           <IonButton fill="clear" mode="ios" className='button-play' onClick={() => {
                             speech.pause()
+                            // setPlay(true)
                             // console.log(time)
                             if (time > 2) {
                               addTime(data[0]._id, time)
