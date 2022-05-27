@@ -354,30 +354,14 @@ const DetailBook = ({ ...props }) => {
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
                       <div>
-                        <button onClick={() => {
-
-                        }}>Play</button>
                       </div>
-                      {
-                        test == undefined ?
-                          <></>
-                          :
-
-                          <ReactAudioPlayer
-                            // scr={test}
-                            src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                            autoPlay
-                            controls
-                          />
-                      }
-
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
-                      <IonRange
+                      {/* <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -396,7 +380,8 @@ const DetailBook = ({ ...props }) => {
                             // await playsound(e.detail.value)
                           }
                         }}
-                      >
+                      > 
+                        
                         <IonLabel slot="start" className='start-time'>
                           <IonText>
                             <b>
@@ -412,9 +397,15 @@ const DetailBook = ({ ...props }) => {
                             </b>
                           </IonText>
                         </IonLabel>
-                      </IonRange>
+                      </IonRange>*/}
+                      <ReactAudioPlayer
+                        // scr={test}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
                     </div>
-                    <div className='mix-button'>
+                    {/* <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
@@ -439,9 +430,9 @@ const DetailBook = ({ ...props }) => {
 
                       <IonButton fill="clear" mode="ios" className='button-play-forward' onClick={(event) => FowardStory(event)}>
                         <IonIcon name="play-forward-outline"></IonIcon >
-                      </IonButton>
-                    </div>
-                    <div className='Check-pitch'>
+                      </IonButton> 
+                    </div>*/}
+                    {/* <div className='Check-pitch'>
                       <span className='G_Checkbox'>
                         <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
                         <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
@@ -450,7 +441,7 @@ const DetailBook = ({ ...props }) => {
                         <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
                         <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
                       </span>
-                    </div>
+                    </div> */}
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
@@ -519,7 +510,7 @@ const DetailBook = ({ ...props }) => {
                       <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
-                      <IonRange
+                      {/* <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -553,11 +544,17 @@ const DetailBook = ({ ...props }) => {
                             </b>
                           </IonText>
                         </IonLabel>
-                      </IonRange>
+                      </IonRange> */}
+                      <ReactAudioPlayer
+                        // scr={test}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
                     </div>
                     <center className='group_buttonn'>
 
-                      {
+                      {/* {
                         play ?
                           <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => playsound()}>
                             ฟัง
@@ -571,7 +568,7 @@ const DetailBook = ({ ...props }) => {
                           }} >
                             หยุด
                           </IonButton>
-                      }
+                      } */}
                       <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
                         ก่อนหน้า
                       </IonButton >
@@ -595,7 +592,7 @@ const DetailBook = ({ ...props }) => {
                       }
                     </center>
 
-                    <div className='Check-pitch'>
+                    {/* <div className='Check-pitch'>
                       <div>
                         <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
                         <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
@@ -604,7 +601,7 @@ const DetailBook = ({ ...props }) => {
                         <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
                         <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
