@@ -9,6 +9,7 @@ import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
 import { useHistory, withRouter, useNavigate } from "react-router-dom";
+import ReactAudioPlayer from 'react-audio-player';
 
 
 const items = [
@@ -49,8 +50,10 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
+  const [test, setTest] = useState('')
+  // const audio = new Audio()
   // const [countTime, setCountTime] = useState(true)
-  const history = useHistory();
+  // const history = useHistory();
   const user_id = localStorage.getItem("user_id");
   var indexview = 0
 
@@ -62,6 +65,7 @@ const DetailBook = ({ ...props }) => {
         setData(res.data)
         setEpisode(res.data[0].chapter)
         console.log(timeuser)
+        setTest(res.data[0].voice)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -80,7 +84,7 @@ const DetailBook = ({ ...props }) => {
       });
   }
   async function getUser() {
-    await Axios.get("http://localhost:3000/user/app/" + user_id, {}).then(async (res) => {
+    await Axios.get("https://garzipback.herokuapp.com/user/app/" + user_id, {}).then(async (res) => {
       // console.log(res.data[0].continue_book.length)
       setTimeuser(res.data[0].continue_book)
       add_time: {
@@ -259,16 +263,16 @@ const DetailBook = ({ ...props }) => {
 
   async function BackStory(event) {
     console.log(data)
-    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/back/"+ props.match.params.id +"/"+ data[0].category, {
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/back/" + props.match.params.id + "/" + data[0].category, {
     }).then((res) => {
-      window.location.replace("/DetailBook/"+res.data);
+      window.location.replace("/DetailBook/" + res.data);
     }).catch((error) => console.log(error));
 
   }
   async function FowardStory(event) {
-    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/next/"+ props.match.params.id +"/"+ data[0].category, {
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/next/" + props.match.params.id + "/" + data[0].category, {
     }).then((res) => {
-      window.location.replace("/DetailBook/"+res.data);
+      window.location.replace("/DetailBook/" + res.data);
     }).catch((error) => console.log(error));
 
   }
@@ -296,6 +300,44 @@ const DetailBook = ({ ...props }) => {
   function kFormatter(num) {
     return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
   }
+
+  function playAudio() {
+    console.log('****')
+    var msg = new SpeechSynthesisUtterance('Help me with this code please?');
+    msg.pitch = 0;
+    msg.rate = .6;
+    window.speechSynthesis.speak(msg);
+
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[10]; // Note: some voices don't support altering params
+    msg.voiceURI = 'native';
+    msg.volume = 1; // 0 to 1
+    msg.rate = 1.2; // 0.1 to 10
+    msg.pitch = 2; //0 to 2
+    msg.text = 'Sure. This code plays "Hello World" for you';
+    msg.lang = 'en-US';
+
+    msg.onend = function (e) {
+      var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
+      msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
+      msg1.pitch = 2; //0 to 2
+      msg1.rate = 1.2; //0 to 2
+      // start your audio loop.
+      speechSynthesis.speak(msg1);
+      console.log('Finished in ' + e.elapsedTime + ' seconds.');
+    };
+
+    speechSynthesis.speak(msg);
+  }
+
+  // const audio = new Audio(
+  //   "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
+  // );
+
+  // const start = () => {
+  //   audio.play();
+  // };
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -333,6 +375,25 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
+                      <div>
+                        <button onClick={() => {
+
+                        }}>Play</button>
+                      </div>
+                      {
+                        test == undefined ?
+                          <></>
+                          :
+
+                          <ReactAudioPlayer
+                            // scr={test}
+                            src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                            autoPlay
+                            controls
+                          />
+                      }
+
+                      {/* <p>เขียนโดย : {data[0].voice}</p> */}
                       <p>เขียนโดย : {data[0].auther}</p>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
@@ -382,7 +443,7 @@ const DetailBook = ({ ...props }) => {
 
                       {
                         play ?
-                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
+                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playAudio()}>
                             <IonIcon name="play-circle-outline" ></IonIcon>
                           </IonButton >
                           :
