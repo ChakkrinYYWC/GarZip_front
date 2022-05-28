@@ -146,6 +146,7 @@ const DetailBook = ({ ...props }) => {
       queue: false,
       listeners: {
         onstart: () => {
+          console.log('#start')
           setPlay(false)
           Axios.get("https://garzipback.herokuapp.com/playcount", {
           }).catch((error) => {
@@ -167,6 +168,7 @@ const DetailBook = ({ ...props }) => {
           // console.log("Resume utterance");
         },
         onpause: async () => {
+          console.log('#pause')
           setPlay(true)
           console.log("Pause utterance");
         },
@@ -205,12 +207,18 @@ const DetailBook = ({ ...props }) => {
         }
       }
     }).then(() => {
+      console.log('#then')
       setPlay(true)
+      // speech.start()
+      // console.log('#then 2')
+      // setPlay(false)
+
     }).catch(e => {
+      console.log('#catch')
       console.error("An error occurred :", e)
     })
   }
-
+  // console.log(play)
   // async function onPlay() {
   //   setPlay(false)
   //   playsound()
@@ -375,26 +383,16 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
-                      <div>
-                        <button onClick={() => {
 
-                        }}>Play</button>
-                      </div>
-                      {
-                        test == undefined ?
-                          <></>
-                          :
-
-                          <ReactAudioPlayer
-                            // scr={test}
-                            src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                            autoPlay
-                            controls
-                          />
-                      }
+                      <ReactAudioPlayer
+                        // scr={`data[0].voice`}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
 
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
-                      <p>เขียนโดย : {data[0].auther}</p>
+                      <h4>เขียนโดย : {data[0].auther}</h4>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
@@ -443,7 +441,7 @@ const DetailBook = ({ ...props }) => {
 
                       {
                         play ?
-                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playAudio()}>
+                          <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
                             <IonIcon name="play-circle-outline" ></IonIcon>
                           </IonButton >
                           :
@@ -453,6 +451,7 @@ const DetailBook = ({ ...props }) => {
                             if (time > 2) {
                               addTime(data[0]._id, time)
                             }
+
                           }} >
                             <IonIcon name="pause-circle-outline"></IonIcon>
                           </IonButton>
@@ -535,9 +534,9 @@ const DetailBook = ({ ...props }) => {
                     </div>
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
-                      <p>เขียนโดย : {data[0].auther}</p>
-                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p>
+                      <h4><p>เขียนโดย : {data[0].auther}</p></h4>
+                      <h4><p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p> </h4>
+                      <h4><p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p> </h4>
                     </div>
                     <div className='players'>
                       <IonRange
