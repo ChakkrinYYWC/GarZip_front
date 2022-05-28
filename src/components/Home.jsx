@@ -29,7 +29,7 @@ const Home = () => {
     };
 
     async function getData() {
-        await Axios.get("http://localhost:3000/book/app", {})
+        await Axios.get("https://garzipback.herokuapp.com/book/app", {})
             .then((res) => {
                 // console.log(res.data[0]);
                 setData(res.data)
@@ -41,7 +41,7 @@ const Home = () => {
             });
     }
     async function getUser() {
-        await Axios.get("http://localhost:3000/book/continue/"+ user_id, {})
+        await Axios.get("https://garzipback.herokuapp.com/book/continue/" + user_id, {})
             .then((res) => {
                 // console.log(res.data);
                 setUser(res.data)
@@ -58,7 +58,7 @@ const Home = () => {
     }, [])
 
     function kFormatter(num) {
-        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
     }
 
     const user_mode = localStorage.getItem('user_mode');
@@ -85,13 +85,13 @@ const Home = () => {
                                             sspaceBetween={0}
                                             slidesPerView={3.5} >
                                             {user.sort((a, b) => (a._id > b._id ? -1 : 1)).map((book, index) => {
-                                            // {user.map((book, index) => {
+                                                // {user.map((book, index) => {
                                                 console.log(book.continue_book[0])
                                                 return (
                                                     <>
                                                         <SwiperSlide className='Slide-book' >
                                                             <IonRouterLink href={"/DetailBook/" + book.continue_book[0]._id} >
-                                                            <IonCard
+                                                                <IonCard
                                                                     className='Card-book'
                                                                     onClick={() => doPlay}>
                                                                     <span className='image-b'>
@@ -101,7 +101,7 @@ const Home = () => {
                                                                         <IonCardTitle className='title'>{book.continue_book[0].name}</IonCardTitle>
                                                                     </IonCardContent>
                                                                 </IonCard>
-                                                           </IonRouterLink>
+                                                            </IonRouterLink>
                                                         </SwiperSlide>
 
                                                     </>
@@ -483,37 +483,37 @@ const Home = () => {
                                             <IonRouterLink href="/Booklist/ยอดนิยม" >
                                                 <IonLabel className='title-category-Blind'> ยอดนิยม </IonLabel>
                                             </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/เรื่องใหม่ล่าสุด" >
+                                            <IonRouterLink href="/Booklist/ใหม่ล่าสุด" >
                                                 <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
                                             </IonRouterLink>
 
 
-
-                                            <IonRouterLink href="/Booklist/นิยาย" >
-                                                <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/ธุรกิจ" >
-                                                <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/นิทาน" >
-                                                <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklistศาสนา" >
-                                                <IonLabel className='title-category-Blind'> ศาสนา </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/บทความ" >
-                                                <IonLabel className='title-category-Blind'> บทความ </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/สืบสวน" >
-                                                <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/จิตวิทยา " >
-                                                <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
-                                            </IonRouterLink>
-                                            <IonRouterLink href="/Booklist/ทั่วไป" >
-                                                <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
-                                            </IonRouterLink>
-
+                                           
+                                                <IonRouterLink href="/Booklist/นิยาย" >
+                                                    <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                                    <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/นิทาน" >
+                                                    <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklistศาสนา" >
+                                                 <IonLabel className='title-category-Blind'>ศาสนา </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/บทความ" >
+                                                    <IonLabel className='title-category-Blind'> บทความ </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/สืบสวน" >
+                                                    <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/จิตวิทยา " >
+                                                    <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
+                                                </IonRouterLink>
+                                                <IonRouterLink href="/Booklist/ทั่วไป" >
+                                                    <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
+                                                </IonRouterLink>
+                                            
                                         </IonLabel>
                                     </IonItem>
                                     {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}

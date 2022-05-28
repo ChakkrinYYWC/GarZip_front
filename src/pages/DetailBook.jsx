@@ -9,6 +9,7 @@ import Speech from 'speak-tts'
 import { wait } from '@testing-library/react';
 import { emit } from 'process';
 import { useHistory, withRouter, useNavigate } from "react-router-dom";
+import ReactAudioPlayer from 'react-audio-player';
 
 
 const items = [
@@ -49,22 +50,22 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
+  const [test, setTest] = useState('')
+  // const audio = new Audio()
   // const [countTime, setCountTime] = useState(true)
-  const history = useHistory();
+  // const history = useHistory();
   const user_id = localStorage.getItem("user_id");
   var indexview = 0
-
   const speech = new Speech()
+
   async function getData() {
-    await Axios.get("http://localhost:3000/book/app/detail/" + props.match.params.id, {})
+    await Axios.get("https://garzipback.herokuapp.com/book/app/detail/" + props.match.params.id, {})
       .then((res) => {
-        // console.log(res.data[0].text);
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
         console.log(timeuser)
-
-        // console.log(res.data[0].chapter)
+        setTest(res.data[0].voice)
 
         const random_boolean = Math.random() < 0.5;
         if (random_boolean === true) {
@@ -83,7 +84,7 @@ const DetailBook = ({ ...props }) => {
       });
   }
   async function getUser() {
-    await Axios.get("http://localhost:3000/user/app/" + user_id, {}).then(async (res) => {
+    await Axios.get("https://garzipback.herokuapp.com/user/app/" + user_id, {}).then(async (res) => {
       // console.log(res.data[0].continue_book.length)
       setTimeuser(res.data[0].continue_book)
       add_time: {
@@ -121,6 +122,7 @@ const DetailBook = ({ ...props }) => {
     'rate': 1,
     'pitch': pitch,
     'splitSentences': false,
+    // 'voice':'Google UK English Male',
     // 'listeners': {
     //   'onvoiceschanged': (voices) => {
     //     console.log("Event voiceschanged", voices)
@@ -136,7 +138,6 @@ const DetailBook = ({ ...props }) => {
   var readingtime = 0
 
   async function playsound() {
-    console.log('pitch::', pitch)
     const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
     console.log(storysliced)
@@ -145,55 +146,36 @@ const DetailBook = ({ ...props }) => {
       queue: false,
       listeners: {
         onstart: () => {
-          Axios.get("http://localhost:3000/playcount", {
+          console.log('#start')
+          setPlay(false)
+          Axios.get("https://garzipback.herokuapp.com/playcount", {
           }).catch((error) => {
             console.log(error)
           });
-          console.log("Start utterance");
-          setPlay(false)
         },
         onend: () => {
-          console.log("End utterance");
-          // console.log("sumsentencetime "+sumsentencetime)
-          // allsentencetime += sumsentencetime/word
-          // // console.log("allsentencetime "+allsentencetime)
-          // sumsentencetime = 0
-          // sentence +=1
-          console.log("readingtime " + readingtime)
           setPlay(true)
         },
         onresume: () => {
-          // console.log("Resume utterance");
+          // setPlay(false)
         },
         onpause: async () => {
-          console.log("Pause utterance");
+          console.log('#pause')
           setPlay(true)
         },
         onboundary: event => {
-          // console.log(
-          //   event.name +
-          //   " boundary reached after " +
-          //   ((event.elapsedTime) / 1000) +
-          //   " seconds. At char " +
-          //   event.charIndex
-          // );
           readingtime = (((event.elapsedTime) / 1000) / event.charIndex)
-          // if(Math.round((event.charIndex/(asdf.length/100)) == 0)||(Math.round(event.charIndex/(asdf.length/100)) == Infinity)){
-          //   console.log('finish')
-          // }else{
-          //   setTime(Math.round(event.charIndex/(asdf.length/100)))
-          // }
-          // console.log(Math.round((event.charIndex + percentagevalue)/(asdf.length/100)))
           setTime(Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
           var count = (Math.round((event.charIndex + percentagevalue) / (story.length / 100)))
-          // console.log(" time!", (Math.round((event.charIndex + percentagevalue) / (story.length / 100))))
+
           add_view: {
             if (count > 5.00 && indexview == 0) {
-              console.log('view up!')
+              // console.log('view up!')
               indexview = indexview + 1
-              Axios.post("http://localhost:3000/book/updateview/" + data[0]._id, {})
+
+              Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
                 .then((res) => {
-                  console.log(res);
+                  // console.log(res);
                 })
                 .catch((error) => console.log(error));
               break add_view;
@@ -203,11 +185,18 @@ const DetailBook = ({ ...props }) => {
         }
       }
     }).then(() => {
+      console.log('#then')
+      setPlay(true)
+      // speech.start()
+      // console.log('#then 2')
+      // setPlay(false)
+
     }).catch(e => {
+      console.log('#catch')
       console.error("An error occurred :", e)
     })
   }
-
+  // console.log(play)
   // async function onPlay() {
   //   setPlay(false)
   //   playsound()
@@ -222,7 +211,7 @@ const DetailBook = ({ ...props }) => {
   const addBook = (id) => {
     const data = { user_id };
     console.log('add book')
-    Axios.post("http://localhost:3000/book/addFav/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/addFav/" + id, data, {})
       .then((res) => {
         setSaved(false)
         // console.log(res);
@@ -232,7 +221,7 @@ const DetailBook = ({ ...props }) => {
   const removeBook = (id) => {
     const data = { user_id };
     console.log('remove book')
-    Axios.post("http://localhost:3000/book/removeFav/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/removeFav/" + id, data, {})
       .then((res) => {
         setSaved(true)
         // console.log(res);
@@ -242,7 +231,7 @@ const DetailBook = ({ ...props }) => {
   const checkBook = async (id) => {
     const data = { user_id };
     console.log('check book')
-    await Axios.post("http://localhost:3000/book/saveBook/" + id, data, {})
+    await Axios.post("https://garzipback.herokuapp.com/book/saveBook/" + id, data, {})
       .then((res) => {
         for (let i = 0; i < res.data.length; i++) {
           // console.log(res.data[i]);
@@ -255,14 +244,28 @@ const DetailBook = ({ ...props }) => {
             setSaved(true)
           }
         }
-      })
-      .catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
   };
 
+  async function BackStory(event) {
+    console.log(data)
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/back/" + props.match.params.id + "/" + data[0].category, {
+    }).then((res) => {
+      window.location.replace("/DetailBook/" + res.data);
+    }).catch((error) => console.log(error));
+
+  }
+  async function FowardStory(event) {
+    await Axios.get("https://garzipback.herokuapp.com/book/app/nextdetail/next/" + props.match.params.id + "/" + data[0].category, {
+    }).then((res) => {
+      window.location.replace("/DetailBook/" + res.data);
+    }).catch((error) => console.log(error));
+
+  }
   const addTime = (id, time) => {
     const data = { user_id, time };
     console.log('add book')
-    Axios.post("http://localhost:3000/book/continue/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/continue/" + id, data, {})
       .then((res) => {
         // setSaved(false)
         console.log(res);
@@ -273,7 +276,7 @@ const DetailBook = ({ ...props }) => {
   const removeTime = (id) => {
     const data = { user_id };
     console.log('remove time')
-    Axios.post("http://localhost:3000/book/removeContinue/" + id, data, {})
+    Axios.post("https://garzipback.herokuapp.com/book/removeContinue/" + id, data, {})
       .then((res) => {
         console.log(res);
       })
@@ -283,6 +286,44 @@ const DetailBook = ({ ...props }) => {
   function kFormatter(num) {
     return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
   }
+
+  function playAudio() {
+    console.log('****')
+    var msg = new SpeechSynthesisUtterance('Help me with this code please?');
+    msg.pitch = 0;
+    msg.rate = .6;
+    window.speechSynthesis.speak(msg);
+
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[10]; // Note: some voices don't support altering params
+    msg.voiceURI = 'native';
+    msg.volume = 1; // 0 to 1
+    msg.rate = 1.2; // 0.1 to 10
+    msg.pitch = 2; //0 to 2
+    msg.text = 'Sure. This code plays "Hello World" for you';
+    msg.lang = 'en-US';
+
+    msg.onend = function (e) {
+      var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
+      msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
+      msg1.pitch = 2; //0 to 2
+      msg1.rate = 1.2; //0 to 2
+      // start your audio loop.
+      speechSynthesis.speak(msg1);
+      console.log('Finished in ' + e.elapsedTime + ' seconds.');
+    };
+
+    speechSynthesis.speak(msg);
+  }
+
+  // const audio = new Audio(
+  //   "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
+  // );
+
+  // const start = () => {
+  //   audio.play();
+  // };
 
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
@@ -320,12 +361,21 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
-                      <p>เขียนโดย : {data[0].auther}</p>
+
+                      <ReactAudioPlayer
+                        // scr={`data[0].voice`}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
+
+                      {/* <p>เขียนโดย : {data[0].voice}</p> */}
+                      <h4>เขียนโดย : {data[0].auther}</h4>
                       <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
-                      <IonRange
+                      {/* <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -344,7 +394,8 @@ const DetailBook = ({ ...props }) => {
                             // await playsound(e.detail.value)
                           }
                         }}
-                      >
+                      > 
+                        
                         <IonLabel slot="start" className='start-time'>
                           <IonText>
                             <b>
@@ -360,10 +411,19 @@ const DetailBook = ({ ...props }) => {
                             </b>
                           </IonText>
                         </IonLabel>
-                      </IonRange>
+                      </IonRange>*/}
+                    <div className='audio_test'>
+                      <ReactAudioPlayer 
+                        // scr={test}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
                     </div>
-                    <div className='mix-button'>
-                      <IonButton fill="clear" mode="ios" className='button-play-back'>
+                      
+                    </div>
+                    {/* <div className='mix-button'>
+                      <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
 
@@ -375,20 +435,22 @@ const DetailBook = ({ ...props }) => {
                           :
                           <IonButton fill="clear" mode="ios" className='button-play' onClick={() => {
                             speech.pause()
+                            // setPlay(true)
                             // console.log(time)
                             if (time > 2) {
                               addTime(data[0]._id, time)
                             }
+
                           }} >
                             <IonIcon name="pause-circle-outline"></IonIcon>
                           </IonButton>
                       }
 
-                      <IonButton fill="clear" mode="ios" className='button-play-forward'>
+                      <IonButton fill="clear" mode="ios" className='button-play-forward' onClick={(event) => FowardStory(event)}>
                         <IonIcon name="play-forward-outline"></IonIcon >
-                      </IonButton>
-                    </div>
-                    <div className='Check-pitch'>
+                      </IonButton> 
+                    </div>*/}
+                    {/* <div className='Check-pitch'>
                       <span className='G_Checkbox'>
                         <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
                         <IonLabel position="floating" className="text">น้ำเสียงชาย</IonLabel>
@@ -397,7 +459,7 @@ const DetailBook = ({ ...props }) => {
                         <IonCheckbox className='Checkbox' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
                         <IonLabel position="floating" className="text">น้ำเสียงหญิง</IonLabel>
                       </span>
-                    </div>
+                    </div> */}
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
@@ -461,11 +523,12 @@ const DetailBook = ({ ...props }) => {
                     </div>
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
-                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
+                      <h4><p>เขียนโดย : {data[0].auther}</p></h4>
+                      <h4><p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p> </h4>
+                      <h4><p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p> </h4>
                     </div>
                     <div className='players'>
-                      <IonRange
+                      {/* <IonRange
                         className='range-time'
                         step="1"
                         min="0"
@@ -474,7 +537,7 @@ const DetailBook = ({ ...props }) => {
                         value={time}
                         debounce="1300"
                         onIonChange={async e => {
-                          if (e.detail.value >= 95 && e.detail.value <= 110) {
+                          if (e.detail.value >= 94 && e.detail.value <= 110) {
                             console.log(e.detail.value + ' and theres is no need to do anything.')
                             removeTime(data[0]._id)
                           } else {
@@ -499,11 +562,17 @@ const DetailBook = ({ ...props }) => {
                             </b>
                           </IonText>
                         </IonLabel>
-                      </IonRange>
+                      </IonRange> */}
+                      <ReactAudioPlayer 
+                        // scr={test}
+                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        // autoPlay
+                        controls
+                      />
                     </div>
                     <center className='group_buttonn'>
 
-                      {
+                      {/* {
                         play ?
                           <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => playsound()}>
                             ฟัง
@@ -517,11 +586,11 @@ const DetailBook = ({ ...props }) => {
                           }} >
                             หยุด
                           </IonButton>
-                      }
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      } */}
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
                         ก่อนหน้า
                       </IonButton >
-                      <IonButton fill="clear" mode="ios" className='savebuttonBlind'>
+                      <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => FowardStory(event)}>
                         ถัดไป
                       </IonButton>
 
@@ -541,7 +610,7 @@ const DetailBook = ({ ...props }) => {
                       }
                     </center>
 
-                    <div className='Check-pitch'>
+                    {/* <div className='Check-pitch'>
                       <div>
                         <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
                         <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
@@ -550,7 +619,7 @@ const DetailBook = ({ ...props }) => {
                         <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
                         <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>

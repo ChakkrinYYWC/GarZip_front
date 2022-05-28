@@ -14,7 +14,7 @@
 /build
 /ios
 /android
-
+/fastlane
 
 # misc
 .DS_Store

@@ -14,7 +14,7 @@ const Tab2 = () => {
   const [mode, setMode] = useState('all');
 
   async function send(searchdata) {
-    await Axios.post("http://localhost:3000/search/", {
+    await Axios.post("https://garzipback.herokuapp.com/search/", {
       info: searchdata
     }).then(async (res) => {
       // console.log(res.data)
@@ -25,7 +25,7 @@ const Tab2 = () => {
     });
   }
   async function st(searchdata) {
-    await Axios.post("http://localhost:3000/search/", {
+    await Axios.post("https://garzipback.herokuapp.com/search/", {
       info: searchdata
     }).then(async (res) => {
       // console.log(res.data)
@@ -49,8 +49,9 @@ const Tab2 = () => {
           className='searchbar'
           placeholder="ค้นหา"
           value={searchText}
-          onClick={e => setText(false)}
+          // onClick={e => setText(false)}
           onIonChange={async e => {
+            setText(false)
             setSearchText(e.detail.value!)
             send(e.detail.value)
             // await send();

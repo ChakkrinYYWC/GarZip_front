@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'GarZip_front',
   webDir: 'build',
-  bundledWebRuntime: false,
+  bundledWebRuntime: false
 };
 
 export default config;
