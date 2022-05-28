@@ -28,6 +28,14 @@ ion-header{
   font-family: 'Bai Jamjuree', sans-serif;
 }
 
+.favbook .name_pagesB{
+   text-align: center;
+   color: white;
+   font-weight: bold;
+   font-size: 22px;
+   font-family: 'Bai Jamjuree', sans-serif;
+ }
+
 .button-screen{
   float: right;
   margin-right: 15px;

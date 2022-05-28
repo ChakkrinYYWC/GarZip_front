@@ -45,19 +45,19 @@ const Tab2 = () => {
     <IonPage className="Booklist">
       <IonHeader className="test1">
         <h1>ค้นหา</h1>
-        <IonSearchbar
-          className='searchbar'
-          placeholder="ค้นหา"
-          value={searchText}
-          // onClick={e => setText(false)}
-          onIonChange={async e => {
-            setText(false)
-            setSearchText(e.detail.value!)
-            send(e.detail.value)
-            // await send();
-          }}
-          onIonCancel={e => setText(true)}
-          showCancelButton="focus" ></IonSearchbar>
+          <IonSearchbar
+            className='searchbar'
+            placeholder="ค้นหา"
+            value={searchText}
+            // onClick={e => setText(false)}
+            onIonChange={async (e) => {
+              setText(false)
+              setSearchText(e.detail.value)
+              send(e.detail.value)
+              // await send();
+            }}
+            onIonCancel={e => setText(true)}
+            showCancelButton="focus" ></IonSearchbar>
         {
           text ?
             <>
@@ -67,19 +67,19 @@ const Tab2 = () => {
               {/* <IonButton shape="round" fill="outline">Outline</IonButton> */}
               <IonSegment className='SegmentAll' onIonChange={e => setMode(e.detail.value)}>
                 <IonSegmentButton value="all" className='SegmentAll'>
-                  <IonLabel className='Segment'>ทั้งหมด</IonLabel>
+                  <h8><IonLabel className='Segment'>ทั้งหมด</IonLabel></h8>
                 </IonSegmentButton>
                 <IonSegmentButton value="name" className='SegmentAll'>
-                  <IonLabel className='Segment'>ชื่อหนังสือ</IonLabel>
+                  <h8><IonLabel className='Segment'>ชื่อหนังสือ</IonLabel></h8>
                 </IonSegmentButton>
                 <IonSegmentButton value="auther" className='SegmentAll'>
-                  <IonLabel className='Segment'>ผู้แต่ง</IonLabel>
+                  <h8><IonLabel className='Segment'>ผู้แต่ง</IonLabel></h8>
                 </IonSegmentButton>
               </IonSegment>
             </>
         }
       </IonHeader>
-      <Search text={text} bookinfo={data} mode={mode}/>
+      <Search text={text} bookinfo={data} mode={mode} />
 
     </IonPage>
 

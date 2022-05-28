@@ -22,7 +22,8 @@ import Tab1 from './pages/HOME';
 import Tab2 from './pages/Tab2';
 // import Tab3 from './pages/Tab3';
 import Setting from './pages/Tab4';
-import Tab3 from './pages/Tap3';
+import Tab3 from './pages/Tab3';
+import './App.css';
 
 
 
@@ -61,9 +62,9 @@ const App: React.FC = () => (
             <Register />
           </Route>
 
-          <Route path="/DetailBook/:id" component={DetailBook}/>
+          <Route path="/DetailBook/:id" component={DetailBook} />
           {/* <Route path="/addFav/:id" component={DetailBook}/> */}
-          <Route path="/Booklist/:name" component={Booklist}/>
+          <Route path="/Booklist/:name" component={Booklist} />
           {/* ---------Home---------- */}
           <Route exact path="/HOME" >
             <Tab1 />
@@ -71,7 +72,7 @@ const App: React.FC = () => (
           <Route exact path="/">
             <Redirect to="/Login" />
           </Route>
-       
+
           {/* ---------Tab2---------- */}
           <Route exact path="/tab2">
             <Tab2 />
@@ -80,8 +81,8 @@ const App: React.FC = () => (
           {/* <Route path="/tab3">
             <Tab3 />
           </Route> */}
-          <Route path="/Tab3" component={Tab3}/>
-         
+          <Route path="/Tab3" component={Tab3} />
+
           {/* ---------setting---------- */}
           <Route path="/setting">
             <Setting />
@@ -93,25 +94,33 @@ const App: React.FC = () => (
             <Changepassword />
           </Route>
           {/* ---------book---------- */}
-        
+
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom" color='dark'>
-          <IonTabButton tab="HOME" href="/HOME">
-            <IonIcon icon={home} />
-            <IonLabel>หน้าหลัก</IonLabel>
+          <IonTabButton tab="HOME" href="/HOME" className='home'>
+            <button>
+              <div><IonIcon icon={home} /></div>
+              <div><IonLabel>หน้าหลัก</IonLabel></div>
+            </button>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={search} />
-            <IonLabel>ค้นหา</IonLabel>
+          <IonTabButton tab="tab2" href="/tab2" className='home'>
+            <button>
+              <div><IonIcon icon={search} /></div>
+              <div><IonLabel>ค้นหา</IonLabel></div>
+            </button>
           </IonTabButton>
-          <IonTabButton tab="tab31" href="/Tab3">
-            <IonIcon icon={book} />
-            <IonLabel>ชั้นหนังสือ</IonLabel>
+          <IonTabButton tab="tab31" href="/Tab3" className='home'>
+            <button>
+              <div><IonIcon icon={book} /></div>
+              <div><IonLabel>ชั้นหนังสือ</IonLabel></div>
+            </button>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/setting">
-            <IonIcon icon={settings} />
-            <IonLabel>ตั้งค่า</IonLabel>
+          <IonTabButton tab="tab4" href="/setting" className='home'>
+            <button>
+              <div><IonIcon icon={settings} /></div>
+              <div><IonLabel>ตั้งค่า</IonLabel></div>
+            </button>
           </IonTabButton>
         </IonTabBar>
 

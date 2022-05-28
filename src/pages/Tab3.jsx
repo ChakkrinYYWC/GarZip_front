@@ -8,7 +8,7 @@ import Search from '../components/Search';
 import Listening from '../components/Listening';
 
 
-const Tap3 = () => {
+const Tab3 = () => {
   const [titel, setTitel] = useState('เพิ่มล่าสุด');
   const [currentId, setCurrentId] = useState(0)
   const user_mode = localStorage.getItem('user_mode');
@@ -64,30 +64,30 @@ const Tap3 = () => {
       <IonPage className="favbook">
         <IonHeader className="fav_book">
           <div className='title_fav'>
-            <IonLabel className="name_pages">ชั้นหนังสือ</IonLabel>
+            <h1><IonLabel className="name_pagesB">ชั้นหนังสือ</IonLabel></h1>
             <IonRouterLink id="nested-button" className="button-filter">
-              <label >ตัวกรอง</label>
+              <label><h6>ตัวกรอง</h6></label>
             </IonRouterLink>
 
           </div>
 
         </IonHeader>
         <IonContent fullscreen >
-          <div className='name_screen'>{titel}</div>
+          <div className='name_screen'><h2>{titel}</h2></div>
           <IonPopover trigger="nested-button" dismissOnSelect={true} >
             <IonContent >
               <IonList className='Popover'>
 
-                <IonLabel className='sorting'>จัดเรียงหนังสือ</IonLabel>
+                <IonLabel className='sorting'><h1>จัดเรียงหนังสือ</h1></IonLabel>
 
                 <IonItem button={true} detail={false} className='Sort_book'>
-                  <IonLabel className='Sort' onClick={e => setName(1, "เพิ่มล่าสุด")}>เพิ่มล่าสุด</IonLabel>
+                  <h8><IonLabel className='Sort' onClick={e => setName(1, "เพิ่มล่าสุด")}>เพิ่มล่าสุด</IonLabel></h8>
                 </IonItem>
                 <IonItem button={true} detail={false} className='Sort_book'>
-                  <IonLabel className='Sort' onClick={e => setName(3, 'เรียงตามชื่อเรื่อง')}>เรียงตามชื่อเรื่อง</IonLabel>
+                  <h8><IonLabel className='Sort' onClick={e => setName(3, 'เรียงตามชื่อเรื่อง')}>เรียงตามชื่อเรื่อง</IonLabel></h8>
                 </IonItem>
                 <IonItem button={true} detail={false} className='Sort_book'>
-                  <IonLabel className='Sort' onClick={e => setName(4, 'เรียงตามชื่อผู้เขียน')}>เรียงตามชื่อผู้เขียน</IonLabel>
+                  <h8><IonLabel className='Sort' onClick={e => setName(4, 'เรียงตามชื่อผู้เขียน')}>เรียงตามชื่อผู้เขียน</IonLabel></h8>
                 </IonItem>
 
               </IonList>
@@ -105,4 +105,4 @@ const Tap3 = () => {
 
 };
 
-export default Tap3;
+export default Tab3;

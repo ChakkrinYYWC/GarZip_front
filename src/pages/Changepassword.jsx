@@ -73,11 +73,11 @@ const Changepassword = () => {
         return (
             <IonPage className="page">
                 <div className='topper'>
-                    <center>เปลี่ยนรหัสผ่าน</center>
+                    <center><h1>เปลี่ยนรหัสผ่าน</h1></center>
                 </div>
                 <IonContent fullscreen >
                     <div className='userinfochoiceBlind'>
-                        <span className='text-confirmABlind'>รหัสผ่าน : </span>
+                        <span className='text-confirmABlind'><h4>รหัสผ่าน : </h4></span>
                         <input
                             type="password"
                             className='input-changepasswordBlind'
@@ -86,7 +86,7 @@ const Changepassword = () => {
                             }} />
                     </div>
                     <div className='userinfochoiceBlind'>
-                        <span className='text-confirmABlind'>รหัสผ่านใหม่ : </span>
+                        <span className='text-confirmABlind'><h4>รหัสผ่านใหม่ : </h4></span>
                         <input
                             type="password"
                             className='input-changepasswordBlind'
@@ -95,7 +95,7 @@ const Changepassword = () => {
                             }} />
                     </div>
                     <div className='userinfochoiceBlind'>
-                        <span className='text-confirmBlind'>ยืนยันรหัสผ่านใหม่ :  </span>
+                        <span className='text-confirmBlind'><h4>ยืนยันรหัสผ่านใหม่ :  </h4></span>
                         <input
                             type="password"
                             className='input-changepasswordBlind'

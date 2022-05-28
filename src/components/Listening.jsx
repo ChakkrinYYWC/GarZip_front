@@ -90,19 +90,19 @@ const Listening = (classes, ...props) => {
     return (
       <IonContent fullscreen>
         <div className='name_screen'></div>
-        <div className='Booklist'>
+        <div className='Booklist blind'>
           <IonList className='list-book'>
             {
               data.map((book, i) => {
                 return (
                   <IonRouterLink href={`/DetailBook/${book.savebook[0]._id}`} className="button-back">
-                    <IonItem key={i} className="item-list" >
+                    <button><IonItem key={i} className="item-list" >
                       <span className="book">
                         <IonLabel className='title'>{book.savebook[0].name}</IonLabel>
                         <IonLabel className='detial'>เขียนโดย : {book.savebook[0].auther}</IonLabel>
                         <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.savebook[0].view)} ครั้ง</IonLabel>
                       </span>
-                    </IonItem>
+                    </IonItem></button>
                   </IonRouterLink>
                 )
               })
