@@ -51,15 +51,14 @@ const LogIn = () => {
         <IonHeader collapse="condense">
         </IonHeader>
         <div className="login-section ion-padding">
-          <img src="assets/GARZIPLOGO.PNG" alt="" />
+          <img src="assets/GARZIPLOGO.PNG" alt="Garzip's logo" />
           <div className="heading ion-padding">
-            <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
+            <h1>Welcome to GARZIP</h1>
           </div>
           <div className="login-form ion-padding">
             <div className="form-input">
-              {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
+                <IonLabel position="floating" className="input-text">Username</IonLabel>
                 <IonInput className="input-text"
           
                   onIonChange={event => setUsername(event.target.value)} >
@@ -67,32 +66,24 @@ const LogIn = () => {
               </IonItem>
             </div>
             <div className="form-input">
-              {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
+                <IonLabel position="floating" className="input-text">Password</IonLabel>
                 <IonInput  
                   type="password"
                   onIonChange={event => setPassword(event.target.value)}
                 >
-
                 </IonInput>
-
               </IonItem>
             </div>
           </div>
           <div className="action-button">
-            <IonButton className="register-button" size="large" fill="outline" routerLink="/register">สมัครสมาชิก</IonButton>
+            <IonButton className="register-button" size="large" fill="outline" routerLink="/register">Register</IonButton>
             <IonButton
               size="large"
               className="login-button"
               onClick={submit}
-            >เข้าสู่ระบบ</IonButton>
+            >Login</IonButton>
           </div>
-          {/* <div className="login-with-facebook" >
-            <IonIcon className="icon-facebook" icon={logoFacebook} />
-            <IonRouterLink href="#" className="link-login-with-facebook">เข้าสู่ระบบด้วยFacebook</IonRouterLink>
-          </div> */}
-
           <div className="forgotpass">
             <IonButton
               className="link-forgotpass"
@@ -100,20 +91,18 @@ const LogIn = () => {
               onClick={() =>
                 present({
                   cssClass: 'my-css',
-                  //header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
-                  message: 'กรอกอีเมล์ ระบบจะส่งอีเมล์ให้ท่านเพื่อตั้งรหัสผ่านใหม่',
+                  message: 'Plaese insert your email. We will sent request for change password to you.',
                   inputs: [
                     {
                       type: 'text',
                       name: 'email',
-                      placeholder: 'อีเมล์',
+                      placeholder: 'email',
                     }
                   ],
                   buttons: [
-                    { text: 'ยกเลิก', handler: (d) => console.log('cancle pressed') },
+                    { text: 'cancle', handler: (d) => console.log('cancle pressed') },
                     {
-                      text: 'ยืนยัน', handler: (d) => {
-                        console.log('ok pressed')
+                      text: 'confirm', handler: (d) => {
                         changepasswordRequest(d)
                       }
                     },
@@ -123,15 +112,9 @@ const LogIn = () => {
                 })
               }
             >
-              ลืมรหัสผ่าน?
+              forgot password?
             </IonButton>
           </div>
-
-          {/* <IonInput [type]="password_type" placeholder="Password" name="password" [(ngModel)]="password" required></IonInput>
-
-          <IonIcon name="eye" item-right (click)="togglePasswordMode()"></IonIcon> */}
-
-
         </div>
       </IonContent>
     </IonPage>
