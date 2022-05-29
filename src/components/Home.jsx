@@ -476,34 +476,34 @@ const Home = () => {
                                                 <IonLabel className='title-category-Blind'> ฟังต่อ </IonLabel>
                                             </IonRouterLink> */}
                                             <IonRouterLink href="/Booklist/ยอดนิยม" >
-                                                <IonLabel className='title-category-Blind'><h1> ยอดนิยม </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>ยอดนิยม</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/ใหม่ล่าสุด" >
-                                                <IonLabel className='title-category-Blind'><h1> เรื่องใหม่ล่าสุด </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>เรื่องใหม่ล่าสุด</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/นิยาย" >
-                                                <IonLabel className='title-category-Blind'><h1> นิยาย </h1></IonLabel>
+                                                <h1><IonLabel className='title-category-Blind'>นิยาย</IonLabel></h1>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/ธุรกิจ" >
-                                                <IonLabel className='title-category-Blind'><h1> ธุรกิจ  </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>ธุรกิจ</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/นิทาน" >
-                                                <IonLabel className='title-category-Blind'><h1> นิทาน </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>นิทาน</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklistศาสนา" >
-                                                <IonLabel className='title-category-Blind'><h1> ศาสนา </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>ศาสนา</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/บทความ" >
-                                                <IonLabel className='title-category-Blind'><h1> บทความ </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>บทความ</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/สืบสวน" >
-                                                <IonLabel className='title-category-Blind'><h1> สืบสวน </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>สืบสวน</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/จิตวิทยา " >
-                                                <IonLabel className='title-category-Blind'><h1> จิตวิทยา </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>จิตวิทยา</h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/ทั่วไป" >
-                                                <IonLabel className='title-category-Blind'><h1> ทั่วไป </h1></IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1>ทั่วไป</h1></IonLabel>
                                             </IonRouterLink>
                                         </IonLabel>
                                     </IonItem>

@@ -505,7 +505,7 @@ const DetailBook = ({ ...props }) => {
             <>
               <IonPage className="DetailPage">
                 <IonContent  >
-                  <div className='DetailBook Blind' >
+                  <div className='DetailBook ' >
                     <div className="bar">
                       <IonButtons slot="start">
                         <IonRouterLink onclick="history.back()" className="button-back"><h4>ย้อนกลับ</h4></IonRouterLink>
@@ -519,101 +519,38 @@ const DetailBook = ({ ...props }) => {
                       <p><h4>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </h4></p>
                     </div>
                     <div className='players'>
-                      {/* <IonRange
-                        className='range-time'
-                        step="1"
-                        min="0"
-                        max="100"
-                        pin="true"
-                        value={time}
-                        debounce="1300"
-                        onIonChange={async e => {
-                          if (e.detail.value >= 94 && e.detail.value <= 110) {
-                            console.log(e.detail.value + ' and theres is no need to do anything.')
-                            removeTime(data[0]._id)
-                          } else {
-                            setTime(e.detail.value)
-                            console.log(e.detail.value)
-                            // await playsound(e.detail.value)
-                          }
-                        }}
-                      >
-                        <IonLabel slot="start" className='start-time'>
-                          <IonText>
-                            <b>
-                              0%
-                            </b>
-                          </IonText>
-                        </IonLabel>
-
-                        <IonLabel slot="end">
-                          <IonText>
-                            <b>
-                              100%
-                            </b>
-                          </IonText>
-                        </IonLabel>
-                      </IonRange> */}
                       <ReactAudioPlayer
                         src={data[0].voice}
                         controls
                       />
                     </div>
                     <center className='group_buttonn'>
-
-                      {/* {
-                        play ?
-                          <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => playsound()}>
-                            ฟัง
-                          </IonButton >
-                          :
-                          <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={() => {
-                            speech.pause()
-                            if (time > 2) {
-                              addTime(data[0]._id, time)
-                            }
-                          }} >
-                            หยุด
-                          </IonButton>
-                      } */}
                       <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
-                        ก่อนหน้า
+                        <h1>ก่อนหน้า</h1>
                       </IonButton >
                       <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => FowardStory(event)}>
-                        ถัดไป
+                        <h1>ถัดไป</h1>
                       </IonButton>
 
                       {
                         saved ?
-                          <h8>
+                          
                             <IonRouterLink onClick={() => addBook(data[0]._id)}>
-                              <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              <h1><IonButton fill="clear" mode="ios" className="savebuttonBlind">
                                 บันทึก
-                              </IonButton>
+                              </IonButton></h1>
                             </IonRouterLink>
-                          </h8>
+                          
                           :
                           <h8>
                             <IonRouterLink onClick={() => removeBook(data[0]._id)} >
-                              <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              <h1><IonButton fill="clear" mode="ios" className="savebuttonBlind">
                                 ยกเลิกบันทึก
-                              </IonButton>
+                              </IonButton></h1>
                             </IonRouterLink>
                           </h8>
                       }
                     </center>
-
-                    {/* <div className='Check-pitch'>
-                      <div>
-                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
-                        <IonLabel position="floating" className="text"> เสียงผู้ชาย</IonLabel>
-                      </div>
-                      <div>
-                        <IonCheckbox className='CheckboxBlind' onIonChange={event => (setWoman(event.target.checked), setMan(!(event.target.checked)), setPitch(1.5))} checked={woman} />
-                        <IonLabel position="floating" className="text">เสียงผู้หญิง</IonLabel>
-                      </div>
-                    </div> */}
-
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
                       <div className='story'><h4>{data[0].trailer}</h4></div>
