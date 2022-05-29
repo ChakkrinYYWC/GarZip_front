@@ -307,3 +307,7 @@ div.story{
   --checkmark-width: 3;
 
 }
+
+.ReactAudioPlayer{
+  margin: 30px 0px 0px 0px;
+}
