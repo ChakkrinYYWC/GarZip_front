@@ -45,10 +45,9 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
 setupIonicReact();
 
-
+const user_id = localStorage.getItem("user_id");
 
 const App: React.FC = () => (
   <IonApp  >
@@ -96,33 +95,39 @@ const App: React.FC = () => (
           {/* ---------book---------- */}
 
         </IonRouterOutlet>
+        {
+          user_id == null ?
+            <IonTabBar slot="bottom" color='dark'>
 
-        <IonTabBar slot="bottom" color='dark'>
-          <IonTabButton tab="HOME" href="/HOME" className='home'>
-            <button>
-              <div><IonIcon icon={home} /></div>
-              <div><IonLabel>หน้าหลัก</IonLabel></div>
-            </button>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2" className='home'>
-            <button>
-              <div><IonIcon icon={search} /></div>
-              <div><IonLabel>ค้นหา</IonLabel></div>
-            </button>
-          </IonTabButton>
-          <IonTabButton tab="tab31" href="/Tab3" className='home'>
-            <button>
-              <div><IonIcon icon={book} /></div>
-              <div><IonLabel>ชั้นหนังสือ</IonLabel></div>
-            </button>
-          </IonTabButton>
-          <IonTabButton tab="tab4" href="/setting" className='home'>
-            <button>
-              <div><IonIcon icon={settings} /></div>
-              <div><IonLabel>ตั้งค่า</IonLabel></div>
-            </button>
-          </IonTabButton>
-        </IonTabBar>
+            </IonTabBar>
+            :
+            <IonTabBar slot="bottom" color='dark'>
+              <IonTabButton tab="HOME" href="/HOME" className='home'>
+                <button>
+                  <div><IonIcon icon={home} /></div>
+                  <div><IonLabel>หน้าหลัก</IonLabel></div>
+                </button>
+              </IonTabButton>
+              <IonTabButton tab="tab2" href="/tab2" className='home'>
+                <button>
+                  <div><IonIcon icon={search} /></div>
+                  <div><IonLabel>ค้นหา</IonLabel></div>
+                </button>
+              </IonTabButton>
+              <IonTabButton tab="tab31" href="/Tab3" className='home'>
+                <button>
+                  <div><IonIcon icon={book} /></div>
+                  <div><IonLabel>ชั้นหนังสือ</IonLabel></div>
+                </button>
+              </IonTabButton>
+              <IonTabButton tab="tab4" href="/setting" className='home'>
+                <button>
+                  <div><IonIcon icon={settings} /></div>
+                  <div><IonLabel>ตั้งค่า</IonLabel></div>
+                </button>
+              </IonTabButton>
+            </IonTabBar>
+        }
 
       </IonTabs>
     </IonReactRouter>
