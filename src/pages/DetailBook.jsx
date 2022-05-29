@@ -363,7 +363,7 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
 
                       <ReactAudioPlayer
-                        scr={data[0].voice}
+                        src={data[0].voice}
                         // src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
                         // autoPlay
                         controls
@@ -553,7 +553,7 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange> */}
                       <ReactAudioPlayer
-                        scr={data[0].voice}
+                        src={data[0].voice}
                         controls
                       />
                     </div>
