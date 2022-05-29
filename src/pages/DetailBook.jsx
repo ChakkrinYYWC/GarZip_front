@@ -364,16 +364,20 @@ const DetailBook = ({ ...props }) => {
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
-
+                      {/* <p>เขียนโดย : {data[0].voice}</p> */}
+                      {/* <h4>text: {data[0].chapter[indexchapter].voice}</h4> */}
+                      <h4>เขียนโดย : {data[0].auther}</h4>
+                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                       {
                         indexchapter == undefined ?
                           <>
                             <ReactAudioPlayer
+                            className='ReactAudioPlayer'
                               src={data[0].voice}
                               // onPause={(e)=> {console.log('Pause:: '+e.target.currentTime)}}
                               // onPlay={(e)=> {console.log('Play:: '+e.target.currentTime)}}
-                              onEnded={(e)=> {console.log('end')}}
-                              onListen={(e)=>{
+                              onEnded={(e) => { console.log('end') }}
+                              onListen={(e) => {
                                 // console.log(e)
                                 add_view: {
                                   if (e > 5.00 && indexview == 0) {
@@ -400,13 +404,6 @@ const DetailBook = ({ ...props }) => {
                             />
                           </>
                       }
-
-
-
-                      {/* <p>เขียนโดย : {data[0].voice}</p> */}
-                      {/* <h4>text: {data[0].chapter[indexchapter].voice}</h4> */}
-                      <h4>เขียนโดย : {data[0].auther}</h4>
-                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       {/* <IonRange
@@ -447,14 +444,14 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange>*/}
                     </div>
-                      
-                    
-                    {/* <div className='mix-button'>
+
+
+                    <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
                       </IonButton >
 
-                      {
+                      {/*  {
                         play ?
                           <IonButton fill="clear" mode="ios" className='button-play' onClick={() => playsound()}>
                             <IonIcon name="play-circle-outline" ></IonIcon>
@@ -471,12 +468,12 @@ const DetailBook = ({ ...props }) => {
                           }} >
                             <IonIcon name="pause-circle-outline"></IonIcon>
                           </IonButton>
-                      }
+                      }*/}
 
                       <IonButton fill="clear" mode="ios" className='button-play-forward' onClick={(event) => FowardStory(event)}>
                         <IonIcon name="play-forward-outline"></IonIcon >
-                      </IonButton> 
-                    </div>*/}
+                      </IonButton>
+                    </div>
                     {/* <div className='Check-pitch'>
                       <span className='G_Checkbox'>
                         <IonCheckbox className='Checkbox' onIonChange={event => (setMan(event.target.checked), setWoman(!(event.target.checked)), setPitch(0.125))} checked={man} />
@@ -558,31 +555,47 @@ const DetailBook = ({ ...props }) => {
                       <ReactAudioPlayer
                         src={data[0].voice}
                         controls
+                        onListen={(e) => {
+                          // console.log(e)
+                          add_view: {
+                            if (e > 5.00 && indexview == 0) {
+                              // console.log('view up!')
+                              indexview = indexview + 1
+                              Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
+                                .then((res) => {
+                                  console.log(res);
+                                })
+                                .catch((error) => console.log(error));
+                              break add_view;
+                            }
+                          }
+                        }}
+                        listenInterval
                       />
                     </div>
                     <center className='group_buttonn'>
                       <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => BackStory(event)}>
-                        <h1>ก่อนหน้า</h1>
+                        ก่อนหน้า
                       </IonButton >
                       <IonButton fill="clear" mode="ios" className='savebuttonBlind' onClick={(event) => FowardStory(event)}>
-                        <h1>ถัดไป</h1>
+                        ถัดไป
                       </IonButton>
 
                       {
                         saved ?
-                          
-                            <IonRouterLink onClick={() => addBook(data[0]._id)}>
-                              <h1><IonButton fill="clear" mode="ios" className="savebuttonBlind">
-                                บันทึก
-                              </IonButton></h1>
-                            </IonRouterLink>
-                          
+
+                          <IonRouterLink onClick={() => addBook(data[0]._id)}>
+                            <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              บันทึก
+                            </IonButton>
+                          </IonRouterLink>
+
                           :
                           <h8>
                             <IonRouterLink onClick={() => removeBook(data[0]._id)} >
-                              <h1><IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                              <IonButton fill="clear" mode="ios" className="savebuttonBlind">
                                 ยกเลิกบันทึก
-                              </IonButton></h1>
+                              </IonButton>
                             </IonRouterLink>
                           </h8>
                       }
