@@ -51,7 +51,7 @@ const LogIn = () => {
             </div>
             <div className="form-input">
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text"><h2>อีเมล์</h2></IonLabel>
+                <IonLabel position="floating" className="input-text"><h2>อีเมล</h2></IonLabel>
                 <IonInput type="email" onIonChange={event => setEmail(event.target.value)} ></IonInput>
               </IonItem>
             </div>
