@@ -371,10 +371,10 @@ const DetailBook = ({ ...props }) => {
                             <ReactAudioPlayer
                               src={data[0].voice}
                               // onPause={(e)=> {console.log('Pause:: '+e.target.currentTime)}}
-                              // onPlay={(e)=> {console.log('Play:: '+e.target.currentTime)}}
-                              onEnded={(e)=> {console.log('end')}}
-                              onListen={(e)=>{
-                                console.log(e)
+                              onPlay={(e) => { console.log(e) }}
+                              onEnded={(e) => { console.log('end') }}
+                              onListen={(e) => {
+                                // console.log(e)
                                 add_view: {
                                   if (e > 5.00 && indexview == 0) {
                                     // console.log('view up!')
@@ -447,8 +447,8 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange>*/}
                     </div>
-                      
-                    
+
+
                     {/* <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
@@ -593,6 +593,22 @@ const DetailBook = ({ ...props }) => {
                       <ReactAudioPlayer
                         src={data[0].voice}
                         controls
+                        onListen={(e) => {
+                          // console.log(e)
+                          add_view: {
+                            if (e > 5.00 && indexview == 0) {
+                              // console.log('view up!')
+                              indexview = indexview + 1
+                              Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
+                                .then((res) => {
+                                  console.log(res);
+                                })
+                                .catch((error) => console.log(error));
+                              break add_view;
+                            }
+                          }
+                        }}
+                        listenInterval
                       />
                     </div>
                     <center className='group_buttonn'>
