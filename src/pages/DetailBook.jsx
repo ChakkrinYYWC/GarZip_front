@@ -363,16 +363,17 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
 
                       <ReactAudioPlayer
-                        // scr={`data[0].voice`}
-                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        src={data[0].voice}
+                        // src="https://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
                         // autoPlay
                         controls
                       />
+                      
 
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
                       <h4>เขียนโดย : {data[0].auther}</h4>
-                      <p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p>
-                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
+                      <h4><p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p></h4>
+                      <h4><p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p></h4>
                     </div>
                     <div className='players'>
                       {/* <IonRange
@@ -412,12 +413,14 @@ const DetailBook = ({ ...props }) => {
                           </IonText>
                         </IonLabel>
                       </IonRange>*/}
-                      <ReactAudioPlayer
+                      
+                      {/* <ReactAudioPlayer
                         // scr={test}
                         src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
                         // autoPlay
                         controls
-                      />
+                      /> */}
+
                     </div>
                     {/* <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
@@ -460,7 +463,7 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
-                      <div className='story'>{data[0].trailer}</div>
+                      <h4><div className='story'>{data[0].trailer}</div></h4>
                     </div>
 
                     {
@@ -481,8 +484,8 @@ const DetailBook = ({ ...props }) => {
                                   </IonThumbnail>
                                   <span className="book">
                                     {/* <h1>ddfdfd</h1> */}
-                                    <IonLabel className='title'>{book.name}</IonLabel>
-                                    <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
+                                    <h4><IonLabel className='title'>{book.name}</IonLabel></h4>
+                                    <h4><IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel></h4>
                                     {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
                                   </span>
                                 </IonItem>

@@ -488,32 +488,34 @@ const Home = () => {
                                             </IonRouterLink>
 
 
-                                           
-                                                <IonRouterLink href="/Booklist/นิยาย" >
-                                                    <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/ธุรกิจ" >
-                                                    <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/นิทาน" >
-                                                    <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklistศาสนา" >
-                                                 <IonLabel className='title-category-Blind'>ศาสนา </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/บทความ" >
-                                                    <IonLabel className='title-category-Blind'> บทความ </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/สืบสวน" >
-                                                    <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/จิตวิทยา " >
-                                                    <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/ทั่วไป" >
-                                                    <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
-                                                </IonRouterLink>
-                                            
+
+                                            <IonRouterLink href="/Booklist/นิยาย" >
+                                                
+                                                    <IonLabel className='title-category-Blind'><h1> นิยาย </h1> </IonLabel>
+                                               
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                                <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/นิทาน" >
+                                                <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklistศาสนา" >
+                                                <IonLabel className='title-category-Blind'>ศาสนา</IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/บทความ" >
+                                                <IonLabel className='title-category-Blind'> บทความ </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/สืบสวน" >
+                                                <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/จิตวิทยา " >
+                                                <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ทั่วไป" >
+                                                <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
+                                            </IonRouterLink>
+
                                         </IonLabel>
                                     </IonItem>
                                     {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
