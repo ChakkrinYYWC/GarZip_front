@@ -12,10 +12,14 @@ const Booklist = ({ ...props }) => {
   const [loading, setLoading] = useState(true);
 
   async function getData() {
-    await Axios.get("https://garzipback.herokuapp.com/book/app/" + props.match.params.name, {})
+    await Axios.get("http://localhost:3000/book/app/" + props.match.params.name, {})
       .then((res) => {
         // console.log(res.data);
-        setData(res.data)
+        if(props.match.params.name == 'ยอดนิยม'){
+          setData(res.data.sort((a, b) => (a.view > b.view ? -1 : 1)))
+        }else{
+          setData(res.data)
+        }
       })
       .catch((error) => {
         console.log(error)
