@@ -78,7 +78,7 @@ const Home = () => {
                                     </div>
                                     {/* <a href="/login">login</a> */}
 
-                                    <div className='Catagory'>
+                                    {/* <div className='Catagory'>
                                         <IonLabel className='name_catagory'>ฟังต่อ</IonLabel>
                                         <IonLabel className='viewall' href="/booklist">ดูทั้งหมด</IonLabel>
                                         <Swiper
@@ -109,7 +109,7 @@ const Home = () => {
                                             })}
 
                                         </Swiper>
-                                    </div>
+                                    </div> */}
 
                                     <IonList className='hot-book'>
                                         <IonHeader className='Header'>
@@ -470,75 +470,49 @@ const Home = () => {
                                     <div className="bar">
                                         <IonLabel >GARZIP</IonLabel>
                                     </div>
-                                    {/* <a href="/login">login</a> */}
-
-
                                     <IonItem className="item-list-Blind">
-
                                         <IonLabel className="title-category">
-
-                                            <IonRouterLink href="/Booklist/ฟังต่อ" >
+                                            {/* <IonRouterLink href="/Booklist/ฟังต่อ" >
                                                 <IonLabel className='title-category-Blind'> ฟังต่อ </IonLabel>
-                                            </IonRouterLink>
+                                            </IonRouterLink> */}
                                             <IonRouterLink href="/Booklist/ยอดนิยม" >
-                                                <IonLabel className='title-category-Blind'> ยอดนิยม </IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1> ยอดนิยม </h1></IonLabel>
                                             </IonRouterLink>
                                             <IonRouterLink href="/Booklist/ใหม่ล่าสุด" >
-                                                <IonLabel className='title-category-Blind'> เรื่องใหม่ล่าสุด </IonLabel>
+                                                <IonLabel className='title-category-Blind'><h1> เรื่องใหม่ล่าสุด </h1></IonLabel>
                                             </IonRouterLink>
-
-
-                                           
-                                                <IonRouterLink href="/Booklist/นิยาย" >
-                                                    <IonLabel className='title-category-Blind'> นิยาย </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/ธุรกิจ" >
-                                                    <IonLabel className='title-category-Blind'> ธุรกิจ  </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/นิทาน" >
-                                                    <IonLabel className='title-category-Blind'> นิทาน </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklistศาสนา" >
-                                                 <IonLabel className='title-category-Blind'>ศาสนา </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/บทความ" >
-                                                    <IonLabel className='title-category-Blind'> บทความ </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/สืบสวน" >
-                                                    <IonLabel className='title-category-Blind'> สืบสวน </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/จิตวิทยา " >
-                                                    <IonLabel className='title-category-Blind'> จิตวิทยา </IonLabel>
-                                                </IonRouterLink>
-                                                <IonRouterLink href="/Booklist/ทั่วไป" >
-                                                    <IonLabel className='title-category-Blind'> ทั่วไป </IonLabel>
-                                                </IonRouterLink>
-                                            
+                                            <IonRouterLink href="/Booklist/นิยาย" >
+                                                <IonLabel className='title-category-Blind'><h1> นิยาย </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ธุรกิจ" >
+                                                <IonLabel className='title-category-Blind'><h1> ธุรกิจ  </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/นิทาน" >
+                                                <IonLabel className='title-category-Blind'><h1> นิทาน </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklistศาสนา" >
+                                                <IonLabel className='title-category-Blind'><h1> ศาสนา </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/บทความ" >
+                                                <IonLabel className='title-category-Blind'><h1> บทความ </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/สืบสวน" >
+                                                <IonLabel className='title-category-Blind'><h1> สืบสวน </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/จิตวิทยา " >
+                                                <IonLabel className='title-category-Blind'><h1> จิตวิทยา </h1></IonLabel>
+                                            </IonRouterLink>
+                                            <IonRouterLink href="/Booklist/ทั่วไป" >
+                                                <IonLabel className='title-category-Blind'><h1> ทั่วไป </h1></IonLabel>
+                                            </IonRouterLink>
                                         </IonLabel>
                                     </IonItem>
-                                    {/* {moment(book.create_date).format("MMM DD YYYY hh:mm:ss")} */}
-
                                 </IonContent>
                             </IonPage>
                         </>
                 }
             </>
-
         );
     }
-
-
 };
-
 export default Home;
-
-{/* {data.filter(cate => cate.category == 'นิยาย').map(book => {
-                            return(
-                                <>
-                                    <IonGrid>
-                                        <h1> name : {book.name}</h1>
-                                    </IonGrid>
-                                    
-                                </>
-                            )
-                        })} */}

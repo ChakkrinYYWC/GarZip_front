@@ -21,13 +21,13 @@ const LogIn = () => {
     await Axios.post("https://garzipback.herokuapp.com/auth/login", {
       username: username, password: password
     }).then((res) => {
-      if(res){
+      if (res) {
         localStorage.setItem('user_id', res.data[0]._id);
-      localStorage.setItem('user_name', res.data[0].username);
-      localStorage.setItem('user_email', res.data[0].email);
-      localStorage.setItem('user_mode', res.data[0].mode);
-      window.location.replace("/HOME");
-      }else{
+        localStorage.setItem('user_name', res.data[0].username);
+        localStorage.setItem('user_email', res.data[0].email);
+        localStorage.setItem('user_mode', res.data[0].mode);
+        window.location.replace("/HOME");
+      } else {
         window.location.replace("/login");
       }
     }).catch((error) => {
@@ -51,24 +51,24 @@ const LogIn = () => {
         <IonHeader collapse="condense">
         </IonHeader>
         <div className="login-section ion-padding">
-          <img src="assets/GARZIPLOGO.PNG" alt="Garzip's logo" />
+          <img src="http://image.free.in.th/v/2013/is/220529012951.png" alt="Garzip's logo" />
           <div className="heading ion-padding">
-            <h1>Welcome to GARZIP</h1>
+            <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
           </div>
-          <div className="login-form ion-padding">
+          <div className="login-form ion-padding blind">
             <div className="form-input">
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">Username</IonLabel>
+                <IonLabel position="floating" alt='ชื่อผู้ใช้งาน' className="input-text">ชื่อผู้ใช้งาน</IonLabel>
                 <IonInput className="input-text"
-          
+
                   onIonChange={event => setUsername(event.target.value)} >
                 </IonInput>
               </IonItem>
             </div>
             <div className="form-input">
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">Password</IonLabel>
-                <IonInput  
+                <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
+                <IonInput
                   type="password"
                   onIonChange={event => setPassword(event.target.value)}
                 >
@@ -76,33 +76,35 @@ const LogIn = () => {
               </IonItem>
             </div>
           </div>
-          <div className="action-button">
-            <IonButton className="register-button" size="large" fill="outline" routerLink="/register">Register</IonButton>
+          <div className="action-button blind">
+            <form action='/register' method='get'>
+              <button className="canclebuttonBlind" size="large" fill="outline" routerLink="/register" type='submit'>สมัครสมาชิก</button>
+            </form>
             <IonButton
               size="large"
               className="login-button"
               onClick={submit}
-            >Login</IonButton>
+            >เข้าสู่ระบบ</IonButton>
           </div>
           <div className="forgotpass">
-            <IonButton
+            <h1><IonButton
               className="link-forgotpass"
               expand="block"
               onClick={() =>
                 present({
                   cssClass: 'my-css',
-                  message: 'Plaese insert your email. We will sent request for change password to you.',
+                  message: 'กรุณาใส่อีเมล ระบบจะส่งคำร้องตั้งรหัสผ่านใหม่ให้ท่าน',
                   inputs: [
                     {
                       type: 'text',
                       name: 'email',
-                      placeholder: 'email',
+                      placeholder: 'อีเมล',
                     }
                   ],
                   buttons: [
-                    { text: 'cancle', handler: (d) => console.log('cancle pressed') },
+                    { text: 'ยกเลิก', handler: (d) => console.log('cancle pressed') },
                     {
-                      text: 'confirm', handler: (d) => {
+                      text: 'ยืนยัน', handler: (d) => {
                         changepasswordRequest(d)
                       }
                     },
@@ -112,8 +114,8 @@ const LogIn = () => {
                 })
               }
             >
-              forgot password?
-            </IonButton>
+              ลืมรหัสผ่าน?
+            </IonButton></h1>
           </div>
         </div>
       </IonContent>

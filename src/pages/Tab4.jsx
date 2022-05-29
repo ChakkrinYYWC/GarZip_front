@@ -67,36 +67,36 @@ const Tab4 = () => {
     );
   } else {
     return (
-      <IonPage className='page'>
+      <IonPage className='page blind'>
         <IonHeader className="Setting">
           <div className='title_fav'>
-            <IonLabel className="name_pages">ตั้งค่า</IonLabel>
+            <IonLabel className="name_pages"><h1>ตั้งค่า</h1></IonLabel>
           </div>
         </IonHeader>
         {/* <div className='topper'>
           <div>ตั้งค่า</div>
         </div> */}
         <IonContent fullscreen >
-          <a>
-            <div onClick={changemode} className="choice">
-              <span className="textchoiceBlind">สลับเป็นโหมดสายตาปกติ</span>
-            </div>
-          </a>
+          <div onClick={changemode} className="choice">
+            <span className="textchoiceBlind"><h1>สลับเป็นโหมดสายตาปกติ</h1></span>
+          </div>
           <a href="/setting/UserInfo">
-            <div className="choice">
+            <button><div className="choice">
               <span className="textchoiceBlind">ข้อมูลส่วนตัว</span>
-            </div>
+            </div></button>
           </a>
           <a href="/setting/Changepassword">
-            <div className="choice">
+            <button><div className="choice">
               <span className="textchoiceBlind">เปลี่ยนรหัสผ่าน</span>
-            </div>
+            </div></button>
           </a>
           <a href="/Login">
-            <div className="choice">
-              <span className="textchoiceBlind">ออกจากระบบ</span>
-            </div>
+            <button><div className="choice">
+              <button><span className="textchoiceBlind">ออกจากระบบ</span></button>
+            </div></button>
           </a>
+
+          {/* <button onclick={window.location.replace('/setting/UserInfo')}>Continue</button> */}
           {/* <div className='g_button' >
             <a href="/Login">
               <button className='cancleSettingbuttonBlind'  >ออกจากระบบ</button>
