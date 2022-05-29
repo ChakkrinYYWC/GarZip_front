@@ -33,6 +33,7 @@ ion-header{
    color: white;
    font-weight: bold;
    font-size: 22px;
+   margin-left: 50px;
    font-family: 'Bai Jamjuree', sans-serif;
  }
 
@@ -123,4 +124,9 @@ ion-header{
   font-weight: bold;
   height: 30px;
   margin-right: 10px;
+}
+
+.title_fav h6{
+  margin-top: 5px;
+  font-weight: bold;
 }
