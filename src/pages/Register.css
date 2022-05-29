@@ -38,7 +38,7 @@
 
 }
 .Checkbox{
-  width: 25px;
+  width: 200px;
   height:25px;
   --border-width: 2px;
   --border-radius: calc(var(--size) * 1.125);

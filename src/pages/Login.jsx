@@ -21,13 +21,13 @@ const LogIn = () => {
     await Axios.post("https://garzipback.herokuapp.com/auth/login", {
       username: username, password: password
     }).then((res) => {
-      if(res){
+      if (res) {
         localStorage.setItem('user_id', res.data[0]._id);
-      localStorage.setItem('user_name', res.data[0].username);
-      localStorage.setItem('user_email', res.data[0].email);
-      localStorage.setItem('user_mode', res.data[0].mode);
-      window.location.replace("/HOME");
-      }else{
+        localStorage.setItem('user_name', res.data[0].username);
+        localStorage.setItem('user_email', res.data[0].email);
+        localStorage.setItem('user_mode', res.data[0].mode);
+        window.location.replace("/HOME");
+      } else {
         window.location.replace("/login");
       }
     }).catch((error) => {
@@ -51,69 +51,60 @@ const LogIn = () => {
         <IonHeader collapse="condense">
         </IonHeader>
         <div className="login-section ion-padding">
-          <img src="assets/GARZIPLOGO.PNG" alt="" />
+          <img src="http://image.free.in.th/v/2013/is/220529012951.png" alt="Garzip's logo" />
           <div className="heading ion-padding">
             <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
           </div>
-          <div className="login-form ion-padding">
+          <div className="login-form ion-padding blind">
             <div className="form-input">
-              {/* <IonTitle>ชื่อผู้ใช้งาน</IonTitle> */}
               <IonItem className="input">
-                <IonLabel position="floating" className="input-text">ชื่อผู้ใช้งาน</IonLabel>
+                <IonLabel position="floating" alt='ชื่อผู้ใช้งาน' className="input-text">ชื่อผู้ใช้งาน</IonLabel>
                 <IonInput className="input-text"
-          
+
                   onIonChange={event => setUsername(event.target.value)} >
                 </IonInput>
               </IonItem>
             </div>
             <div className="form-input">
-              {/* <IonTitle>รหัสผ่าน</IonTitle> */}
               <IonItem className="input">
                 <IonLabel position="floating" className="input-text">รหัสผ่าน</IonLabel>
-                <IonInput  
+                <IonInput
                   type="password"
                   onIonChange={event => setPassword(event.target.value)}
                 >
-
                 </IonInput>
-
               </IonItem>
             </div>
           </div>
-          <div className="action-button">
-            <IonButton className="register-button" size="large" fill="outline" routerLink="/register">สมัครสมาชิก</IonButton>
+          <div className="action-button blind">
+            <form action='/register' method='get'>
+              <button className="canclebuttonBlind" size="large" fill="outline" routerLink="/register" type='submit'>สมัครสมาชิก</button>
+            </form>
             <IonButton
               size="large"
               className="login-button"
               onClick={submit}
             >เข้าสู่ระบบ</IonButton>
           </div>
-          {/* <div className="login-with-facebook" >
-            <IonIcon className="icon-facebook" icon={logoFacebook} />
-            <IonRouterLink href="#" className="link-login-with-facebook">เข้าสู่ระบบด้วยFacebook</IonRouterLink>
-          </div> */}
-
           <div className="forgotpass">
-            <IonButton
+            <h1><IonButton
               className="link-forgotpass"
               expand="block"
               onClick={() =>
                 present({
                   cssClass: 'my-css',
-                  //header: 'กรอกอีเมล์เพื่อตั้งรหัสผ่านใหม่',
-                  message: 'กรอกอีเมล์ ระบบจะส่งอีเมล์ให้ท่านเพื่อตั้งรหัสผ่านใหม่',
+                  message: 'กรุณาใส่อีเมล ระบบจะส่งคำร้องตั้งรหัสผ่านใหม่ให้ท่าน',
                   inputs: [
                     {
                       type: 'text',
                       name: 'email',
-                      placeholder: 'อีเมล์',
+                      placeholder: 'อีเมล',
                     }
                   ],
                   buttons: [
                     { text: 'ยกเลิก', handler: (d) => console.log('cancle pressed') },
                     {
                       text: 'ยืนยัน', handler: (d) => {
-                        console.log('ok pressed')
                         changepasswordRequest(d)
                       }
                     },
@@ -124,14 +115,8 @@ const LogIn = () => {
               }
             >
               ลืมรหัสผ่าน?
-            </IonButton>
+            </IonButton></h1>
           </div>
-
-          {/* <IonInput [type]="password_type" placeholder="Password" name="password" [(ngModel)]="password" required></IonInput>
-
-          <IonIcon name="eye" item-right (click)="togglePasswordMode()"></IonIcon> */}
-
-
         </div>
       </IonContent>
     </IonPage>

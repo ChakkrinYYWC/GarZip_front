@@ -363,8 +363,8 @@ const DetailBook = ({ ...props }) => {
                       <h3 >{data[0].name}</h3>
 
                       <ReactAudioPlayer
-                        src={data[0].voice}
-                        // src="https://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
+                        scr={data[0].voice}
+                        // src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
                         // autoPlay
                         controls
                       />
@@ -372,8 +372,7 @@ const DetailBook = ({ ...props }) => {
 
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
                       <h4>เขียนโดย : {data[0].auther}</h4>
-                      <h4><p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p></h4>
-                      <h4><p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p></h4>
+                      <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
                     <div className='players'>
                       {/* <IonRange
@@ -413,14 +412,6 @@ const DetailBook = ({ ...props }) => {
                           </IonText>
                         </IonLabel>
                       </IonRange>*/}
-                      
-                      {/* <ReactAudioPlayer
-                        // scr={test}
-                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                        // autoPlay
-                        controls
-                      /> */}
-
                     </div>
                     {/* <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
@@ -516,16 +507,15 @@ const DetailBook = ({ ...props }) => {
                   <div className='DetailBook Blind' >
                     <div className="bar">
                       <IonButtons slot="start">
-                        <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
+                        <IonRouterLink onclick="history.back()" className="button-back"><h4>ย้อนกลับ</h4></IonRouterLink>
                       </IonButtons>
 
 
                     </div>
                     <div className="data-book">
                       <h3 >{data[0].name}</h3>
-                      <h4><p>เขียนโดย : {data[0].auther}</p></h4>
-                      <h4><p>ระยะเวลาประมาณ : {Math.round((story.length) * 0.08129142485119)} วินาที</p> </h4>
-                      <h4><p>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </p> </h4>
+                      <p><h4>เขียนโดย : {data[0].auther}</h4></p>
+                      <p><h4>ยอดผู้ฟัง : {kFormatter(data[0].view)} ครั้ง </h4></p>
                     </div>
                     <div className='players'>
                       {/* <IonRange
@@ -564,9 +554,7 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange> */}
                       <ReactAudioPlayer
-                        // scr={test}
-                        src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                        // autoPlay
+                        scr={data[0].voice}
                         controls
                       />
                     </div>
@@ -596,17 +584,21 @@ const DetailBook = ({ ...props }) => {
 
                       {
                         saved ?
-                          <IonRouterLink onClick={() => addBook(data[0]._id)}>
-                            <IonButton fill="clear" mode="ios" className="savebuttonBlind">
-                              บันทึก
-                            </IonButton>
-                          </IonRouterLink>
+                          <h8>
+                            <IonRouterLink onClick={() => addBook(data[0]._id)}>
+                              <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                                บันทึก
+                              </IonButton>
+                            </IonRouterLink>
+                          </h8>
                           :
-                          <IonRouterLink onClick={() => removeBook(data[0]._id)} >
-                            <IonButton fill="clear" mode="ios" className="savebuttonBlind">
-                              ยกเลิกบันทึก
-                            </IonButton>
-                          </IonRouterLink>
+                          <h8>
+                            <IonRouterLink onClick={() => removeBook(data[0]._id)} >
+                              <IonButton fill="clear" mode="ios" className="savebuttonBlind">
+                                ยกเลิกบันทึก
+                              </IonButton>
+                            </IonRouterLink>
+                          </h8>
                       }
                     </center>
 
@@ -623,7 +615,7 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
-                      <div className='story'>{data[0].trailer}</div>
+                      <div className='story'><h4>{data[0].trailer}</h4></div>
                     </div>
 
                     {
@@ -633,17 +625,17 @@ const DetailBook = ({ ...props }) => {
                         :
                         <div className='episode-Booklist'>
                           <h1>ตอน</h1>
-                          <IonList className='list-book'>
+                          <IonList className='list-book blind'>
                             {episode.map((book, i) => {
                               return (
-                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                <button><IonItem key={i} className="item-list" href='/DetailBook'>
                                   <span className="book">
                                     <IonLabel className='title'>{book.name}</IonLabel>
                                     <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
                                     {/* <IonLabel className='detial'>ระยะเวลา : {image.time} น.</IonLabel> */}
                                   </span>
 
-                                </IonItem>
+                                </IonItem></button>
                               )
                             })}
                           </IonList>

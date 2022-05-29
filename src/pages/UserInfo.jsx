@@ -59,7 +59,7 @@ const UserInfo = () => {
                   }} />
               </div>
               <div className='userinfochoice'>
-                <span className='text'>อีเมล์ : </span>
+                <span className='text'>อีเมล : </span>
                 <input
                   type="email"
                   className='input'
@@ -84,31 +84,34 @@ const UserInfo = () => {
     return (
       <IonPage className="page">
         <div className='topper'>
-          <center>ข้อมูลส่วนตัว</center>
+          <center><h4>ข้อมูลส่วนตัว</h4></center>
         </div>
         <IonContent fullscreen >
           {data.map((user, i) => (
             <div key={i}>
-              <div className='userinfochoiceBlind'>
-                <span className='textBlind'>ชื่อผู้ใช้งาน : </span>
-                <input
-                  type="text"
-                  className='inputBlind'
-                  placeholder={user.username}
-                  onChange={(event) => {
-                    setUsername(event.target.value)
-                  }} />
-              </div>
-              <div className='userinfochoiceBlind'>
-                <span className='textBlind'>อีเมล์ : </span>
-                <input
-                  type="email"
-                  className='inputBlind'
-                  placeholder={user.email}
-                  onChange={(event) => {
-                    setEmail(event.target.value)
-                  }} />
-              </div>
+                <div className='userinfochoiceBlind'>
+                  <span className='textBlind'><h4>ชื่อผู้ใช้งาน : </h4></span>
+                  <input
+                    aria-label='Enter search text'
+                    type="text"
+                    className='inputBlind'
+                    placeholder={user.username}
+                    onChange={(event) => {
+                      setUsername(event.target.value)
+                    }} />
+                </div>
+              <h8>
+                <div className='userinfochoiceBlind'>
+                  <span className='textBlind'><h4>อีเมล : </h4></span>
+                  <input
+                    type="email"
+                    className='inputBlind'
+                    placeholder={user.email}
+                    onChange={(event) => {
+                      setEmail(event.target.value)
+                    }} />
+                </div>
+              </h8>
             </div>
           ))}
           <center className='group_buttonn' >

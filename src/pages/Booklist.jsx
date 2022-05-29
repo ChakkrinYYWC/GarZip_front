@@ -28,16 +28,16 @@ const Booklist = ({ ...props }) => {
   }, [])
 
   function kFormatter(num) {
-    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
-}
+    return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+  }
 
   const user_mode = localStorage.getItem('user_mode');
-  if(user_mode === 'false'){
+  if (user_mode === 'false') {
     return (
 
       <IonPage className="Booklist-Page">
-  
-  
+
+
         <IonContent fullscreen>
           <div className='Booklist'>
             <div className="bar">
@@ -48,25 +48,25 @@ const Booklist = ({ ...props }) => {
               <IonRouterLink href='/HOME' className="button-back">
                 <IonIcon name="chevron-back-outline" ></IonIcon>
               </IonRouterLink> */}
-  
-  
+
+
               <IonButtons slot="start">
                 <IonRouterLink onclick="history.back()" className="button-back">
-                    <IonIcon name="chevron-back-outline" ></IonIcon>
+                  <IonIcon name="chevron-back-outline" ></IonIcon>
                 </IonRouterLink>
                 {/* <IonBackButton  icon="chevron-back-outline" text="" defaultHref="/HOME" /> */}
                 <IonLabel >GARZIP</IonLabel>
               </IonButtons>
-  
+
             </div>
             <h1>{props.match.params.name}</h1>
-  
+
             {/* <IonRouterLink href='/DetailBook/' className="button-back"> */}
             <IonList className='list-book'>
               {data.map((book, i) => {
                 return (
                   <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-  
+
                     <IonItem key={i} className="item-list" >
                       <IonThumbnail slot="start" className='image' >
                         <IonImg src={book.image} />
@@ -82,54 +82,54 @@ const Booklist = ({ ...props }) => {
               })}
             </IonList>
             {/* </IonRouterLink> */}
-  
+
           </div>
-  
+
         </IonContent>
       </IonPage>
-  
+
     );
-  }else{
+  } else {
     return (
 
       <IonPage className="Booklist-Page ">
-  
-  
+
+
         <IonContent fullscreen>
           <div className='Booklist Blind'>
             <div className="bar">
               <IonButtons slot="start">
-                <IonRouterLink onclick="history.back()" className="button-back">ย้อนกลับ</IonRouterLink>
+                <IonRouterLink onclick="history.back()" className="button-back"><h4>ย้อนกลับ</h4></IonRouterLink>
               </IonButtons>
-  
+
             </div>
             <h1>{props.match.params.name}</h1>
             {/* <IonRouterLink href='/DetailBook/' className="button-back"> */}
-            <IonList className='list-book'>
+            <IonList className='list-book blind'>
               {data.map((book, i) => {
                 return (
                   <IonRouterLink href={`/DetailBook/${book._id}`} className="button-back">
-                    <IonItem key={i} className="item-list" >
+                    <button><IonItem key={i} className="item-list" >
                       <span className="book">
                         <IonLabel className='title'>{book.name}</IonLabel>
                         <IonLabel className='detial'>เขียนโดย : {book.auther}</IonLabel>
                         <IonLabel className='detial'>ยอดฟัง : {kFormatter(book.view)} ครั้ง</IonLabel>
                       </span>
-                    </IonItem>
+                    </IonItem></button>
                   </IonRouterLink>
                 )
               })}
             </IonList>
             {/* </IonRouterLink> */}
-  
+
           </div>
-  
+
         </IonContent>
       </IonPage>
-  
+
     );
   }
-  
+
 };
 
 export default Booklist;
