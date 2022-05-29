@@ -76,10 +76,13 @@ const LogIn = () => {
               </IonItem>
             </div>
           </div>
-          <div className="action-button blind">
-            <form action='/register' method='get'>
-              <button className="canclebuttonBlind" size="large" fill="outline" routerLink="/register" type='submit'>สมัครสมาชิก</button>
-            </form>
+          <div className="action-button ">
+            
+              {/* <button className="regisbutton" size="large" fill="outline"  type='submit'>สมัครสมาชิก</button> */}
+    
+            <IonRouterLink routerLink="/register" className="button-back">
+              <button className='regisbutton'>สมัครสมาชิก</button>
+            </IonRouterLink>
             <IonButton
               size="large"
               className="login-button"
