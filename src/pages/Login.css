@@ -178,13 +178,13 @@ ion-content{
 .regisbutton {
   font-family: 'Bai Jamjuree', sans-serif;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   padding:14px;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0);
   border: gray solid 1px;
   color: gray;
-  width: 40%;
+  width: 45%;
   margin: 0px 10px 0px 0px;
   height: 55px;
 }

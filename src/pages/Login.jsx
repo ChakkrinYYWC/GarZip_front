@@ -51,7 +51,7 @@ const LogIn = () => {
         <IonHeader collapse="condense">
         </IonHeader>
         <div className="login-section ion-padding">
-          <img src="http://image.free.in.th/v/2013/is/220529012951.png" alt="Garzip's logo" />
+          <img src="https://res.cloudinary.com/dfuqgcqif/image/upload/v1653811989/AudioUploads/picture/GARZIPLOGO_osjg1i.png" alt="Garzip's logo" />
           <div className="heading ion-padding">
             <h1>ยินดีต้อนรับเข้าสู่ GARZIP</h1>
           </div>
