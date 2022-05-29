@@ -64,10 +64,15 @@ const Tab3 = () => {
       <IonPage className="favbook">
         <IonHeader className="fav_book">
           <div className='title_fav'>
-            <h1><IonLabel className="name_pagesB">ชั้นหนังสือ</IonLabel></h1>
-            <IonRouterLink id="nested-button" className="button-filter">
-              <label><h6>ตัวกรอง</h6></label>
+            <h1>
+              <IonLabel className="name_pagesB">ชั้นหนังสือ</IonLabel>
+            
+              <IonRouterLink id="nested-button" className="button-filter">
+                <label><h6>ตัวกรอง</h6></label>
             </IonRouterLink>
+            </h1>
+            
+            
 
           </div>
 

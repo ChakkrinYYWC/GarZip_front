@@ -412,6 +412,8 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange>*/}
                     </div>
+                      
+                    
                     {/* <div className='mix-button'>
                       <IonButton fill="clear" mode="ios" className='button-play-back' onClick={(event) => BackStory(event)}>
                         <IonIcon name="play-back-outline"></IonIcon>
