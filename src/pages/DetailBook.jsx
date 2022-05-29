@@ -50,7 +50,9 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
+  const [ep_audio, setEp_audio] = useState([])
   const [test, setTest] = useState('')
+  const [indexchapter, setIndexchapter] = useState()
   // const audio = new Audio()
   // const [countTime, setCountTime] = useState(true)
   // const history = useHistory();
@@ -64,7 +66,7 @@ const DetailBook = ({ ...props }) => {
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
-        console.log(timeuser)
+        // console.log(timeuser)
         setTest(res.data[0].voice)
 
         const random_boolean = Math.random() < 0.5;
@@ -89,8 +91,8 @@ const DetailBook = ({ ...props }) => {
       setTimeuser(res.data[0].continue_book)
       add_time: {
         for (let i = 0; i < res.data[0].continue_book.length; i++) {
-          console.log('continue_book: ' + res.data[0].continue_book[i]._id)
-          console.log(props.match.params.id)
+          // console.log('continue_book: ' + res.data[0].continue_book[i]._id)
+          // console.log(props.match.params.id)
           if (res.data[0].continue_book[i]._id == props.match.params.id) {
             // console.log('**')
             // console.log(res.data[0].continue_book[i].time)
@@ -114,7 +116,7 @@ const DetailBook = ({ ...props }) => {
     await checkBook(props.match.params.id)
     await setLoading(false);
 
-  }, [])
+  }, [indexchapter])
 
   speech.init({
     'volume': 1,
@@ -140,7 +142,7 @@ const DetailBook = ({ ...props }) => {
   async function playsound() {
     const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
-    console.log(storysliced)
+    // console.log(storysliced)
     speech.speak({
       text: storysliced,
       queue: false,
@@ -325,6 +327,8 @@ const DetailBook = ({ ...props }) => {
   //   audio.play();
   // };
 
+  // console.log(indexchapter)
+  // console.log(episode)
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
     return (
@@ -356,21 +360,36 @@ const DetailBook = ({ ...props }) => {
                             <div className="save"></div>
                           </IonRouterLink>
                       }
-
                     </div>
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
 
-                      <ReactAudioPlayer
-                        scr={data[0].voice}
-                        // src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                        // autoPlay
-                        controls
-                      />
-                      
+                      {
+                        indexchapter == undefined ?
+                          <>
+                            <ReactAudioPlayer
+                              src={data[0].voice}
+                              onPause={(e)=> console.log(e)}
+                              onPlay={(e)=> console.log(e.target.currentTime)}
+                              onSeeked={(e) => { console.log(e.target.currentTime) }}
+                              onChange={(e) => {console.log(e.target.currentTime)}}
+                              controls
+                            />
+                          </>
+                          :
+                          <>
+                            <ReactAudioPlayer
+                              src={episode[indexchapter].voice}
+                              controls
+                            />
+                          </>
+                      }
+
+
 
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
+                      {/* <h4>text: {data[0].chapter[indexchapter].voice}</h4> */}
                       <h4>เขียนโดย : {data[0].auther}</h4>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
@@ -469,7 +488,8 @@ const DetailBook = ({ ...props }) => {
                               // console.log(book)
                               return (
 
-                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                <IonItem key={i} className="item-list" onClick={() => { setIndexchapter(i) }}>
+                                  {/* <IonItem key={i} className="item-list" href={"/DetailBook/" + book._id}> */}
                                   <IonThumbnail slot="start" className='image' >
                                     <IonImg src={book.image} />
                                   </IonThumbnail>
@@ -554,7 +574,7 @@ const DetailBook = ({ ...props }) => {
                         </IonLabel>
                       </IonRange> */}
                       <ReactAudioPlayer
-                        scr={data[0].voice}
+                        src={data[0].voice}
                         controls
                       />
                     </div>
