@@ -289,35 +289,35 @@ const DetailBook = ({ ...props }) => {
     return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
   }
 
-  function playAudio() {
-    console.log('****')
-    var msg = new SpeechSynthesisUtterance('Help me with this code please?');
-    msg.pitch = 0;
-    msg.rate = .6;
-    window.speechSynthesis.speak(msg);
+  // function playAudio() {
+  //   console.log('****')
+  //   var msg = new SpeechSynthesisUtterance('Help me with this code please?');
+  //   msg.pitch = 0;
+  //   msg.rate = .6;
+  //   window.speechSynthesis.speak(msg);
 
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices[10]; // Note: some voices don't support altering params
-    msg.voiceURI = 'native';
-    msg.volume = 1; // 0 to 1
-    msg.rate = 1.2; // 0.1 to 10
-    msg.pitch = 2; //0 to 2
-    msg.text = 'Sure. This code plays "Hello World" for you';
-    msg.lang = 'en-US';
+  //   var msg = new SpeechSynthesisUtterance();
+  //   var voices = window.speechSynthesis.getVoices();
+  //   msg.voice = voices[10]; // Note: some voices don't support altering params
+  //   msg.voiceURI = 'native';
+  //   msg.volume = 1; // 0 to 1
+  //   msg.rate = 1.2; // 0.1 to 10
+  //   msg.pitch = 2; //0 to 2
+  //   msg.text = 'Sure. This code plays "Hello World" for you';
+  //   msg.lang = 'en-US';
 
-    msg.onend = function (e) {
-      var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
-      msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
-      msg1.pitch = 2; //0 to 2
-      msg1.rate = 1.2; //0 to 2
-      // start your audio loop.
-      speechSynthesis.speak(msg1);
-      console.log('Finished in ' + e.elapsedTime + ' seconds.');
-    };
+  //   msg.onend = function (e) {
+  //     var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
+  //     msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
+  //     msg1.pitch = 2; //0 to 2
+  //     msg1.rate = 1.2; //0 to 2
+  //     // start your audio loop.
+  //     speechSynthesis.speak(msg1);
+  //     console.log('Finished in ' + e.elapsedTime + ' seconds.');
+  //   };
 
-    speechSynthesis.speak(msg);
-  }
+  //   speechSynthesis.speak(msg);
+  // }
 
   // const audio = new Audio(
   //   "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
@@ -370,10 +370,25 @@ const DetailBook = ({ ...props }) => {
                           <>
                             <ReactAudioPlayer
                               src={data[0].voice}
-                              onPause={(e)=> console.log(e)}
-                              onPlay={(e)=> console.log(e.target.currentTime)}
-                              onSeeked={(e) => { console.log(e.target.currentTime) }}
-                              onChange={(e) => {console.log(e.target.currentTime)}}
+                              // onPause={(e)=> {console.log('Pause:: '+e.target.currentTime)}}
+                              // onPlay={(e)=> {console.log('Play:: '+e.target.currentTime)}}
+                              onEnded={(e)=> {console.log('end')}}
+                              onListen={(e)=>{
+                                console.log(e)
+                                add_view: {
+                                  if (e > 5.00 && indexview == 0) {
+                                    // console.log('view up!')
+                                    indexview = indexview + 1
+                                    Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
+                                      .then((res) => {
+                                        console.log(res);
+                                      })
+                                      .catch((error) => console.log(error));
+                                    break add_view;
+                                  }
+                                }
+                              }}
+                              listenInterval
                               controls
                             />
                           </>
