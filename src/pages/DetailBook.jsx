@@ -50,7 +50,9 @@ const DetailBook = ({ ...props }) => {
   const [pitch, setPitch] = useState()
   const [time, setTime] = useState(Number)
   const [episode, setEpisode] = useState([])
+  const [ep_audio, setEp_audio] = useState([])
   const [test, setTest] = useState('')
+  const [indexchapter, setIndexchapter] = useState()
   // const audio = new Audio()
   // const [countTime, setCountTime] = useState(true)
   // const history = useHistory();
@@ -64,7 +66,7 @@ const DetailBook = ({ ...props }) => {
         setStory(res.data[0].text)
         setData(res.data)
         setEpisode(res.data[0].chapter)
-        console.log(timeuser)
+        // console.log(timeuser)
         setTest(res.data[0].voice)
 
         const random_boolean = Math.random() < 0.5;
@@ -89,8 +91,8 @@ const DetailBook = ({ ...props }) => {
       setTimeuser(res.data[0].continue_book)
       add_time: {
         for (let i = 0; i < res.data[0].continue_book.length; i++) {
-          console.log('continue_book: ' + res.data[0].continue_book[i]._id)
-          console.log(props.match.params.id)
+          // console.log('continue_book: ' + res.data[0].continue_book[i]._id)
+          // console.log(props.match.params.id)
           if (res.data[0].continue_book[i]._id == props.match.params.id) {
             // console.log('**')
             // console.log(res.data[0].continue_book[i].time)
@@ -114,7 +116,7 @@ const DetailBook = ({ ...props }) => {
     await checkBook(props.match.params.id)
     await setLoading(false);
 
-  }, [])
+  }, [indexchapter])
 
   speech.init({
     'volume': 1,
@@ -140,7 +142,7 @@ const DetailBook = ({ ...props }) => {
   async function playsound() {
     const percentagevalue = time * (story.length / 100)
     const storysliced = story.slice(percentagevalue, story.length)
-    console.log(storysliced)
+    // console.log(storysliced)
     speech.speak({
       text: storysliced,
       queue: false,
@@ -287,35 +289,35 @@ const DetailBook = ({ ...props }) => {
     return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
   }
 
-  function playAudio() {
-    console.log('****')
-    var msg = new SpeechSynthesisUtterance('Help me with this code please?');
-    msg.pitch = 0;
-    msg.rate = .6;
-    window.speechSynthesis.speak(msg);
+  // function playAudio() {
+  //   console.log('****')
+  //   var msg = new SpeechSynthesisUtterance('Help me with this code please?');
+  //   msg.pitch = 0;
+  //   msg.rate = .6;
+  //   window.speechSynthesis.speak(msg);
 
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices[10]; // Note: some voices don't support altering params
-    msg.voiceURI = 'native';
-    msg.volume = 1; // 0 to 1
-    msg.rate = 1.2; // 0.1 to 10
-    msg.pitch = 2; //0 to 2
-    msg.text = 'Sure. This code plays "Hello World" for you';
-    msg.lang = 'en-US';
+  //   var msg = new SpeechSynthesisUtterance();
+  //   var voices = window.speechSynthesis.getVoices();
+  //   msg.voice = voices[10]; // Note: some voices don't support altering params
+  //   msg.voiceURI = 'native';
+  //   msg.volume = 1; // 0 to 1
+  //   msg.rate = 1.2; // 0.1 to 10
+  //   msg.pitch = 2; //0 to 2
+  //   msg.text = 'Sure. This code plays "Hello World" for you';
+  //   msg.lang = 'en-US';
 
-    msg.onend = function (e) {
-      var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
-      msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
-      msg1.pitch = 2; //0 to 2
-      msg1.rate = 1.2; //0 to 2
-      // start your audio loop.
-      speechSynthesis.speak(msg1);
-      console.log('Finished in ' + e.elapsedTime + ' seconds.');
-    };
+  //   msg.onend = function (e) {
+  //     var msg1 = new SpeechSynthesisUtterance('Now code plays audios for you');
+  //     msg1.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Whisper'; })[0];
+  //     msg1.pitch = 2; //0 to 2
+  //     msg1.rate = 1.2; //0 to 2
+  //     // start your audio loop.
+  //     speechSynthesis.speak(msg1);
+  //     console.log('Finished in ' + e.elapsedTime + ' seconds.');
+  //   };
 
-    speechSynthesis.speak(msg);
-  }
+  //   speechSynthesis.speak(msg);
+  // }
 
   // const audio = new Audio(
   //   "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
@@ -325,6 +327,8 @@ const DetailBook = ({ ...props }) => {
   //   audio.play();
   // };
 
+  // console.log(indexchapter)
+  // console.log(episode)
   const user_mode = localStorage.getItem('user_mode');
   if (user_mode === 'false') {
     return (
@@ -356,20 +360,51 @@ const DetailBook = ({ ...props }) => {
                             <div className="save"></div>
                           </IonRouterLink>
                       }
-
                     </div>
                     <div className="data-book">
                       <IonImg className="image-book" src={data[0].image} />
                       <h3 >{data[0].name}</h3>
 
-                      <ReactAudioPlayer
-                        src={data[0].voice}
-                        // src="http://res.cloudinary.com/dfuqgcqif/raw/upload/v1653674983/AudioUploads/output.mp3"
-                        // autoPlay
-                        controls
-                      />
+                      {
+                        indexchapter == undefined ?
+                          <>
+                            <ReactAudioPlayer
+                              src={data[0].voice}
+                              // onPause={(e)=> {console.log('Pause:: '+e.target.currentTime)}}
+                              // onPlay={(e)=> {console.log('Play:: '+e.target.currentTime)}}
+                              onEnded={(e)=> {console.log('end')}}
+                              onListen={(e)=>{
+                                // console.log(e)
+                                add_view: {
+                                  if (e > 5.00 && indexview == 0) {
+                                    // console.log('view up!')
+                                    indexview = indexview + 1
+                                    Axios.post("https://garzipback.herokuapp.com/book/updateview/" + data[0]._id, {})
+                                      .then((res) => {
+                                        console.log(res);
+                                      })
+                                      .catch((error) => console.log(error));
+                                    break add_view;
+                                  }
+                                }
+                              }}
+                              listenInterval
+                              controls
+                            />
+                          </>
+                          :
+                          <>
+                            <ReactAudioPlayer
+                              src={episode[indexchapter].voice}
+                              controls
+                            />
+                          </>
+                      }
+
+
 
                       {/* <p>เขียนโดย : {data[0].voice}</p> */}
+                      {/* <h4>text: {data[0].chapter[indexchapter].voice}</h4> */}
                       <h4>เขียนโดย : {data[0].auther}</h4>
                       <p>ยอดฟัง : {kFormatter(data[0].view)} ครั้ง </p>
                     </div>
@@ -455,7 +490,7 @@ const DetailBook = ({ ...props }) => {
 
                     <div className='story-book'>
                       <h4 className='title-story'>เนื้อเรื่องย่อ</h4>
-                      <div className='story'>{data[0].trailer}</div>
+                      <h4><div className='story'>{data[0].trailer}</div></h4>
                     </div>
 
                     {
@@ -470,14 +505,15 @@ const DetailBook = ({ ...props }) => {
                               // console.log(book)
                               return (
 
-                                <IonItem key={i} className="item-list" href='/DetailBook'>
+                                <IonItem key={i} className="item-list" onClick={() => { setIndexchapter(i) }}>
+                                  {/* <IonItem key={i} className="item-list" href={"/DetailBook/" + book._id}> */}
                                   <IonThumbnail slot="start" className='image' >
                                     <IonImg src={book.image} />
                                   </IonThumbnail>
                                   <span className="book">
                                     {/* <h1>ddfdfd</h1> */}
-                                    <IonLabel className='title'>{book.name}</IonLabel>
-                                    <IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel>
+                                    <h4><IonLabel className='title'>{book.name}</IonLabel></h4>
+                                    <h4><IonLabel className='detial'>เขียนโดย : {data[0].auther}</IonLabel></h4>
                                     {/* <IonLabel className='detial'>ระยะเวลา : {Math.round((story.length) * 0.08129142485119)}  วินาที.</IonLabel> */}
                                   </span>
                                 </IonItem>
